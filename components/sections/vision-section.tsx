@@ -56,21 +56,20 @@ export function VisionSection() {
 
                     {/* Gradient Input Container */}
                     <div
-                        className={`relative w-full max-w-xl mx-auto transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
+                        className={`relative w-full max-w-sm mx-auto transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
                     >
                         {/* Soft colored shadow behind */}
-                        <div className="absolute inset-4 bg-gradient-to-r from-pink-300 via-yellow-200 to-blue-200 opacity-40 blur-xl rounded-full" />
+                        <div className="absolute inset-4 bg-gradient-to-r from-pink-300 via-yellow-200 to-blue-200 opacity-30 blur-xl rounded-full" />
 
                         {/* Gradient Border Wrapping */}
-                        <div className="relative p-[2px] rounded-full bg-gradient-to-r from-[#FF9CA4] via-[#FFE58A] to-[#8EB5FF]">
-                            <div className="relative bg-white rounded-full flex items-center p-2 pr-2">
+                        <div className="relative p-[1px] rounded-full bg-gradient-to-r from-[#FF9CA4] via-[#FFE58A] to-[#8EB5FF]">
+                            <div className="relative bg-white rounded-full flex items-center p-1 pr-1">
                                 <input
                                     type="email"
-                                    placeholder="Email"
-                                    className="flex-grow bg-transparent border-none outline-none px-6 text-[#1a1a1a] placeholder:text-gray-400 font-light text-lg"
+                                    placeholder="Hablemos de tu visión..."
+                                    className="flex-grow bg-transparent border-none outline-none px-4 text-[#1a1a1a] placeholder:text-gray-400 font-light text-sm italic"
                                 />
-                                <button className="bg-black hover:bg-gray-900 text-white rounded-full px-6 py-3 flex items-center gap-2 transition-transform duration-300 hover:scale-105">
-                                    <span className="text-sm font-medium pr-1">Contact us</span>
+                                <button className="bg-black hover:bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center transition-transform duration-300 hover:scale-105 shrink-0">
                                     <div className="w-4 h-4 text-white">
                                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                                             <path d="M12 4L12 20M12 4L4 12M12 4L20 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" transform="rotate(45 12 12)" />

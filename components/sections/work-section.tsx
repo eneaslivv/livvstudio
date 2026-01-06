@@ -36,7 +36,7 @@ const projects = [
   },
 ]
 
-export function WorkSection() {
+export function WorkSection({ id }: { id?: string }) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
@@ -60,6 +60,7 @@ export function WorkSection() {
 
   return (
     <section
+      id={id}
       ref={sectionRef}
       className="relative w-full"
     >

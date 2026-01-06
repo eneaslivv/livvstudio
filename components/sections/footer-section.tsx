@@ -5,7 +5,7 @@ import { useScroll, useTransform, useSpring, motion } from "framer-motion"
 import { ArrowUpRight, Instagram, Twitter, Linkedin, Github } from "lucide-react"
 import { AnimatedBorders } from "@/components/ui/animated-borders"
 
-export function FooterSection() {
+export function FooterSection({ id }: { id?: string }) {
     const containerRef = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -20,7 +20,7 @@ export function FooterSection() {
     const opacity = useSpring(rawOpacity, springConfig)
 
     return (
-        <section ref={containerRef} className="relative w-full min-h-[80vh] flex flex-col justify-between overflow-hidden pb-0">
+        <section id={id} ref={containerRef} className="relative w-full min-h-[80vh] flex flex-col justify-between overflow-hidden pb-0">
 
             {/* Full Height Vertical Lines - Moved to Root for continuous visibility */}
             <div className="absolute inset-0 w-full max-w-7xl mx-auto px-6 md:px-12 pointer-events-none z-0">

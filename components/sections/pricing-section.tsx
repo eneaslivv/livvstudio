@@ -51,7 +51,7 @@ type PricingState = {
     details: string
 }
 
-export function PricingSection() {
+export function PricingSection({ id }: { id?: string }) {
     const sectionRef = useRef<HTMLDivElement>(null)
     const chatContainerRef = useRef<HTMLDivElement>(null)
     const [isVisible, setIsVisible] = useState(false)
@@ -336,7 +336,7 @@ export function PricingSection() {
     }
 
     return (
-        <section ref={sectionRef} className="relative w-full">
+        <section id={id} ref={sectionRef} className="relative w-full">
             <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 relative z-10">
                 <AnimatedBorders className="hidden md:block" />
 

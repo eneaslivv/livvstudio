@@ -12,7 +12,7 @@ const stats = [
   { value: "24/7", label: "Support", description: "Dedicated team" },
 ]
 
-export function AboutSection() {
+export function AboutSection({ id }: { id?: string }) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -35,6 +35,7 @@ export function AboutSection() {
 
   return (
     <section
+      id={id}
       ref={sectionRef}
       className="relative w-full"
     >

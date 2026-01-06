@@ -139,22 +139,22 @@ export default function Home() {
             className={`hidden md:flex items-center gap-8 text-[13px] font-medium text-white/90 transition-all duration-800 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
             style={{ transitionDelay: "100ms" }}
           >
-            <a href="#" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
+            <a href="#home" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
               <span className="text-[10px] text-white/50 font-normal">01</span>
               <span>Home</span>
               <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white/80 group-hover:w-full transition-all duration-300" />
             </a>
-            <a href="#" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
+            <a href="#about" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
               <span className="text-[10px] text-white/50 font-normal">02</span>
               <span>About</span>
               <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white/80 group-hover:w-full transition-all duration-300" />
             </a>
-            <a href="#" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
+            <a href="#work" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
               <span className="text-[10px] text-white/50 font-normal">03</span>
               <span>Work</span>
               <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white/80 group-hover:w-full transition-all duration-300" />
             </a>
-            <a href="#" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
+            <a href="#blog" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
               <span className="text-[10px] text-white/50 font-normal">04</span>
               <span>Blog</span>
               <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white/80 group-hover:w-full transition-all duration-300" />
@@ -169,7 +169,7 @@ export default function Home() {
           </div>
 
           <a
-            href="#"
+            href="#contact"
             className={`relative bg-white text-[#1a1a1a] rounded-full pl-0.5 md:pl-4 pr-0.5 py-0.5 flex items-center gap-2 transition-all duration-500 ease-out group ml-1 overflow-hidden hover:bg-white/90 border border-white/40 shadow-md ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"}`}
             style={{ transitionDelay: "500ms", transitionDuration: "800ms" }}
             onMouseEnter={() => setIsButtonHovered(true)}
@@ -221,7 +221,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="h-auto w-full p-4 sm:p-6 pt-8 pb-4 md:pb-8 flex items-start justify-center">
+      <section id="home" className="h-auto w-full p-4 sm:p-6 pt-8 pb-4 md:pb-8 flex items-start justify-center">
         {/* Frame Container */}
         <div
           ref={frameRef}
@@ -372,18 +372,18 @@ export default function Home() {
       <LogoGridSection />
 
       {/* Pricing Section */}
-      <PricingSection />
+      <PricingSection id="blog" />
 
 
       {/* Work/Projects Section */}
-      <WorkSection />
+      <WorkSection id="work" />
 
 
 
 
 
       {/* About Section */}
-      <AboutSection />
+      <AboutSection id="about" />
 
 
 
@@ -394,7 +394,7 @@ export default function Home() {
       <VisionSection />
 
       {/* Footer Section */}
-      <FooterSection />
+      <FooterSection id="contact" />
 
       <style jsx global>{`
         @keyframes spin {

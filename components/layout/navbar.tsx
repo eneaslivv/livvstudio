@@ -28,22 +28,22 @@ export function Navbar() {
                 </div>
 
                 <div className="hidden md:flex items-center gap-8 text-[13px] font-medium text-white/90 transition-all duration-800 opacity-100 translate-y-0">
-                    <a href="/" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
+                    <a href="#home" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
                         <span className="text-[10px] text-white/50 font-normal">01</span>
                         <span>Home</span>
                         <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white/80 group-hover:w-full transition-all duration-300" />
                     </a>
-                    <a href="#" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
+                    <a href="#about" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
                         <span className="text-[10px] text-white/50 font-normal">02</span>
                         <span>About</span>
                         <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white/80 group-hover:w-full transition-all duration-300" />
                     </a>
-                    <a href="#" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
+                    <a href="#work" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
                         <span className="text-[10px] text-white/50 font-normal">03</span>
                         <span>Work</span>
                         <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white/80 group-hover:w-full transition-all duration-300" />
                     </a>
-                    <a href="#" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
+                    <a href="#blog" className="relative hover:text-white transition-colors group py-1 flex items-center gap-1.5">
                         <span className="text-[10px] text-white/50 font-normal">04</span>
                         <span>Blog</span>
                         <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white/80 group-hover:w-full transition-all duration-300" />
@@ -56,7 +56,7 @@ export function Navbar() {
                 </div>
 
                 <a
-                    href="#"
+                    href="#contact"
                     className="relative bg-white text-[#1a1a1a] rounded-full pl-4 pr-1 py-1 flex items-center gap-2 transition-all duration-500 ease-out group ml-1 overflow-hidden hover:bg-white/90 border border-white/40 shadow-md opacity-100 translate-y-0"
                     onMouseEnter={() => setIsButtonHovered(true)}
                     onMouseLeave={() => setIsButtonHovered(false)}

@@ -6,10 +6,10 @@ import { AnimatedBorders } from "@/components/ui/animated-borders"
 
 const testimonials = [
     {
-        quote: "Working with them transformed our entire brand identity. The attention to detail was exceptional.",
-        name: "Sarah Chen",
-        role: "CEO at Stripe",
-        image: "https://images.unsplash.com/photo-1701615004837-40d8573b6652?w=900&auto=format&fit=crop&q=60",
+        quote: "Was great working together, we will work together again in the future.",
+        name: "Ronen Wasserman",
+        role: "Founder & President at srpro.marketing",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=900&auto=format&fit=crop&q=60",
     },
     {
         quote: "A rare talent who combines strategic thinking with flawless execution. Highly recommended.",
@@ -30,12 +30,12 @@ export function TestimonialsSection() {
 
     return (
         <section className="w-full relative">
-            <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 py-12 md:py-16">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 py-8 md:py-10">
                 <AnimatedBorders className="hidden md:block" />
 
-                <div className="w-full max-w-xl mx-auto">
+                <div className="w-full max-w-lg mx-auto text-center">
                     {/* Quote */}
-                    <div className="relative min-h-[100px] mb-8">
+                    <div className="relative min-h-[80px] mb-6">
                         {testimonials.map((t, i) => (
                             <p
                                 key={i}

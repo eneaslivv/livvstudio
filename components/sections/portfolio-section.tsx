@@ -16,6 +16,7 @@ const items = [
         title: 'Architectural Heritage',
         subtitle: 'Design Study',
         img: '/images/portfolio-1.png',
+        video: 'https://player.vimeo.com/video/1152114665?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1',
         link: '/projects/architecture',
         stats: '4.2k High-res Assets',
         tech: ['Next.js', 'Three.js', 'Postman']
@@ -66,14 +67,25 @@ function PortfolioGrid() {
                         onClick={() => handleCardClick(item.link)}
                         className="group/card relative w-full aspect-[3/2] rounded-[10px] overflow-hidden cursor-pointer border border-[#1a1a1a]/10 hover:border-[#F2D696]/50 transition-all duration-500"
                     >
-                        {/* Image */}
-                        <Image
-                            src={item.img}
-                            alt={item.title}
-                            fill
-                            className="object-cover transition-transform duration-1000 group-hover/card:scale-110"
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                        />
+                        {/* Image or Video */}
+                        {item.video ? (
+                            <iframe
+                                src={item.video}
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-110"
+                                frameBorder="0"
+                                allow="autoplay; fullscreen; picture-in-picture"
+                                allowFullScreen
+                                title={item.title}
+                            />
+                        ) : (
+                            <Image
+                                src={item.img}
+                                alt={item.title}
+                                fill
+                                className="object-cover transition-transform duration-1000 group-hover/card:scale-110"
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                        )}
 
                         {/* Gradient Blur Overlay (Softened) */}
                         <div

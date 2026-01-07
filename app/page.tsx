@@ -1,3 +1,5 @@
+"use client"
+
 import dynamic from "next/dynamic"
 import { useRef, useEffect, useState } from "react"
 import { ArrowRight, Menu } from "lucide-react"

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { AnimatedBorders } from "@/components/ui/animated-borders"
 
 const testimonials = [
     {
@@ -28,64 +29,68 @@ export function TestimonialsSection() {
     const [active, setActive] = useState(0)
 
     return (
-        <section className="w-full py-20">
-            <div className="w-full max-w-xl mx-auto px-6">
-                {/* Quote */}
-                <div className="relative min-h-[120px] mb-12">
-                    {testimonials.map((t, i) => (
-                        <p
-                            key={i}
-                            className={`
+        <section className="w-full relative">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 py-12 md:py-16">
+                <AnimatedBorders className="hidden md:block" />
+
+                <div className="w-full max-w-xl mx-auto">
+                    {/* Quote */}
+                    <div className="relative min-h-[100px] mb-8">
+                        {testimonials.map((t, i) => (
+                            <p
+                                key={i}
+                                className={`
                 absolute inset-0 text-xl md:text-2xl font-light leading-relaxed text-[#1a1a1a]
                 transition-all duration-500 ease-out
                 ${active === i
-                                    ? "opacity-100 translate-y-0 blur-0"
-                                    : "opacity-0 translate-y-4 blur-sm pointer-events-none"
-                                }
+                                        ? "opacity-100 translate-y-0 blur-0"
+                                        : "opacity-0 translate-y-4 blur-sm pointer-events-none"
+                                    }
               `}
-                        >
-                            "{t.quote}"
-                        </p>
-                    ))}
-                </div>
+                            >
+                                "{t.quote}"
+                            </p>
+                        ))}
+                    </div>
 
-                {/* Author Row */}
-                <div className="flex items-center gap-6">
-                    {/* Avatars */}
-                    <div className="flex -space-x-2">
-                        {testimonials.map((t, i) => (
-                            <button
-                                key={i}
-                                onClick={() => setActive(i)}
-                                className={`
+                    {/* Author Row */}
+                    <div className="flex items-center gap-6">
+                        {/* Avatars */}
+                        <div className="flex -space-x-2">
+                            {testimonials.map((t, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => setActive(i)}
+                                    className={`
                   relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-white
                   transition-all duration-300 ease-out
                   ${active === i ? "z-10 scale-110" : "grayscale hover:grayscale-0 hover:scale-105"}
                 `}
-                            >
-                                <Image src={t.image} alt={t.name} fill className="object-cover" />
-                            </button>
-                        ))}
-                    </div>
+                                >
+                                    <Image src={t.image} alt={t.name} fill className="object-cover" />
+                                </button>
+                            ))}
+                        </div>
 
-                    {/* Divider */}
-                    <div className="h-8 w-px bg-[#D6D1C5]" />
+                        {/* Divider */}
+                        <div className="h-8 w-px bg-[#D6D1C5]" />
 
-                    {/* Active Author Info */}
-                    <div className="relative flex-1 min-h-[44px]">
-                        {testimonials.map((t, i) => (
-                            <div
-                                key={i}
-                                className={`
+                        {/* Active Author Info */}
+                        <div className="relative flex-1 min-h-[44px]">
+                            {testimonials.map((t, i) => (
+                                <div
+                                    key={i}
+                                    className={`
                   absolute inset-0 flex flex-col justify-center
                   transition-all duration-400 ease-out
                   ${active === i ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 pointer-events-none"}
                 `}
-                            >
-                                <span className="text-sm font-medium text-[#1a1a1a]">{t.name}</span>
-                                <span className="text-xs text-[#5A3E3E]/70">{t.role}</span>
-                            </div>
-                        ))}
+                                >
+                                    <span className="text-sm font-medium text-[#1a1a1a]">{t.name}</span>
+                                    <span className="text-xs text-[#5A3E3E]/70">{t.role}</span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

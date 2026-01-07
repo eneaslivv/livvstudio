@@ -41,14 +41,14 @@ export function LogoGridSection() {
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 py-24 md:py-32">
                 <AnimatedBorders className="hidden md:block" />
 
-                {/* Horizontal Top Line - Standardized color */}
-                <div className={`w-full h-[1px] bg-[#D1CDC2] transition-all duration-1000 ease-out ${isVisible ? "w-full opacity-100" : "w-0 opacity-0"}`} />
+                {/* Horizontal Top Line - Full width extending to edges */}
+                <div className={`absolute left-0 right-0 top-0 h-[1px] bg-[#D1CDC2] transition-all duration-1000 ease-out ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ marginLeft: '-50vw', marginRight: '-50vw', width: '200vw', left: '50%', transform: 'translateX(-50%)' }} />
 
                 <div className="grid grid-cols-2 md:grid-cols-4">
                     {logos.map((logo, index) => (
                         <div
                             key={index}
-                            className="group relative h-40 md:h-48 flex items-center justify-center border-r border-b border-[#E8E4DC] overflow-hidden cursor-pointer"
+                            className="group relative h-32 md:h-40 flex items-center justify-center border-r border-b border-[#E8E4DC] overflow-hidden cursor-pointer"
                         >
                             <style jsx>{`
                                 @media (max-width: 767px) {
@@ -73,7 +73,7 @@ export function LogoGridSection() {
 
                             {/* Logo Content - z-index ensures it sits above the image */}
                             <div
-                                className={`relative z-10 text-3xl md:text-4xl text-[#1a1a1a] group-hover:text-white transition-colors duration-500 ease-in-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                                className={`relative z-10 text-4xl md:text-5xl text-[#1a1a1a] group-hover:text-white transition-colors duration-500 ease-in-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                                 style={{ transitionDelay: `${500 + index * 100}ms` }}
                             >
                                 {/* Logo Variations */}
@@ -81,7 +81,7 @@ export function LogoGridSection() {
                                     <span className="font-extrabold tracking-tight">DDA</span>
                                 )}
                                 {logo.name === "9nine" && (
-                                    <span className="font-serif italic text-4xl">9nine</span>
+                                    <span className="font-serif italic text-5xl md:text-6xl">9nine</span>
                                 )}
                                 {logo.name === "(DFY)®" && (
                                     <span className="font-medium tracking-wide">(DFY)<sup className="text-xs">®</sup></span>

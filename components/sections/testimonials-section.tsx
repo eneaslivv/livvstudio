@@ -28,7 +28,7 @@ export function TestimonialsSection() {
     const [active, setActive] = useState(0)
 
     return (
-        <section className="w-full bg-[#FAF8F3] py-20">
+        <section className="w-full py-20">
             <div className="w-full max-w-xl mx-auto px-6">
                 {/* Quote */}
                 <div className="relative min-h-[120px] mb-12">
@@ -58,7 +58,7 @@ export function TestimonialsSection() {
                                 key={i}
                                 onClick={() => setActive(i)}
                                 className={`
-                  relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-[#FAF8F3]
+                  relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-white
                   transition-all duration-300 ease-out
                   ${active === i ? "z-10 scale-110" : "grayscale hover:grayscale-0 hover:scale-105"}
                 `}

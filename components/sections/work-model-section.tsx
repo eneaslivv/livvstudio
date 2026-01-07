@@ -94,8 +94,12 @@ export function WorkModelSection() {
                                 <div className="absolute -bottom-2 -right-2 w-1 h-1 bg-[#2A1818] rounded-full" />
 
                                 {/* Icon Box */}
-                                <div className="w-24 h-24 bg-[#F5F5F5] rounded-[1.5rem] border border-[#D6D1C5] flex items-center justify-center shadow-sm group-hover:scale-95 transition-transform duration-500 relative z-10">
-                                    <span className="text-[#5A3E3E] font-bold tracking-widest text-[10px] uppercase">HIPAA</span>
+                                <div className="w-24 h-24 bg-[#FFFFFF] rounded-[1.5rem] border border-[#D6D1C5] flex items-center justify-center p-1.5 shadow-sm group-hover:scale-95 transition-transform duration-500 overflow-hidden relative z-10">
+                                    {/* Blurred Image Effect */}
+                                    <div className="w-full h-full rounded-[1.2rem] overflow-hidden relative">
+                                        <img src="/images/work-model-2.jpg" alt="Visibility" className="w-full h-full object-cover opacity-90 blur-[1px] scale-110" />
+                                        <div className="absolute inset-0 bg-white/10" />
+                                    </div>
                                 </div>
                             </div>
 

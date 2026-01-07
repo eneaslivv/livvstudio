@@ -69,14 +69,16 @@ function PortfolioGrid() {
                     >
                         {/* Image or Video */}
                         {item.video ? (
-                            <iframe
-                                src={item.video}
-                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-110"
-                                frameBorder="0"
-                                allow="autoplay; fullscreen; picture-in-picture"
-                                allowFullScreen
-                                title={item.title}
-                            />
+                            <div className="absolute inset-0 overflow-hidden">
+                                <iframe
+                                    src={item.video}
+                                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78%] h-[177.78%] min-w-full min-h-full pointer-events-none"
+                                    frameBorder="0"
+                                    allow="autoplay; fullscreen; picture-in-picture"
+                                    allowFullScreen
+                                    title={item.title}
+                                />
+                            </div>
                         ) : (
                             <Image
                                 src={item.img}

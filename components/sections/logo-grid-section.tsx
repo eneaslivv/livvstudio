@@ -41,8 +41,8 @@ export function LogoGridSection() {
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 py-24 md:py-32">
                 <AnimatedBorders className="hidden md:block" />
 
-                {/* Horizontal Top Line - Full width extending to edges */}
-                <div className={`absolute left-0 right-0 top-0 h-[1px] bg-[#D1CDC2] transition-all duration-1000 ease-out ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ marginLeft: '-50vw', marginRight: '-50vw', width: '200vw', left: '50%', transform: 'translateX(-50%)' }} />
+                {/* Horizontal Top Line */}
+                <div className={`w-full h-[1px] bg-[#D1CDC2] transition-all duration-1000 ease-out ${isVisible ? "opacity-100" : "opacity-0"}`} />
 
                 <div className="grid grid-cols-2 md:grid-cols-4">
                     {logos.map((logo, index) => (

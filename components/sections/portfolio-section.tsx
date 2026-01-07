@@ -35,6 +35,7 @@ const items = [
         title: 'Metropolis',
         subtitle: 'Urban Visualization',
         img: '/images/portfolio-3.jpg',
+        video: 'https://player.vimeo.com/video/1152115391?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1',
         link: '/projects/metropolis',
         stats: '99.9% Render Accuracy',
         tech: ['TypeScript', 'Node.js', 'Tailwind']

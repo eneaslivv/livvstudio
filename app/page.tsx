@@ -264,12 +264,12 @@ export default function Home() {
               className={`mt-10 flex flex-wrap justify-center gap-4 transition-all duration-800 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
               style={{ transitionDelay: "500ms" }}
             >
-              <button className="px-8 py-3 rounded-full bg-white text-[#1a1a1a] text-sm md:text-base font-medium tracking-wide shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+              <a href="#work" className="px-8 py-3 rounded-full bg-white text-[#1a1a1a] text-sm md:text-base font-medium tracking-wide shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
                 See the Work
-              </button>
-              <button className="px-8 py-3 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 text-sm md:text-base font-medium tracking-wide shadow-xl hover:shadow-2xl hover:bg-white/20 hover:scale-105 transition-all duration-300">
-                Audit Infrastructure
-              </button>
+              </a>
+              <a href="#contact" className="px-8 py-3 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 text-sm md:text-base font-medium tracking-wide shadow-xl hover:shadow-2xl hover:bg-white/20 hover:scale-105 transition-all duration-300">
+                Get in Touch
+              </a>
             </div>
           </div>
         </div>

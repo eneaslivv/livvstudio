@@ -95,12 +95,12 @@ export function BusinessArtSection() {
                             </div>
 
                             <div className="mt-10">
-                                <button className="group flex items-center gap-4 bg-[#F5F2EB] hover:bg-[#EAE6DD] text-[#2A1010] py-3 px-6 rounded-full transition-all duration-300">
+                                <a href="#contact" className="group flex items-center gap-4 bg-[#F5F2EB] hover:bg-[#EAE6DD] text-[#2A1010] py-3 px-6 rounded-full transition-all duration-300">
                                     <div className="w-8 h-8 bg-[#2A1010] rounded-full flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
                                         <ArrowRight className="w-4 h-4" />
                                     </div>
                                     <span className="text-sm font-medium tracking-wide">Get in touch</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

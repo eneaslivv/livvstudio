@@ -34,14 +34,14 @@ export function PartnerInfrastructureSection() {
                             </p>
 
                             <div className="flex flex-wrap items-center gap-4">
-                                <button className="group flex items-center justify-center gap-2 bg-[#171717] text-white rounded-full px-8 py-3.5 hover:bg-stone-800 transition-all duration-300 shadow-xl shadow-stone-900/10 hover:shadow-2xl hover:scale-105">
+                                <a href="#contact" className="group flex items-center justify-center gap-2 bg-[#171717] text-white rounded-full px-8 py-3.5 hover:bg-stone-800 transition-all duration-300 shadow-xl shadow-stone-900/10 hover:shadow-2xl hover:scale-105">
                                     <span className="text-sm font-medium tracking-wide">Start Collaboration</span>
                                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 opacity-70" />
-                                </button>
+                                </a>
 
-                                <button className="px-6 py-3.5 rounded-full text-sm font-medium text-[#171717] border border-stone-200 hover:bg-stone-50 transition-all duration-300 hover:scale-105">
+                                <a href="#work" className="px-6 py-3.5 rounded-full text-sm font-medium text-[#171717] border border-stone-200 hover:bg-stone-50 transition-all duration-300 hover:scale-105">
                                     View capability deck
-                                </button>
+                                </a>
                             </div>
                         </div>
 

@@ -358,13 +358,13 @@ export function PricingSection({ id }: { id?: string }) {
                     </div>
 
                     {/* Chat Interface Container */}
-                    <div className="w-full max-w-2xl mx-auto relative z-20">
+                    <div className="w-full max-w-md mx-auto relative z-20">
                         <motion.div
                             layout
                             initial={false}
                             animate={{
-                                height: isChatStarted ? (window.innerWidth < 768 ? 550 : 600) : 56,
-                                borderRadius: isChatStarted ? "24px" : "9999px",
+                                height: isChatStarted ? (window.innerWidth < 768 ? 480 : 520) : 44,
+                                borderRadius: isChatStarted ? "20px" : "9999px",
                             }}
                             transition={{ type: "spring", stiffness: 400, damping: 40 }}
                             className={`

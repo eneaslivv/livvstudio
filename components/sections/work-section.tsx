@@ -146,11 +146,11 @@ export function WorkSection({ id }: { id?: string }) {
           className={`mt-20 flex justify-center transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
         >
-          <button className="group relative px-8 py-3 rounded-full border border-[#1a1a1a]/10 hover:border-[#1a1a1a] transition-colors duration-300 overflow-hidden">
+          <a href="#work" className="group relative px-8 py-3 rounded-full border border-[#1a1a1a]/10 hover:border-[#1a1a1a] transition-colors duration-300 overflow-hidden">
             <span className="relative z-10 text-sm tracking-widest uppercase text-[#1a1a1a] font-medium">View All Projects</span>
             <div className="absolute inset-0 bg-[#1a1a1a] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out -z-0" />
             <span className="absolute inset-0 z-10 flex items-center justify-center text-sm tracking-widest uppercase text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">View All Projects</span>
-          </button>
+          </a>
         </div>
       </div>
     </section>

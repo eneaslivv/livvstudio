@@ -66,10 +66,10 @@ export function AboutSection({ id }: { id?: string }) {
               </div>
 
               <div className="mt-12">
-                <button className="group flex items-center gap-3 text-sm tracking-widest uppercase text-[#1a1a1a] font-medium hover:text-[#C4A35A] transition-colors duration-300">
+                <a href="#work" className="group flex items-center gap-3 text-sm tracking-widest uppercase text-[#1a1a1a] font-medium hover:text-[#C4A35A] transition-colors duration-300">
                   <span className="w-8 h-[1px] bg-[#1a1a1a] group-hover:bg-[#C4A35A] transition-colors duration-300" />
-                  Read Our Story
-                </button>
+                  See Our Work
+                </a>
               </div>
             </div>
           </div>

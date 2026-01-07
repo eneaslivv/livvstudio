@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { AnimatedBorders } from "@/components/ui/animated-borders"
 
@@ -33,6 +33,14 @@ const testimonials = [
 
 export function TestimonialsSection() {
     const [active, setActive] = useState(0)
+
+    // Auto-loop through testimonials every 5 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActive((prev) => (prev + 1) % testimonials.length)
+        }, 5000)
+        return () => clearInterval(interval)
+    }, [])
 
     return (
         <section className="w-full relative">

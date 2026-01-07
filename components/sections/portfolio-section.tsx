@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react"
 import { AnimatedBorders } from "@/components/ui/animated-borders"
 import { Playfair_Display } from "next/font/google"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 import { RevealText } from "@/components/ui/reveal-text"
 
 const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "600"] })
@@ -66,10 +67,12 @@ function PortfolioGrid() {
                         className="group/card relative w-full aspect-[3/2] rounded-[10px] overflow-hidden cursor-pointer border border-[#1a1a1a]/10 hover:border-[#F2D696]/50 transition-all duration-500"
                     >
                         {/* Image */}
-                        <img
+                        <Image
                             src={item.img}
                             alt={item.title}
-                            className="w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-110"
+                            fill
+                            className="object-cover transition-transform duration-1000 group-hover/card:scale-110"
+                            sizes="(max-width: 768px) 100vw, 50vw"
                         />
 
                         {/* Gradient Blur Overlay (Softened) */}

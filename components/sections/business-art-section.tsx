@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react"
 import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 import { AnimatedBorders } from "@/components/ui/animated-borders"
 
 const CountUp = ({ end, duration }: { end: number, duration: number }) => {
@@ -133,10 +134,11 @@ export function BusinessArtSection() {
                             <div className="absolute inset-0 z-0 transition-transform duration-700 ease-out"
                                 style={{ transform: `scale(1.1) translate(${mousePosition.x / -80}px, ${mousePosition.y / -80}px)` }}
                             >
-                                <img
+                                <Image
                                     src="/images/custom-art.jpg"
                                     alt="Background Art"
-                                    className="w-full h-full object-cover opacity-90 mix-blend-overlay"
+                                    fill
+                                    className="object-cover opacity-90 mix-blend-overlay"
                                 />
                                 {/* Refined gradient - More subtle to show image */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-[#0F0505] via-[#0F0505]/60 to-transparent" />

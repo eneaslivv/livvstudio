@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef, useEffect, useState } from "react"
+import Image from "next/image"
 import { AnimatedBorders } from "@/components/ui/animated-borders"
 
 const images = [
@@ -69,9 +70,12 @@ export function ImageSliderSection() {
                             >
                                 {/* Actual Images from array */}
                                 <div className="absolute inset-0 bg-[#D4D4D4]">
-                                    <div
-                                        className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                        style={{ backgroundImage: `url(${img.src})` }}
+                                    <Image
+                                        src={img.src}
+                                        alt={`Slide ${index}`}
+                                        fill
+                                        className="object-cover transition-transform duration-700 group-hover/card:scale-110"
+                                        sizes="(max-width: 768px) 300px, 400px"
                                     />
                                     <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />
                                 </div>

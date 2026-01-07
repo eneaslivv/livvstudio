@@ -13,7 +13,7 @@ const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "
 export default function ProjectPage({ params }: { params: { slug: string } }) {
     return (
         <main className={`bg-[#FAF8F3] text-[#2A1818] selection:bg-[#E6E2D6] min-h-screen ${inter.className}`}>
-            <Navbar />
+            <Navbar theme="light" />
             <div className="pt-40 md:pt-52">
                 <div className="max-w-6xl mx-auto px-6 pb-12 md:pb-20">
 

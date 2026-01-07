@@ -1,5 +1,6 @@
 import { AnimatedBorders } from "@/components/ui/animated-borders"
 import { Server, ShieldCheck, ArrowRight } from "lucide-react"
+import Image from "next/image"
 import { inter } from "@/app/fonts"
 
 export function PartnerInfrastructureSection() {
@@ -51,10 +52,11 @@ export function PartnerInfrastructureSection() {
                             <div className="relative w-full h-full rounded-[10px] overflow-hidden border border-stone-100/20">
 
                                 {/* Background Image */}
-                                <img
+                                <Image
                                     src="/images/infra-bg.png"
                                     alt="Infrastructure"
-                                    className="absolute inset-0 w-full h-full object-cover"
+                                    fill
+                                    className="object-cover"
                                 />
 
                                 {/* UI COMPONENTS */}

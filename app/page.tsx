@@ -263,13 +263,14 @@ export default function Home() {
             </p>
 
             <div
-              className={`mt-10 flex flex-wrap justify-center gap-4 transition-all duration-800 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
+              className={`mt-10 flex flex-wrap justify-center gap-3 transition-all duration-800 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
               style={{ transitionDelay: "500ms" }}
             >
-              <a href="#work" className="px-8 py-3 rounded-full bg-white text-[#1a1a1a] text-sm md:text-base font-medium tracking-wide shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+              <a href="#work" className="group px-6 py-2.5 rounded-full bg-white text-[#1a1a1a] text-sm font-medium tracking-wide hover:bg-white/90 transition-all duration-300 flex items-center gap-2">
                 See the Work
+                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
               </a>
-              <a href="#contact" className="px-8 py-3 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 text-sm md:text-base font-medium tracking-wide shadow-xl hover:shadow-2xl hover:bg-white/20 hover:scale-105 transition-all duration-300">
+              <a href="#contact" className="px-6 py-2.5 rounded-full bg-transparent text-white text-sm font-medium tracking-wide border border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300">
                 Get in Touch
               </a>
             </div>

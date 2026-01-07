@@ -9,19 +9,22 @@ const testimonials = [
         quote: "Was great working together, we will work together again in the future.",
         name: "Ronen Wasserman",
         role: "Founder & President at srpro.marketing",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=900&auto=format&fit=crop&q=60",
+        image: "/images/ronen-wasserman.jpg",
+        stars: 5,
     },
     {
-        quote: "A rare talent who combines strategic thinking with flawless execution. Highly recommended.",
-        name: "Marcus Johnson",
-        role: "Design Lead at Linear",
-        image: "https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?w=900&auto=format&fit=crop&q=60",
+        quote: "It was great working with Eneas! He was so understanding and also very patient. He followed through all the revisions, communicated via looms and delivered excellent work!",
+        name: "Fidan Alizada",
+        role: "Creator | Marketer | Storyteller",
+        image: "/images/fidan-alizada.jpg",
+        stars: 5,
     },
     {
         quote: "The most seamless collaboration I've experienced. They truly understand modern design.",
         name: "Elena Voss",
         role: "Founder at Notion",
         image: "https://plus.unsplash.com/premium_photo-1689977830819-d00b3a9b7363?w=900&auto=format&fit=crop&q=60",
+        stars: 5,
     },
 ]
 
@@ -34,6 +37,17 @@ export function TestimonialsSection() {
                 <AnimatedBorders className="hidden md:block" />
 
                 <div className="w-full max-w-lg mx-auto text-center">
+                    {/* Stars Rating */}
+                    <div className="flex justify-center gap-1 mb-4">
+                        {[...Array(5)].map((_, i) => (
+                            <div key={i} className="w-6 h-6 bg-[#1a1a1a] flex items-center justify-center">
+                                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                            </div>
+                        ))}
+                    </div>
+
                     {/* Quote */}
                     <div className="relative min-h-[80px] mb-6">
                         {testimonials.map((t, i) => (

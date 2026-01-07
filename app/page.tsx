@@ -23,6 +23,7 @@ import { AboutSection } from "@/components/sections/about-section"
 import { ImageSliderSection } from "@/components/sections/image-slider-section"
 import { VisionSection } from "@/components/sections/vision-section"
 import { FooterSection } from "@/components/sections/footer-section"
+import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { Navbar } from "@/components/layout/navbar"
 
 // Import Shader components dynamically
@@ -290,6 +291,9 @@ export default function Home() {
 
       {/* Selected Work / Portfolio Section */}
       <PortfolioSection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* Logo Grid Section */}
       <LogoGridSection />

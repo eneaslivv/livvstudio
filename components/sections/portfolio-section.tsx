@@ -48,12 +48,31 @@ const items = [
         link: '/projects/monetization',
         stats: '$2.4M Volume/mo',
         tech: ['Stripe', 'Next.js', 'Firebase']
+    },
+    {
+        id: 5,
+        title: 'Native Teams',
+        subtitle: 'Web Platform',
+        img: '/images/portfolio-5.jpg',
+        video: 'https://player.vimeo.com/video/840622094?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1',
+        link: '/projects/native-teams',
+        stats: '+180% Growth',
+        tech: ['React', 'Node.js', 'AWS']
+    },
+    {
+        id: 6,
+        title: 'Concotesta',
+        subtitle: 'Brand Experience',
+        img: '/images/portfolio-6.png',
+        link: '/projects/concotesta',
+        stats: '3D Product Showcase',
+        tech: ['Three.js', 'Blender', 'GSAP']
     }
 ]
 
 function PortfolioGrid() {
     const router = useRouter()
-    const displayedItems = items.slice(0, 4)
+    const displayedItems = items.slice(0, 6)
 
     const handleCardClick = (link: string) => {
         router.push(link)

@@ -37,9 +37,18 @@ export function FooterSection({ id }: { id?: string }) {
                         <span className="inline-block text-[11px] tracking-[0.3em] uppercase text-[#C4A35A] font-medium mb-4">
                             Get in Touch
                         </span>
-                        <h2 className="section-heading text-gradient-gold mb-8">
+                        <h2 className="section-heading text-gradient-gold mb-6">
                             Let's work together
                         </h2>
+                        <a
+                            href="https://contra.com/eneas_meneses"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-sm text-[#5A3E3E]/80 hover:text-[#1a1a1a] transition-colors"
+                        >
+                            <span>Hire me on Contra</span>
+                            <ArrowUpRight className="w-4 h-4" />
+                        </a>
                     </div>
 
                     {/* Right Column: Contact Info */}

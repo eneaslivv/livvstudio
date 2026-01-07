@@ -110,7 +110,7 @@ export function BusinessArtSection() {
                         <div
                             ref={cardRef}
                             onMouseMove={handleMouseMove}
-                            className={`relative w-full max-w-[500px] aspect-square bg-[#0F0505] rounded-[2rem] overflow-hidden shadow-2xl transition-all duration-1000 delay-300 group ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+                            className={`relative w-full max-w-[500px] aspect-square bg-[#0F0505] rounded-[10px] overflow-hidden shadow-2xl transition-all duration-1000 delay-300 group ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
                                 }`}
                         >
                             {/* Spotlight Hover Effect */}

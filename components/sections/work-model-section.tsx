@@ -68,7 +68,7 @@ export function WorkModelSection() {
                                 <div className="absolute -bottom-2 -right-2 w-1 h-1 bg-[#2A1818] rounded-full" />
 
                                 {/* Icon Box */}
-                                <div className="w-24 h-24 bg-[#FFFFFF] rounded-[10px] border border-[#D6D1C5] flex items-center justify-center p-1.5 shadow-sm group-hover:scale-95 transition-transform duration-500 overflow-hidden relative z-10">
+                                <div className="w-24 h-24 bg-[#FFFFFF] rounded-[1.5rem] border border-[#D6D1C5] flex items-center justify-center p-1.5 shadow-sm group-hover:scale-95 transition-transform duration-500 overflow-hidden relative z-10">
                                     {/* Blurred Image Effect */}
                                     <div className="w-full h-full rounded-[1.2rem] overflow-hidden relative">
                                         <img src="/images/gemini-generated-image-ndf416ndf416ndf4.png" alt="Rapid" className="w-full h-full object-cover opacity-90 blur-[1px] scale-110" />
@@ -94,7 +94,7 @@ export function WorkModelSection() {
                                 <div className="absolute -bottom-2 -right-2 w-1 h-1 bg-[#2A1818] rounded-full" />
 
                                 {/* Icon Box */}
-                                <div className="w-24 h-24 bg-[#FFFFFF] rounded-[10px] border border-[#D6D1C5] flex items-center justify-center p-1.5 shadow-sm group-hover:scale-95 transition-transform duration-500 overflow-hidden relative z-10">
+                                <div className="w-24 h-24 bg-[#FFFFFF] rounded-[1.5rem] border border-[#D6D1C5] flex items-center justify-center p-1.5 shadow-sm group-hover:scale-95 transition-transform duration-500 overflow-hidden relative z-10">
                                     {/* Blurred Image Effect */}
                                     <div className="w-full h-full rounded-[1.2rem] overflow-hidden relative">
                                         <img src="/images/work-model-2.jpg" alt="Visibility" className="w-full h-full object-cover opacity-90 blur-[1px] scale-110" />
@@ -120,7 +120,7 @@ export function WorkModelSection() {
                                 <div className="absolute -bottom-2 -right-2 w-1 h-1 bg-[#2A1818] rounded-full" />
 
                                 {/* Icon Box */}
-                                <div className="w-24 h-24 bg-[#FFFFFF] rounded-[10px] border border-[#D6D1C5] flex items-center justify-center p-1.5 shadow-sm group-hover:scale-95 transition-transform duration-500 overflow-hidden relative z-10">
+                                <div className="w-24 h-24 bg-[#FFFFFF] rounded-[1.5rem] border border-[#D6D1C5] flex items-center justify-center p-1.5 shadow-sm group-hover:scale-95 transition-transform duration-500 overflow-hidden relative z-10">
                                     {/* Blurred Image Effect */}
                                     <div className="w-full h-full rounded-[8px] overflow-hidden relative">
                                         <img src="/images/work-model-3.jpg" alt="Compliance" className="w-full h-full object-cover opacity-90 blur-[1px] scale-110" />

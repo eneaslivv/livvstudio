@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react"
 import { useScroll, useTransform, useSpring, motion } from "framer-motion"
-import { ArrowUpRight, Instagram, Twitter, Linkedin, Github } from "lucide-react"
+import { ArrowUpRight, Instagram, Linkedin, Github } from "lucide-react"
 import { AnimatedBorders } from "@/components/ui/animated-borders"
 
 export function FooterSection({ id }: { id?: string }) {
@@ -63,11 +63,18 @@ export function FooterSection({ id }: { id?: string }) {
                                 <div className="space-y-4">
                                     <h4 className="text-xs uppercase tracking-widest text-[#1a1a1a]/40">Socials</h4>
                                     <div className="flex gap-4">
-                                        {[Instagram, Twitter, Linkedin, Github].map((Icon, i) => (
-                                            <a key={i} href="#" className="w-10 h-10 rounded-full border border-[#1a1a1a]/10 flex items-center justify-center text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white transition-all duration-300 group">
-                                                <Icon className="w-4 h-4" />
-                                            </a>
-                                        ))}
+                                        <a href="https://www.instagram.com/p/C5-FziFN5zM/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#1a1a1a]/10 flex items-center justify-center text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white transition-all duration-300 group">
+                                            <Instagram className="w-4 h-4" />
+                                        </a>
+                                        <a href="https://www.youtube.com/@livvagency5936" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#1a1a1a]/10 flex items-center justify-center text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white transition-all duration-300 group">
+                                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>
+                                        </a>
+                                        <a href="https://www.linkedin.com/company/39648193/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#1a1a1a]/10 flex items-center justify-center text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white transition-all duration-300 group">
+                                            <Linkedin className="w-4 h-4" />
+                                        </a>
+                                        <a href="https://github.com/livvstudio" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#1a1a1a]/10 flex items-center justify-center text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white transition-all duration-300 group">
+                                            <Github className="w-4 h-4" />
+                                        </a>
                                     </div>
                                 </div>
                             </div>

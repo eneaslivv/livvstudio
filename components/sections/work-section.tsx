@@ -8,30 +8,30 @@ import { RevealText } from "@/components/ui/reveal-text"
 const projects = [
   {
     number: "01",
-    title: "Kinetic Typography",
-    category: "Interactive Experience",
+    title: "Internal Management Systems",
+    category: "Custom operational tools",
     year: "2024",
     color: "from-[#FFD700] to-[#FF8C00]"
   },
   {
     number: "02",
-    title: "Generative Patterns",
-    category: "Visual System",
+    title: "Paper",
+    category: "Venue & nightlife software",
     year: "2024",
     color: "from-[#769268] to-[#4A5D3B]"
   },
   {
     number: "03",
-    title: "Spatial Interface",
-    category: "3D Navigation",
-    year: "2023",
+    title: "SEO Blocks Generator",
+    category: "Programmatic SEO for Webflow",
+    year: "2024",
     color: "from-[#6DBEDC] to-[#2F4F75]"
   },
   {
     number: "04",
-    title: "Digital Ecosystem",
-    category: "Platform Design",
-    year: "2023",
+    title: "Custom SaaS Platforms",
+    category: "Scalable digital products",
+    year: "2023–2024",
     color: "from-[#E8BC59] to-[#C4A35A]"
   },
 ]
@@ -142,16 +142,6 @@ export function WorkSection({ id }: { id?: string }) {
         </div>
 
         {/* View All Button */}
-        <div
-          className={`mt-20 flex justify-center transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-        >
-          <a href="#work" className="group relative px-8 py-3 rounded-full border border-[#1a1a1a]/10 hover:border-[#1a1a1a] transition-colors duration-300 overflow-hidden">
-            <span className="relative z-10 text-sm tracking-widest uppercase text-[#1a1a1a] font-medium">View All Projects</span>
-            <div className="absolute inset-0 bg-[#1a1a1a] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out -z-0" />
-            <span className="absolute inset-0 z-10 flex items-center justify-center text-sm tracking-widest uppercase text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">View All Projects</span>
-          </a>
-        </div>
       </div>
     </section>
   )

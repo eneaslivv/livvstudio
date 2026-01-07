@@ -19,6 +19,18 @@ export function FooterSection({ id }: { id?: string }) {
     const y = useSpring(rawY, springConfig)
     const opacity = useSpring(rawOpacity, springConfig)
 
+    // Load Contra embed script
+    useEffect(() => {
+        const script = document.createElement('script')
+        script.src = 'https://contra.com/static/embed/sdk.js'
+        script.async = true
+        script.charset = 'utf-8'
+        document.body.appendChild(script)
+        return () => {
+            document.body.removeChild(script)
+        }
+    }, [])
+
     return (
         <section id={id} ref={containerRef} className="relative w-full min-h-[80vh] flex flex-col justify-between overflow-hidden pb-0">
 
@@ -40,15 +52,12 @@ export function FooterSection({ id }: { id?: string }) {
                         <h2 className="section-heading text-gradient-gold mb-6">
                             Let's work together
                         </h2>
-                        <a
-                            href="https://contra.com/eneas_meneses"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 text-sm text-[#5A3E3E]/80 hover:text-[#1a1a1a] transition-colors"
-                        >
-                            <span>Hire me on Contra</span>
-                            <ArrowUpRight className="w-4 h-4" />
-                        </a>
+                        <div
+                            className="contra-hire-me-button"
+                            data-analyticsUserId="451cfc1e-e897-46ed-a701-9dd0533e7ec6"
+                            data-theme="light"
+                            data-username="eneas_aldabe"
+                        />
                     </div>
 
                     {/* Right Column: Contact Info */}

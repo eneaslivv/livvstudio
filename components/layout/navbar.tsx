@@ -49,7 +49,7 @@ export function Navbar({ isLoaded = true, theme = "dark" }: NavbarProps) {
 
     return (
         <>
-            <nav className={`fixed left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 ease-out ${isScrolled ? "top-4 w-[92%] md:w-auto scale-95" : "top-6 w-[92%] md:w-auto scale-100"}`}>
+            <nav className={`fixed left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 ease-out ${isScrolled ? "top-4 w-[92%] md:w-auto scale-95" : "top-8 w-[92%] md:w-auto scale-100"}`}>
                 <div className={`backdrop-blur-3xl border rounded-full px-3 py-1.5 pl-4 flex items-center justify-between gap-4 md:gap-10 shadow-2xl transition-all duration-500 ${isScrolled
                     ? isLightPage ? "bg-white/80 border-black/10 shadow-black/5" : "bg-black/40 border-white/10 shadow-black/20"
                     : isLightPage ? "bg-white/40 border-black/10 shadow-black/5" : "bg-black/15 border-white/20 shadow-black/10"

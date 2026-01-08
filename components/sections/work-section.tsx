@@ -32,14 +32,6 @@ const projects = [
     color: "from-[#6DBEDC] to-[#2F4F75]",
     image: "/images/portfolio-3.jpg"
   },
-  {
-    number: "04",
-    title: "Custom SaaS Platforms",
-    category: "Scalable digital products",
-    year: "2023–2024",
-    color: "from-[#E8BC59] to-[#C4A35A]",
-    image: "/images/portfolio-4.jpg"
-  },
 ]
 
 export function WorkSection({ id }: { id?: string }) {

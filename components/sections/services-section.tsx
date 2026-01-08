@@ -9,6 +9,7 @@ import { RevealText } from "@/components/ui/reveal-text"
 export function ServicesSection({ id }: { id?: string }) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -104,6 +105,8 @@ export function ServicesSection({ id }: { id?: string }) {
             {services.map((service, index) => (
               <div
                 key={index}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
                 className="group relative flex flex-col h-[500px] md:h-[650px] overflow-hidden rounded-[10px] cursor-pointer transition-transform duration-500 hover:-translate-y-2"
               >
                 {/* Image Area */}
@@ -129,22 +132,33 @@ export function ServicesSection({ id }: { id?: string }) {
                   </div>
 
                   {/* Badge Marquee - Appears on hover */}
-                  <div className="absolute bottom-12 left-0 w-full overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 z-20 pointer-events-none">
-                    <motion.div
-                      className="flex whitespace-nowrap gap-4 px-4"
-                      animate={{ x: [0, "-50%"] }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      style={{ width: 'max-content' }}
-                    >
-                      {[...(service.tags || []), ...(service.tags || [])].map((tag, i) => (
-                        <div
-                          key={i}
-                          className="px-5 py-2 rounded-full bg-white/95 backdrop-blur-md border border-dashed border-black/20 text-[10px] font-semibold text-black uppercase tracking-[0.2em] flex items-center shadow-sm"
+                  <div className="absolute bottom-12 left-0 w-full overflow-hidden z-20 pointer-events-none">
+                    <AnimatePresence>
+                      {hoveredIndex === index && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="flex whitespace-nowrap gap-4 px-4 will-change-transform"
                         >
-                          {tag}
-                        </div>
-                      ))}
-                    </motion.div>
+                          <motion.div
+                            className="flex whitespace-nowrap gap-4"
+                            animate={{ x: [0, "-50%"] }}
+                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                            style={{ width: 'max-content' }}
+                          >
+                            {[...(service.tags || []), ...(service.tags || [])].map((tag, i) => (
+                              <div
+                                key={i}
+                                className="px-5 py-2 rounded-full bg-white/95 backdrop-blur-md border border-dashed border-black/20 text-[10px] font-semibold text-black uppercase tracking-[0.2em] flex items-center shadow-sm"
+                              >
+                                {tag}
+                              </div>
+                            ))}
+                          </motion.div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
 

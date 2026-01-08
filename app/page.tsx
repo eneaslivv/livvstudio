@@ -81,8 +81,13 @@ export default function Home() {
 
   useEffect(() => {
     let animationFrame: number
-    const animate = () => {
-      setTime((prev) => prev + 0.01)
+    let lastTime = 0
+    const animate = (t: number) => {
+      const dt = t - lastTime
+      if (dt > 16) { // Cap at ~60fps
+        setTime((prev) => prev + 0.01)
+        lastTime = t
+      }
       animationFrame = requestAnimationFrame(animate)
     }
     animationFrame = requestAnimationFrame(animate)
@@ -106,14 +111,17 @@ export default function Home() {
   useEffect(() => {
     const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor
 
-    const smoothInterval = setInterval(() => {
+    let rafId: number
+    const smoothAnimate = () => {
       setSmoothMousePos((prev) => ({
-        x: lerp(prev.x, mousePos.x, 0.05),
-        y: lerp(prev.y, mousePos.y, 0.05),
+        x: lerp(prev.x, mousePos.x, 0.08), // Increased factor for more responsive feel
+        y: lerp(prev.y, mousePos.y, 0.08),
       }))
-    }, 16)
+      rafId = requestAnimationFrame(smoothAnimate)
+    }
+    rafId = requestAnimationFrame(smoothAnimate)
 
-    return () => clearInterval(smoothInterval)
+    return () => cancelAnimationFrame(rafId)
   }, [mousePos])
 
   const waveX = Math.sin(time * 0.5) * 10 + smoothMousePos.x * 25
@@ -152,7 +160,7 @@ export default function Home() {
           <div className="absolute inset-0 z-50 rounded-[2.5rem] border-[3px] border-[#1a1a1a] pointer-events-none" />
 
           <div
-            className={`absolute inset-[-60px] z-0 transition-all duration-[2s] ease-out ${isLoaded ? "opacity-100" : "opacity-0"}`}
+            className={`absolute inset-[-60px] z-0 transition-all duration-[2s] ease-out transform-gpu ${isLoaded ? "opacity-100" : "opacity-0"}`}
             style={{
               transform: `
                 translate3d(${waveX}px, ${waveY}px, 0) 
@@ -278,13 +286,13 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Analytics Video Section */}
-      <AnalyticsSection />
+      < AnalyticsSection />
 
       {/* Business Art Section - "Where Business Meets Art" */}
-      <BusinessArtSection />
+      < BusinessArtSection />
 
       <WorkModelSection />
 
@@ -334,7 +342,7 @@ export default function Home() {
           50% { transform: translateX(5px) scale(1.1); }
         }
       `}</style>
-    </div>
+    </div >
   )
 }
 

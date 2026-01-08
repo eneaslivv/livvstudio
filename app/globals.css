@@ -203,17 +203,23 @@
     -webkit-overflow-scrolling: touch;
     transform: translateZ(0);
     backface-visibility: hidden;
-    perspective: 1000px;
   }
 
   section {
-    transform: translateZ(0);
-    will-change: transform;
-    contain: layout style paint;
+    contain: content;
+    position: relative;
+    /* Only apply hardware acceleration to sections that actually need it */
   }
 
-  button {
+  .transform-gpu {
     transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  button,
+  a {
     backface-visibility: hidden;
   }
 }

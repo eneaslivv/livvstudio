@@ -51,9 +51,9 @@ export function Navbar({ isLoaded = true, theme = "dark" }: NavbarProps) {
     ]
 
     const serviceItems = [
-        { label: "Creative Engineering", desc: "React / Flutter / Native" },
-        { label: "Product Strategy & UI", desc: "Business Logic / Design" },
-        { label: "Motion & Narrative", desc: "3D / WebGL / Storytelling" },
+        { label: "Creative Engineering", desc: "Framer / Shopify / Webflow" },
+        { label: "Product Strategy & UI", desc: "SaaS / AI Agents / UX" },
+        { label: "Motion & Narrative", desc: "WebGL / 3D / Brand" },
     ]
 
     return (

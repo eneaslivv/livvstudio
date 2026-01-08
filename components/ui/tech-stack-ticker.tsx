@@ -5,18 +5,17 @@ import Image from "next/image"
 export const TechStackTicker = () => {
     // Duplicated for infinite loop
     const logos = [
+        { src: "/brands/framer-expert.png", alt: "Framer Expert", isLarge: true },
+        { src: "/brands/shopify-partners.png", alt: "Shopify Partners", isLarge: true },
+        { src: "/brands/webflow-experts.png", alt: "Webflow Experts", isLarge: true },
+        { src: "/brands/nextjs.png", alt: "Next.js" },
         { src: "/brands/react.png", alt: "React" },
         { src: "/brands/flutter.png", alt: "Flutter" },
-        { src: "/brands/nextjs.png", alt: "Next.js" },
-        { src: "/brands/curve.png", alt: "Curve" },
-        { src: "/brands/bolt.png", alt: "Bolt" },
-        { src: "/brands/framer.png", alt: "Framer" },
-        { src: "/brands/webflow.png", alt: "Webflow" },
     ]
 
     return (
-        <div className="w-full bg-[#2c0405] py-4">
-            <div className="max-w-lg mx-auto overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <div className="w-full bg-[#2c0405] py-1.5">
+            <div className="max-w-6xl mx-auto overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
                 <div className="flex animate-scroll-left w-max">
                     {/* First set */}
                     <div className="flex items-center gap-16 pr-16">
@@ -25,7 +24,7 @@ export const TechStackTicker = () => {
                                 <img
                                     src={logo.src}
                                     alt={logo.alt}
-                                    className="h-5 md:h-6 w-auto object-contain"
+                                    className={`${logo.isLarge ? 'h-20 md:h-28' : 'h-5 md:h-6'} w-auto object-contain`}
                                 />
                             </div>
                         ))}
@@ -37,7 +36,7 @@ export const TechStackTicker = () => {
                                 <img
                                     src={logo.src}
                                     alt={logo.alt}
-                                    className="h-5 md:h-6 w-auto object-contain"
+                                    className={`${logo.isLarge ? 'h-20 md:h-28' : 'h-5 md:h-6'} w-auto object-contain`}
                                 />
                             </div>
                         ))}

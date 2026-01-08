@@ -31,14 +31,14 @@ export function ServicesSection({ id }: { id?: string }) {
   const services = [
     {
       title: "Creative Engineering",
-      description: "Fluid web experiences and native apps built on React & Flutter. We write code that enables complex interactions and silky-smooth performance.",
+      description: "High-end digital experiences built on Framer, Shopify, and Webflow. We bridge the gap between complex design and high-performance development.",
       color: "bg-transparent",
       textColor: "text-[#EDE5D8]",
       cardBg: "bg-[#2C1A1A]",
       imageClass: "opacity-100 scale-[1.15]",
       bgImage: "/images/service-tech-bg.jpg",
       hoverLabel: "TECH",
-      tags: ["Webflow", "Framer", "React", "Flutter", "Next.js", "Three.js", "TypeScript", "Node.js"]
+      tags: ["Framer", "Shopify Partners", "Webflow Experts", "Next.js", "Three.js", "TypeScript", "React", "Node.js"]
     },
     {
       title: "Product Strategy & UI",

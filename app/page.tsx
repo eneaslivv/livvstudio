@@ -33,12 +33,8 @@ const ChromaFlow = dynamic(() => import("shaders/react").then(mod => mod.ChromaF
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
-  const [isButtonHovered, setIsButtonHovered] = useState(false)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const [smoothMousePos, setSmoothMousePos] = useState({ x: 0, y: 0 })
   const frameRef = useRef<HTMLDivElement>(null)
-  const [time, setTime] = useState(0)
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
@@ -81,12 +77,16 @@ export default function Home() {
 
   useEffect(() => {
     let animationFrame: number
-    let lastTime = 0
-    const animate = (t: number) => {
-      const dt = t - lastTime
-      if (dt > 16) { // Cap at ~60fps
-        setTime((prev) => prev + 0.01)
-        lastTime = t
+    let time = 0
+
+    const animate = () => {
+      time += 0.01
+      if (frameRef.current) {
+        const waveRotate = Math.sin(time * 0.3) * 0.8
+        const waveScale = 1.1 + Math.sin(time * 0.5) * 0.025
+
+        frameRef.current.style.setProperty('--rotate', `${waveRotate}deg`)
+        frameRef.current.style.setProperty('--scale', waveScale.toString())
       }
       animationFrame = requestAnimationFrame(animate)
     }
@@ -100,7 +100,10 @@ export default function Home() {
         const rect = frameRef.current.getBoundingClientRect()
         const x = (e.clientX - rect.left) / rect.width - 0.5
         const y = (e.clientY - rect.top) / rect.height - 0.5
-        setMousePos({ x, y })
+
+        // Update CSS variables directly on the frame element for ultra-smooth performance
+        frameRef.current.style.setProperty('--mx', x.toString())
+        frameRef.current.style.setProperty('--my', y.toString())
       }
     }
 
@@ -108,28 +111,7 @@ export default function Home() {
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
-  useEffect(() => {
-    const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor
-
-    let rafId: number
-    const smoothAnimate = () => {
-      setSmoothMousePos((prev) => ({
-        x: lerp(prev.x, mousePos.x, 0.08), // Increased factor for more responsive feel
-        y: lerp(prev.y, mousePos.y, 0.08),
-      }))
-      rafId = requestAnimationFrame(smoothAnimate)
-    }
-    rafId = requestAnimationFrame(smoothAnimate)
-
-    return () => cancelAnimationFrame(rafId)
-  }, [mousePos])
-
-  const waveX = Math.sin(time * 0.5) * 10 + smoothMousePos.x * 25
-  const waveY = Math.cos(time * 0.45) * 10 + smoothMousePos.y * 25
-  const waveRotate = Math.sin(time * 0.3) * 0.8
-  const waveScale = 1.1 + Math.sin(time * 0.5) * 0.025
-  const waveSkewX = Math.sin(time * 0.35) * 0.5 + smoothMousePos.x * 2
-  const waveSkewY = Math.cos(time * 0.4) * 0.3 + smoothMousePos.y * 1.5
+  // Cleanup unused variables
 
   return (
     <div className="min-h-screen w-full bg-[#FFFFFF] cursor-none overflow-x-hidden">
@@ -154,19 +136,22 @@ export default function Home() {
         <div
           ref={frameRef}
           className="relative w-full h-[80vh] max-w-[1800px] rounded-[2.5rem] overflow-hidden bg-white shadow-sm isolate transform-gpu"
-          style={{ WebkitMaskImage: "radial-gradient(white, black)" }}
+          style={{
+            WebkitMaskImage: "radial-gradient(white, black)",
+            // @ts-ignore
+            '--mx': 0, '--my': 0, '--rotate': '0deg', '--scale': '1.1'
+          }}
         >
           {/* Independent Border Layer */}
           <div className="absolute inset-0 z-50 rounded-[2.5rem] border-[3px] border-[#1a1a1a] pointer-events-none" />
 
           <div
-            className={`absolute inset-[-60px] z-0 transition-all duration-[2s] ease-out transform-gpu ${isLoaded ? "opacity-100" : "opacity-0"}`}
+            className={`absolute inset-[-60px] z-0 transition-opacity duration-[1.5s] ease-out transform-gpu ${isLoaded ? "opacity-100" : "opacity-0"}`}
             style={{
               transform: `
-                translate3d(${waveX}px, ${waveY}px, 0) 
-                rotate(${waveRotate}deg) 
-                scale(${isLoaded ? waveScale : 1.15})
-                skew(${waveSkewX}deg, ${waveSkewY}deg)
+                translate3d(calc(var(--mx) * 50px), calc(var(--my) * 50px), 0) 
+                rotate(var(--rotate)) 
+                scale(var(--scale))
               `,
               willChange: "transform",
             }}

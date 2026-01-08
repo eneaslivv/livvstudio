@@ -50,7 +50,7 @@ export function LogoGridSection() {
                     {logos.map((logo, index) => (
                         <div
                             key={index}
-                            className="group relative h-32 md:h-40 flex items-center justify-center border-r border-b border-[#E8E4DC] overflow-hidden cursor-pointer"
+                            className="group relative h-32 md:h-40 flex items-center justify-center border-r border-b border-[#E8E4DC] overflow-hidden cursor-pointer bg-white"
                         >
                             <style jsx>{`
                                 @media (max-width: 767px) {
@@ -61,7 +61,7 @@ export function LogoGridSection() {
                                 }
                             `}</style>
 
-                            {/* Hover Background Image - Inverted logic: Hidden by default, appears on hover */}
+                            {/* Hover Background Image */}
                             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out z-0">
                                 <Image
                                     src={logo.bg}
@@ -69,13 +69,12 @@ export function LogoGridSection() {
                                     fill
                                     className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110"
                                 />
-                                {/* Overlay for contrast - made slightly darker to pop the white text */}
-                                <div className="absolute inset-0 bg-black/20" />
+                                <div className="absolute inset-0 bg-black/40" />
                             </div>
 
-                            {/* Logo Content - z-index ensures it sits above the image */}
+                            {/* Logo Content */}
                             <div
-                                className={`relative z-10 text-4xl md:text-5xl text-[#1a1a1a] group-hover:text-white transition-colors duration-500 ease-in-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                                className={`relative z-10 text-3xl md:text-4xl text-[#1a1a1a] group-hover:text-white transition-colors duration-500 ease-in-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                                 style={{ transitionDelay: `${500 + index * 100}ms` }}
                             >
                                 {/* Logo Variations */}
@@ -83,7 +82,7 @@ export function LogoGridSection() {
                                     <span className="font-extrabold tracking-tight">DDA</span>
                                 )}
                                 {logo.name === "9nine" && (
-                                    <span className="font-serif italic text-5xl md:text-6xl">9nine</span>
+                                    <span className="font-serif italic text-4xl">9nine</span>
                                 )}
                                 {logo.name === "(DFY)®" && (
                                     <span className="font-medium tracking-wide">(DFY)<sup className="text-xs">®</sup></span>
@@ -93,7 +92,6 @@ export function LogoGridSection() {
                                 )}
                                 {logo.name === "neue" && (
                                     <div className="flex items-center gap-3">
-                                        {/* Use currentColor so it automatically becomes white on hover */}
                                         <div className="w-6 h-6 rounded-full bg-[repeating-linear-gradient(45deg,currentColor_0,currentColor_1px,transparent_1px,transparent_3px)] opacity-50 transition-colors" />
                                         <span className="font-light tracking-tight">neue</span>
                                     </div>

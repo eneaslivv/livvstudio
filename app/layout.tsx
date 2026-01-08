@@ -58,6 +58,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${mondwest.variable} ${playground.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://rsms.me" />
+        <link rel="preload" href="/images/gemini-generated-image-ndf416ndf416ndf4.png" as="image" />
+      </head>
       <body className={`${inter.className} font-light antialiased`}>
         <SmoothScroll>
           {children}

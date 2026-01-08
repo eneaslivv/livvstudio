@@ -153,14 +153,18 @@ function PortfolioGrid() {
     )
 }
 
-export function PortfolioSection() {
+
+
+export function PortfolioSection({ id }: { id?: string }) {
     return (
-        <section className={`relative w-full text-slate-900 overflow-hidden`}>
+        <section id={id} className={`relative w-full text-slate-900 overflow-hidden`}>
             <div className="max-w-7xl mx-auto py-24 md:py-32 relative z-10">
                 <AnimatedBorders className="hidden md:block" />
 
                 {/* Section Header */}
-                <div className="mx-6 md:mx-12 border-t border-dashed border-[#D1CDC2] relative z-10" />
+                <div className="relative w-full h-[1px]">
+                    <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} />
+                </div>
 
                 <div className="w-full pt-24 md:pt-32 flex flex-col md:flex-row justify-between items-center gap-8 mb-12 md:mb-16 px-10 md:px-24 relative z-10">
                     <div>

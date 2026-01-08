@@ -1,9 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ArrowRight, Menu, X } from "lucide-react"
+import { ArrowRight, Menu, X, ChevronDown } from "lucide-react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
+import { motion, AnimatePresence } from "framer-motion"
 
 interface NavbarProps {
     isLoaded?: boolean
@@ -14,6 +15,7 @@ export function Navbar({ isLoaded = true, theme = "dark" }: NavbarProps) {
     const [isScrolled, setIsScrolled] = useState(false)
     const [isButtonHovered, setIsButtonHovered] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+    const [isServicesOpen, setIsServicesOpen] = useState(false)
     const pathname = usePathname()
 
     useEffect(() => {
@@ -27,6 +29,7 @@ export function Navbar({ isLoaded = true, theme = "dark" }: NavbarProps) {
     // Close mobile menu on route change
     useEffect(() => {
         setIsMobileMenuOpen(false)
+        setIsServicesOpen(false)
     }, [pathname])
 
     const getLink = (id: string) => {
@@ -44,7 +47,13 @@ export function Navbar({ isLoaded = true, theme = "dark" }: NavbarProps) {
         { id: "home", label: "Home", num: "01" },
         { id: "about", label: "About", num: "02" },
         { id: "work", label: "Work", num: "03" },
-        { id: "blog", label: "Blog", num: "04" },
+        { id: "services", label: "Services", num: "04", hasDropdown: true },
+    ]
+
+    const serviceItems = [
+        { label: "Creative Engineering", desc: "React / Flutter / Native" },
+        { label: "Product Strategy & UI", desc: "Business Logic / Design" },
+        { label: "Motion & Narrative", desc: "3D / WebGL / Storytelling" },
     ]
 
     return (
@@ -68,11 +77,45 @@ export function Navbar({ isLoaded = true, theme = "dark" }: NavbarProps) {
                     {/* Desktop Nav Links */}
                     <div className={`hidden md:flex items-center gap-8 text-[13px] font-medium transition-all duration-800 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"} ${isLightPage ? "text-black/80" : "text-white/90"}`} style={{ transitionDelay: "100ms" }}>
                         {navItems.map((item) => (
-                            <a key={item.id} href={getLink(item.id)} className={`relative hover:opacity-100 transition-opacity group py-1 flex items-center gap-1.5 ${isLightPage ? "opacity-60 hover:text-black" : "opacity-90 hover:text-white"}`}>
-                                <span className="text-[10px] opacity-50 font-normal">{item.num}</span>
-                                <span>{item.label}</span>
-                                <span className={`absolute -bottom-0.5 left-0 w-0 h-[1px] transition-all duration-300 group-hover:w-full ${isLightPage ? "bg-black/80" : "bg-white/80"}`} />
-                            </a>
+                            <div
+                                key={item.id}
+                                className="relative group"
+                                onMouseEnter={() => item.hasDropdown && setIsServicesOpen(true)}
+                                onMouseLeave={() => item.hasDropdown && setIsServicesOpen(false)}
+                            >
+                                <a href={getLink(item.id)} className={`relative hover:opacity-100 transition-opacity group py-1 flex items-center gap-1.5 ${isLightPage ? "opacity-60 hover:text-black" : "opacity-90 hover:text-white"}`}>
+                                    <span className="text-[10px] opacity-50 font-normal">{item.num}</span>
+                                    <span>{item.label}</span>
+                                    {item.hasDropdown && <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${isServicesOpen ? "rotate-180" : ""}`} />}
+                                    <span className={`absolute -bottom-0.5 left-0 w-0 h-[1px] transition-all duration-300 group-hover:w-full ${isLightPage ? "bg-black/80" : "bg-white/80"}`} />
+                                </a>
+
+                                {/* Dropdown */}
+                                <AnimatePresence>
+                                    {item.hasDropdown && isServicesOpen && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                                            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                            transition={{ duration: 0.2 }}
+                                            className={`absolute top-full left-1/2 -translate-x-1/2 pt-6 w-64`}
+                                        >
+                                            <div className={`p-1.5 rounded-2xl backdrop-blur-xl border shadow-xl overflow-hidden ${isLightPage ? "bg-white/90 border-black/5" : "bg-[#1a1a1a]/90 border-white/10"}`}>
+                                                {serviceItems.map((service, idx) => (
+                                                    <a
+                                                        key={idx}
+                                                        href={getLink("services")} // Link to services section
+                                                        className={`block p-3 rounded-xl transition-all duration-300 group/item ${isLightPage ? "hover:bg-black/5" : "hover:bg-white/5"}`}
+                                                    >
+                                                        <div className={`text-sm font-medium mb-0.5 ${isLightPage ? "text-black" : "text-white"}`}>{service.label}</div>
+                                                        <div className={`text-[10px] ${isLightPage ? "text-black/50" : "text-white/50"}`}>{service.desc}</div>
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
                         ))}
                     </div>
 
@@ -130,19 +173,35 @@ export function Navbar({ isLoaded = true, theme = "dark" }: NavbarProps) {
                 <div className={`relative mx-4 mt-20 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 transform ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0"} ${isLightPage ? "bg-white border border-black/10" : "bg-[#1a1a1a] border border-white/10"}`}>
                     <div className="p-6 space-y-2">
                         {navItems.map((item, index) => (
-                            <a
-                                key={item.id}
-                                href={getLink(item.id)}
-                                onClick={handleMobileNavClick}
-                                className={`flex items-center justify-between py-4 px-4 rounded-xl transition-all duration-300 ${isLightPage ? "text-black hover:bg-black/5" : "text-white hover:bg-white/5"}`}
-                                style={{ transitionDelay: `${index * 50}ms` }}
-                            >
-                                <div className="flex items-center gap-4">
-                                    <span className={`text-xs font-mono ${isLightPage ? "text-black/40" : "text-white/40"}`}>{item.num}</span>
-                                    <span className="text-lg font-medium">{item.label}</span>
-                                </div>
-                                <ArrowRight className={`w-4 h-4 ${isLightPage ? "text-black/30" : "text-white/30"}`} />
-                            </a>
+                            <div key={item.id}>
+                                <a
+                                    href={getLink(item.id)}
+                                    onClick={handleMobileNavClick}
+                                    className={`flex items-center justify-between py-4 px-4 rounded-xl transition-all duration-300 ${isLightPage ? "text-black hover:bg-black/5" : "text-white hover:bg-white/5"}`}
+                                    style={{ transitionDelay: `${index * 50}ms` }}
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <span className={`text-xs font-mono ${isLightPage ? "text-black/40" : "text-white/40"}`}>{item.num}</span>
+                                        <span className="text-lg font-medium">{item.label}</span>
+                                    </div>
+                                    <ArrowRight className={`w-4 h-4 ${isLightPage ? "text-black/30" : "text-white/30"}`} />
+                                </a>
+                                {/* Mobile Dropdown Items */}
+                                {item.hasDropdown && (
+                                    <div className="pl-14 pr-4 space-y-1 mb-2">
+                                        {serviceItems.map((service, idx) => (
+                                            <a
+                                                key={idx}
+                                                href={getLink("services")}
+                                                onClick={handleMobileNavClick}
+                                                className={`block py-2 text-sm ${isLightPage ? "text-black/60" : "text-white/60"}`}
+                                            >
+                                                {service.label}
+                                            </a>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
                         ))}
 
                         {/* Mobile CTA */}

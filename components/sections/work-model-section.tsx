@@ -33,9 +33,14 @@ export function WorkModelSection() {
                 <AnimatedBorders className="hidden md:block" />
 
                 {/* Section Header */}
-                <div className="w-full border-t border-dashed border-[#D1CDC2] pt-6 flex justify-between items-center text-[10px] uppercase tracking-widest text-[#5A3E3E]/60 mb-12 md:mb-20 px-6 md:px-12 relative z-10">
-                    <span>© Work Model ワークモデル</span>
-                    <span>(WDX® — 02)</span>
+                <div className="w-full relative z-10 mb-12 md:mb-20">
+                    <div className="relative w-full h-[1px]">
+                        <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} />
+                    </div>
+                    <div className="pt-6 flex justify-between items-center text-[10px] uppercase tracking-widest text-[#5A3E3E]/60 px-6 md:px-12">
+                        <span>© Work Model ワークモデル</span>
+                        <span>(WDX® — 02)</span>
+                    </div>
                 </div>
 
                 {/* Content Header */}

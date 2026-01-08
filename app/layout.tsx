@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { inter, mondwest, playground } from "./fonts"
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { SmoothScroll } from "@/components/ui/smooth-scroll"
 import "./globals.css"
 import { CustomCursor } from "@/components/custom-cursor"
@@ -63,6 +64,7 @@ export default function RootLayout({
         </SmoothScroll>
         <CustomCursor />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

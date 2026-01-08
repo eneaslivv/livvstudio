@@ -59,17 +59,18 @@ export function TestimonialsSection() {
                         ))}
                     </div>
 
-                    {/* Quote - Dynamic height based on content */}
-                    <div className="relative mb-8" style={{ minHeight: active === 2 ? '180px' : active === 1 ? '120px' : '60px' }}>
+                    {/* Quote - Grid stack to preserve maximum height and prevent layout shifts */}
+                    <div className="grid grid-cols-1 grid-rows-1 mb-10 overflow-hidden">
                         {testimonials.map((t, i) => (
                             <p
                                 key={i}
+                                style={{ gridArea: "1 / 1 / 2 / 2" }}
                                 className={`
-                                    absolute inset-x-0 top-0 text-lg md:text-xl font-light leading-relaxed text-[#1a1a1a]
-                                    transition-all duration-500 ease-out
+                                    text-lg md:text-xl font-light leading-relaxed text-[#1a1a1a]
+                                    transition-all duration-700 ease-out
                                     ${active === i
                                         ? "opacity-100 translate-y-0 blur-0"
-                                        : "opacity-0 translate-y-4 blur-sm pointer-events-none"
+                                        : "opacity-0 translate-y-8 blur-sm pointer-events-none"
                                     }
                                 `}
                             >
@@ -100,15 +101,16 @@ export function TestimonialsSection() {
                         {/* Divider */}
                         <div className="h-8 w-px bg-[#D6D1C5]" />
 
-                        {/* Active Author Info */}
-                        <div className="relative min-h-[44px] text-left">
+                        {/* Active Author Info - Grid stack for stability */}
+                        <div className="grid grid-cols-1 grid-rows-1 text-left">
                             {testimonials.map((t, i) => (
                                 <div
                                     key={i}
+                                    style={{ gridArea: "1 / 1 / 2 / 2" }}
                                     className={`
-                                        absolute inset-0 flex flex-col justify-center whitespace-nowrap
-                                        transition-all duration-400 ease-out
-                                        ${active === i ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 pointer-events-none"}
+                                        flex flex-col justify-center whitespace-nowrap
+                                        transition-all duration-500 ease-out
+                                        ${active === i ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4 pointer-events-none"}
                                     `}
                                 >
                                     <a

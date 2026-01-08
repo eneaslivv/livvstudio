@@ -42,7 +42,9 @@ export function LogoGridSection() {
                 <AnimatedBorders className="hidden md:block" />
 
                 {/* Horizontal Top Line */}
-                <div className={`w-full h-[1px] bg-[#D1CDC2] transition-all duration-1000 ease-out ${isVisible ? "opacity-100" : "opacity-0"}`} />
+                <div className={`relative w-full h-[1px] transition-all duration-1000 ease-out ${isVisible ? "opacity-100" : "opacity-0"}`}>
+                    <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} />
+                </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4">
                     {logos.map((logo, index) => (

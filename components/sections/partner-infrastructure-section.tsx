@@ -7,7 +7,7 @@ export function PartnerInfrastructureSection() {
     return (
         <section className="relative w-full z-10">
             <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 relative z-10">
-                <AnimatedBorders className="hidden md:block mx-6 md:mx-12" />
+                <AnimatedBorders className="hidden md:block" />
 
                 <div className="flex flex-col items-center w-full px-6 md:px-12 mx-auto relative z-10 w-[calc(100%-3rem)] md:w-[calc(100%-6rem)]">
 

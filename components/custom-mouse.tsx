@@ -53,12 +53,12 @@ export function CustomMouse() {
       {/* Main cursor dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference w-3 h-3 rounded-full bg-white"
+        className="hidden md:block fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference w-3 h-3 rounded-full bg-white"
       />
       {/* Trailing circle */}
       <div
         ref={circleRef}
-        className="fixed top-0 left-0 pointer-events-none z-[9998] mix-blend-difference w-8 h-8 rounded-full border border-white/60"
+        className="hidden md:block fixed top-0 left-0 pointer-events-none z-[9998] mix-blend-difference w-8 h-8 rounded-full border border-white/60"
       />
     </>
   )

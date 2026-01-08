@@ -68,7 +68,7 @@ export function PricingSection({ id }: { id?: string }) {
     // Simulator State
     const [simulationStep, setSimulationStep] = useState(0)
     const [complexity, setComplexity] = useState(0)
-    const [placeholderText, setPlaceholderText] = useState("Iniciar Protocolo de Cotización...")
+    const [placeholderText, setPlaceholderText] = useState("Start Pricing Protocol...")
     const simDataRef = useRef({ platform: '', intelligence: '', velocity: '', experience: '' })
 
     // Data State
@@ -101,11 +101,11 @@ export function PricingSection({ id }: { id?: string }) {
     useEffect(() => {
         if (isChatStarted) return;
         const placeholders = [
-            "Iniciar Protocolo de Cotización...",
-            "¿Necesitas un sistema similar?",
-            "Cotizar desarrollo a medida...",
-            "Automatización y Diseño...",
-            "Hablemos de tu visión..."
+            "Start Live Simulation...",
+            "Quote custom design...",
+            "Calculate project ROI...",
+            "Real-time architecture cost...",
+            "Click to start protocol..."
         ];
         let index = 0;
         const interval = setInterval(() => {
@@ -175,12 +175,12 @@ export function PricingSection({ id }: { id?: string }) {
         simDataRef.current = { platform: '', intelligence: '', velocity: '', experience: '' }
 
         // Start Simulator Flow
-        await addBotMessage("Inicializando Protocolo de Cotización.", "CARBON AI IN IT")
-        await addBotMessage("Fase 1: Define el alcance del sistema.")
+        await addBotMessage("Initializing Pricing Protocol.", "CARBON AI IN IT")
+        await addBotMessage("Phase 1: Define the system scope.")
 
         setOptions([
             { label: "Velocity Protocol (Startup)", action: () => handleSimStep(1, "Velocity Protocol", 15) },
-            { label: "Custom System (Empresa)", action: () => handleSimStep(1, "Custom System", 40) },
+            { label: "Custom System (Company)", action: () => handleSimStep(1, "Custom System", 40) },
             { label: "Global Ecosystem (Enterprise)", action: () => handleSimStep(1, "Ecosystem", 85) }
         ])
     }
@@ -197,15 +197,15 @@ export function PricingSection({ id }: { id?: string }) {
         if (step === 1) {
             simDataRef.current = { ...simDataRef.current, platform: value }
             setSimulationStep(1)
-            await addBotMessage("Alcance base registrado.", "¿Requiere integración de agentes inteligentes (n8n/AI)?")
+            await addBotMessage("Base scope registered.", "Requires intelligent agent integration (n8n/AI)?")
             setOptions([
-                { label: "Estándar (No AI)", action: () => handleSimStep(2, "Standard Logic", 0) },
+                { label: "Standard (No AI)", action: () => handleSimStep(2, "Standard Logic", 0) },
                 { label: "AI Integrated (+ Auto)", action: () => handleSimStep(2, "AI-Agentic", 25) }
             ])
         } else if (step === 2) {
             simDataRef.current = { ...simDataRef.current, intelligence: value }
             setSimulationStep(2)
-            await addBotMessage("Nivel de automatización configurado.", "¿Qué nivel de experiencia visual buscas?")
+            await addBotMessage("Automation level configured.", "What level of visual experience are you looking for?")
             setOptions([
                 { label: "Clean & Functional", action: () => handleSimStep(3, "Functional", 5) },
                 { label: "Cinematic Motion (3D/WebGL)", action: () => handleSimStep(3, "Cinematic", 20) }
@@ -213,10 +213,10 @@ export function PricingSection({ id }: { id?: string }) {
         } else if (step === 3) {
             simDataRef.current = { ...simDataRef.current, experience: value }
             setSimulationStep(3)
-            await addBotMessage("Experiencia visual definida.", "Finalmente, ¿cuál es la urgencia de entrega?")
+            await addBotMessage("Visual experience defined.", "Finally, what is the delivery urgency?")
             setOptions([
-                { label: "Estándar", action: () => handleSimStep(4, "Standard", 0) },
-                { label: "Rush Mode (Prioridad)", action: () => handleSimStep(4, "Rush Mode", 15) }
+                { label: "Standard", action: () => handleSimStep(4, "Standard", 0) },
+                { label: "Rush Mode (Priority)", action: () => handleSimStep(4, "Rush Mode", 15) }
             ])
         } else if (step === 4) {
             finishSimulator(value)
@@ -247,12 +247,12 @@ export function PricingSection({ id }: { id?: string }) {
             details: `Velocity: ${lastVelocity} | Complexity: ${complexity}%`
         }))
 
-        await addBotMessage("Cálculo de inversión finalizado.", `Tu inversión estimada es de ${rangeString}`)
+        await addBotMessage("Investment calculation finished.", `Your estimated investment is ${rangeString}`)
         triggerEmailCapture()
     }
 
     const triggerEmailCapture = async () => {
-        await addBotMessage("Para generar la ficha técnica oficial, ingresa tu email corporativo.")
+        await addBotMessage("To generate the official technical sheet, enter your corporate email.")
         setInputType('email')
     }
 
@@ -265,13 +265,13 @@ export function PricingSection({ id }: { id?: string }) {
 
         if (inputType === 'email') {
             if (!value.includes('@')) {
-                await addBotMessage("Formato de correo no válido. Inténtalo de nuevo.")
+                await addBotMessage("Invalid email format. Please try again.")
                 setInputType('email')
                 return
             }
             const newState = { ...pricingState, email: value }
             setPricingState(newState)
-            await addBotMessage(`Gracias. Enviando cotización a ${value}...`)
+            await addBotMessage(`Thanks. Sending quote to ${value}...`)
             flowResult(newState)
             return
         }
@@ -282,16 +282,16 @@ export function PricingSection({ id }: { id?: string }) {
         let priceDisplay = ""
         let timelineDisplay = ""
         switch (finalState.service) {
-            case "Velocity Protocol": priceDisplay = finalState.budget; timelineDisplay = "5-7 Días"; break;
-            case "Custom System": priceDisplay = finalState.budget; timelineDisplay = "4-8 Semanas"; break;
-            case "Ecosystem": priceDisplay = finalState.budget; timelineDisplay = "3-6 Meses"; break;
-            default: priceDisplay = finalState.budget || "A Medida"; timelineDisplay = "TBD";
+            case "Velocity Protocol": priceDisplay = finalState.budget; timelineDisplay = "5-7 Days"; break;
+            case "Custom System": priceDisplay = finalState.budget; timelineDisplay = "4-8 Weeks"; break;
+            case "Ecosystem": priceDisplay = finalState.budget; timelineDisplay = "3-6 Months"; break;
+            default: priceDisplay = finalState.budget || "Custom"; timelineDisplay = "TBD";
         }
 
         const ticketContent = (
             <div className="w-full bg-white shadow-xl rounded-xl overflow-hidden relative group border border-stone-100 my-2">
                 <div className="bg-stone-900 p-4 border-b border-stone-800 flex justify-between items-center">
-                    <span className="text-white font-medium text-xs tracking-widest uppercase">Pre-Cotización</span>
+                    <span className="text-white font-medium text-xs tracking-widest uppercase">Pre-Quote</span>
                     <div className="flex gap-1">
                         <span className="w-2 h-2 rounded-full bg-red-500"></span>
                         <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
@@ -301,17 +301,17 @@ export function PricingSection({ id }: { id?: string }) {
                 <div className="p-5 relative">
                     <div className="grid grid-cols-2 gap-4 mb-4">
                         <div>
-                            <span className="text-[10px] text-stone-400 font-bold uppercase tracking-wider block mb-1">Cliente</span>
+                            <span className="text-[10px] text-stone-400 font-bold uppercase tracking-wider block mb-1">Client</span>
                             <span className="text-xs text-stone-800 font-medium truncate block" title={finalState.email}>{finalState.email}</span>
                         </div>
                         <div className="text-right">
-                            <span className="text-[10px] text-stone-400 font-bold uppercase tracking-wider block mb-1">Servicio</span>
+                            <span className="text-[10px] text-stone-400 font-bold uppercase tracking-wider block mb-1">Service</span>
                             <span className="text-xs text-stone-800 font-medium block">{finalState.service}</span>
                         </div>
                     </div>
                     <div className="bg-stone-50 rounded-lg p-3 mb-4 border border-stone-100">
                         <div className="flex justify-between items-end">
-                            <span className="text-stone-500 text-xs">Estimado</span>
+                            <span className="text-stone-500 text-xs">Estimate</span>
                             <span className="text-stone-900 text-lg font-bold tracking-tight">{priceDisplay}</span>
                         </div>
                         <div className="flex justify-between items-end mt-1">
@@ -321,17 +321,17 @@ export function PricingSection({ id }: { id?: string }) {
                     </div>
                     <button onClick={() => window.open('/brochure.pdf', '_blank')} className="w-full py-2.5 bg-stone-900 text-white rounded-lg text-xs font-medium hover:bg-stone-800 transition-colors flex items-center justify-center gap-2">
                         <Download className="w-3.5 h-3.5" />
-                        <span>Descargar PDF</span>
+                        <span>Download PDF</span>
                     </button>
                 </div>
             </div>
         )
 
         await addBotMessage(ticketContent)
-        await addBotMessage("Este documento es preliminar. Para congelar el precio y asegurar slot, recomendados una breve llamada.", "¿Cómo deseas proceder?")
+        await addBotMessage("This document is preliminary. To freeze the price and secure a slot, we recommend a brief call.", "How would you like to proceed?")
         setOptions([
-            { label: "Agendar Llamada", action: () => window.location.href = '#contact' },
-            { label: "Reiniciar", action: initChat }
+            { label: "Schedule Call", action: () => window.location.href = '#contact' },
+            { label: "Restart", action: initChat }
         ])
     }
 
@@ -342,188 +342,208 @@ export function PricingSection({ id }: { id?: string }) {
 
                 <div className="flex flex-col items-center w-full">
                     {/* Section Header */}
-                    <div className="w-full border-t border-dashed border-[#D1CDC2] pt-6 flex justify-between items-center text-[10px] uppercase tracking-widest text-[#5A3E3E]/60 mb-20 md:mb-28 px-6 md:px-12 relative z-10">
-                        <span>© Pricing プライシング</span>
-                        <span>(WDX® — 05)</span>
+                    <div className="w-full relative z-10 mb-20 md:mb-28">
+                        <div className="relative w-full h-[1px]">
+                            <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} />
+                        </div>
+                        <div className="pt-6 flex justify-between items-center text-[10px] uppercase tracking-widest text-[#5A3E3E]/60 px-6 md:px-12">
+                            <span>© Pricing プライシング</span>
+                            <span>(WDX® — 05)</span>
+                        </div>
                     </div>
 
-                    {/* Intro Title */}
-                    <div className="text-center mb-24 md:mb-32 relative z-10">
-                        <h2 className="section-heading mb-4 flex justify-center">
-                            <RevealText text="Pricing Studio" className="text-gradient-gold" isVisible={isVisible} />
-                        </h2>
-                        <p className="text-sm md:text-base text-stone-500 font-medium tracking-tight max-w-sm md:max-w-md mx-auto leading-relaxed">
-                            Sistemas de cotización inteligente.<br className="hidden md:block" /> Selecciona un protocolo de acceso.
-                        </p>
+                    {/* Typography Header with Loop Animation (Matches Services Style) */}
+                    <div className="mb-20 md:mb-32 overflow-hidden w-full relative z-10 pb-4">
+                        <div className="flex animate-scroll-left w-max">
+                            {/* First Set */}
+                            <div className="flex items-center">
+                                {[...Array(2)].map((_, i) => (
+                                    <h1 key={i} className="text-[12vw] leading-[1.2] font-light tracking-tighter text-[#2c0405] pr-24 md:pr-48 shrink-0 flex items-center py-4">
+                                        <span className="text-[#2c0405] mr-6">★★</span>
+                                        livv <RevealText text="Pricing" className="text-gradient-gold ml-4 mr-4" isVisible={isVisible} delay={200} /><span className="text-gradient-gold align-top text-[4vw]">©</span>
+                                        <span className="text-[#2c0405] ml-6">★★</span>
+                                    </h1>
+                                ))}
+                            </div>
+                            {/* Second Set (Clone for seamless loop) */}
+                            <div className="flex items-center" aria-hidden="true">
+                                {[...Array(2)].map((_, i) => (
+                                    <h1 key={`clone-${i}`} className="text-[12vw] leading-[1.2] font-light tracking-tighter text-[#2c0405] pr-24 md:pr-48 shrink-0 flex items-center py-4">
+                                        <span className="text-[#2c0405] mr-6">★★</span>
+                                        livv <RevealText text="Pricing" className="text-gradient-gold ml-4 mr-4" isVisible={isVisible} delay={200} /><span className="text-gradient-gold align-top text-[4vw]">©</span>
+                                        <span className="text-[#2c0405] ml-6">★★</span>
+                                    </h1>
+                                ))}
+                            </div>
+                        </div>
+                        {/* Subtitle & Real-time CTA */}
+                        <div className="mt-12 text-center px-6">
+                            <div className="flex flex-col items-center gap-4">
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="px-3 py-1 rounded-full border border-[#2c0405]/10 bg-[#2c0405]/5 flex items-center gap-2"
+                                >
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                    </span>
+                                    <span className="text-[10px] font-bold tracking-widest text-[#2c0405] uppercase">Live Simulator</span>
+                                </motion.div>
+
+                                <p className="text-base md:text-lg text-stone-600 font-light tracking-tight max-w-lg mx-auto leading-relaxed">
+                                    Our <span className="text-[#2c0405] font-medium italic">Intelligent Cost Architect</span> is ready. Click below to simulate your roadmap and generate a <span className="text-[#2c0405] font-medium tracking-tight border-b border-[#2c0405]/20">tailormade quote</span> in real-time.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Chat Interface Container */}
+                    {/* Chat Interface Container - Refactored to grow upwards */}
                     <div className="w-full max-w-md mx-auto relative z-20">
-                        <motion.div
-                            layout
-                            initial={false}
-                            animate={{
-                                height: isChatStarted ? (window.innerWidth < 768 ? 480 : 520) : 44,
-                                borderRadius: isChatStarted ? "20px" : "9999px",
-                            }}
-                            transition={{ type: "spring", stiffness: 400, damping: 40 }}
-                            className={`
-                                relative w-full overflow-hidden
-                                ${isChatStarted
-                                    ? "bg-white/95 backdrop-blur-xl shadow-2xl"
-                                    : "bg-white/90 backdrop-blur-md cursor-pointer hover:shadow-sm transition-shadow"
-                                }
-                            `}
+                        {/* Messages Area - Floating above the input */}
+                        <AnimatePresence>
+                            {isChatStarted && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20, height: 0 }}
+                                    animate={{ opacity: 1, y: 0, height: 400 }}
+                                    exit={{ opacity: 0, y: 20, height: 0 }}
+                                    className="mb-4 bg-white/40 backdrop-blur-md rounded-[24px] border border-[#E8E4DC]/30 overflow-hidden flex flex-col shadow-sm"
+                                >
+                                    {/* Header */}
+                                    <div className="px-6 py-4 border-b border-[#E8E4DC]/20 flex items-center justify-between bg-white/40">
+                                        <div className="flex items-center gap-3">
+                                            <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                                            <span className="text-[10px] font-bold text-[#2c0405]/80 tracking-widest uppercase italic">Active Protocol</span>
+                                        </div>
+                                        <div className="flex gap-1">
+                                            <div className="h-1.5 w-6 bg-[#2c0405]/20 rounded-full" />
+                                            <div className="h-1.5 w-12 bg-[#2c0405]/10 rounded-full" />
+                                        </div>
+                                    </div>
+
+                                    {/* Chat Messages */}
+                                    <div ref={chatContainerRef} className="flex-1 overflow-y-auto p-6 space-y-4 scrollbar-hide flex flex-col">
+                                        {messages.map((msg) => (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                key={msg.id}
+                                                className={`flex flex-col ${msg.type === 'user' ? 'items-end' : 'items-start'} max-w-[90%] self-${msg.type === 'user' ? 'end' : 'start'}`}
+                                            >
+                                                {msg.type === 'bot' ? (
+                                                    <div className="px-5 py-4 bg-white/80 backdrop-blur-sm border border-[#E8E4DC]/40 rounded-2xl rounded-tl-sm shadow-sm text-sm text-[#2c0405] leading-relaxed">
+                                                        {typeof msg.content === 'string' ? <TypewriterEffect text={msg.content} /> : msg.content}
+                                                        {msg.subtext && <div className="mt-2 text-[10px] font-medium text-[#2c0405]/50 border-t border-[#E8E4DC]/20 pt-2 tracking-wide uppercase">{msg.subtext}</div>}
+                                                    </div>
+                                                ) : (
+                                                    <div className="bg-[#2c0405] text-[#F5F5F0] px-5 py-3 rounded-2xl rounded-br-sm text-sm shadow-md font-medium">
+                                                        {msg.content}
+                                                    </div>
+                                                )}
+                                            </motion.div>
+                                        ))}
+                                        {isTyping && (
+                                            <div className="flex items-center gap-1.5 px-4 py-3 bg-white/60 backdrop-blur-sm border border-[#E8E4DC]/40 rounded-2xl rounded-tl-sm w-fit shadow-sm">
+                                                <span className="w-1.5 h-1.5 bg-[#2c0405]/40 rounded-full animate-bounce [animation-delay:-0.32s]"></span>
+                                                <span className="w-1.5 h-1.5 bg-[#2c0405]/40 rounded-full animate-bounce [animation-delay:-0.16s]"></span>
+                                                <span className="w-1.5 h-1.5 bg-[#2c0405]/40 rounded-full animate-bounce"></span>
+                                            </div>
+                                        )}
+                                        {/* Options Chips inside the scrollable area */}
+                                        {inputType === 'none' && options.length > 0 && !isTyping && (
+                                            <div className="flex flex-wrap gap-2 mt-2 pl-2">
+                                                {options.map((opt, idx) => (
+                                                    <button
+                                                        key={idx}
+                                                        onClick={opt.action}
+                                                        className="px-4 py-2 rounded-full border border-[#2c0405]/10 bg-white/80 hover:bg-white text-xs font-medium text-[#2c0405] transition-all hover:scale-105 shadow-sm"
+                                                    >
+                                                        {opt.label}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        {/* Input Pill - The constant element */}
+                        <div
+                            className="relative w-full cursor-pointer transition-all duration-500"
                             onClick={!isChatStarted ? handleStartChat : undefined}
                             style={{
                                 padding: '1px',
-                                background: !isChatStarted
-                                    ? 'linear-gradient(to right, #fcd34d, #f472b6, #60a5fa)' // Lighter/Softer Rainbow
-                                    : '#E8E4DC'
+                                background: 'linear-gradient(to right, rgba(251, 188, 5, 0.4), rgba(234, 67, 53, 0.4), rgba(167, 48, 255, 0.4), rgba(66, 133, 244, 0.4))',
+                                borderRadius: '9999px'
                             }}
                         >
-                            {/* Inner Content Wrapper */}
-                            <div className={`
-                                w-full h-full bg-white relative overflow-hidden
-                                ${isChatStarted ? "rounded-[23px]" : "rounded-full"}
-                            `}>
-
-                                {/* Header (Only when started) */}
-                                <AnimatePresence>
-                                    {isChatStarted && (
-                                        <motion.div
-                                            initial={{ opacity: 0, y: -20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            className="px-6 py-4 border-b border-[#E8E4DC]/50 flex items-center justify-between bg-white/50"
-                                        >
-                                            <div className="flex items-center gap-3">
-                                                <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                                                <span className="text-xs font-medium text-[#5A3E3E] tracking-wider uppercase">Protocolo Activo</span>
-                                            </div>
-                                            <div className="flex gap-1">
-                                                <div className="h-1 w-8 bg-[#A88B7D] rounded-full" />
-                                                <div className="h-1 w-8 bg-[#E8E4DC] rounded-full" />
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-
-                                {/* Chat Messages Area */}
-                                <AnimatePresence>
-                                    {isChatStarted && (
-                                        <div className="flex-1 overflow-y-auto p-6 space-y-4 scrollbar-thin scrollbar-thumb-[#E8E4DC] scrollbar-track-transparent flex flex-col">
-                                            {messages.map((msg) => (
-                                                <motion.div
-                                                    initial={{ opacity: 0, y: 10 }}
-                                                    animate={{ opacity: 1, y: 0 }}
-                                                    key={msg.id}
-                                                    className={`flex flex-col ${msg.type === 'user' ? 'items-end' : 'items-start'} max-w-[90%] self-${msg.type === 'user' ? 'end' : 'start'}`}
-                                                >
-                                                    {msg.type === 'bot' ? (
-                                                        <div className="px-5 py-4 bg-white border border-[#E8E4DC] rounded-2xl rounded-tl-sm shadow-sm text-sm text-[#5A3E3E] leading-relaxed">
-                                                            {typeof msg.content === 'string' ? <TypewriterEffect text={msg.content} /> : msg.content}
-                                                            {msg.subtext && <div className="mt-2 text-xs text-[#A88B7D]/80 border-t border-[#E8E4DC] pt-2">{msg.subtext}</div>}
-                                                        </div>
-                                                    ) : (
-                                                        <div className="bg-gradient-to-r from-stone-900 to-stone-800 text-white px-5 py-3 rounded-2xl rounded-br-sm text-sm shadow-md">
-                                                            {msg.content}
-                                                        </div>
-                                                    )}
-                                                </motion.div>
-                                            ))}
-                                            {isTyping && (
-                                                <div className="flex items-center gap-1.5 px-4 py-3 bg-white border border-[#E8E4DC] rounded-2xl rounded-tl-sm w-fit shadow-sm">
-                                                    <span className="w-1.5 h-1.5 bg-[#A88B7D] rounded-full animate-bounce [animation-delay:-0.32s]"></span>
-                                                    <span className="w-1.5 h-1.5 bg-[#A88B7D] rounded-full animate-bounce [animation-delay:-0.16s]"></span>
-                                                    <span className="w-1.5 h-1.5 bg-[#A88B7D] rounded-full animate-bounce"></span>
-                                                </div>
-                                            )}
-
-                                            {/* Options Chips */}
-                                            {inputType === 'none' && options.length > 0 && !isTyping && (
-                                                <div className="flex flex-wrap gap-2 mt-2 pl-2 animate-in fade-in slide-in-from-bottom-2">
-                                                    {options.map((opt, idx) => (
-                                                        <button
-                                                            key={idx}
-                                                            onClick={opt.action}
-                                                            className="px-4 py-2 rounded-full border border-[#E8E4DC] bg-white hover:bg-[#F9F8F6] text-xs text-[#5A3E3E] transition-all hover:scale-105 shadow-sm"
-                                                        >
-                                                            {opt.label}
-                                                        </button>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                    )}
-                                </AnimatePresence>
-
-                                {/* Input Area */}
-                                <div className={`mt-auto relative z-30 transition-all duration-500 ${isChatStarted ? 'p-4 border-t border-[#E8E4DC]/50 bg-white/50' : 'h-full flex items-center px-4'}`}>
-                                    <div className="w-full flex items-center gap-4">
-
-                                        {/* Input / Placeholder */}
-                                        <div className="flex-1 relative h-10 flex items-center overflow-hidden">
-                                            <AnimatePresence mode="wait">
-                                                {!isChatStarted ? (
-                                                    <motion.span
-                                                        key={placeholderText}
-                                                        initial={{ y: 20, opacity: 0 }}
-                                                        animate={{ y: 0, opacity: 1 }}
-                                                        exit={{ y: -20, opacity: 0 }}
-                                                        transition={{ duration: 0.3 }}
-                                                        className="absolute inset-0 flex items-center justify-center text-[#5A3E3E]/60 text-sm font-light select-none italic tracking-wide"
-                                                    >
-                                                        {placeholderText}
-                                                    </motion.span>
-                                                ) : (
-                                                    <input
-                                                        type={inputType === 'email' ? 'email' : 'text'}
-                                                        value={inputText}
-                                                        onChange={(e) => setInputText(e.target.value)}
-                                                        onKeyDown={(e) => e.key === 'Enter' && handleInputSubmit()}
-                                                        disabled={inputType === 'none'}
-                                                        placeholder={inputType === 'email' ? "tu@email.com" : "Escribe tu respuesta..."}
-                                                        className="w-full h-full bg-transparent border-none outline-none text-[#5A3E3E] placeholder-[#5A3E3E]/30 text-sm px-4"
-                                                        autoFocus
-                                                    />
-                                                )}
-                                            </AnimatePresence>
-                                        </div>
-
-                                        {/* Action Button */}
-                                        <button
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                if (!isChatStarted) handleStartChat();
-                                                else if (inputType !== 'none') handleInputSubmit();
-                                            }}
-                                            className={`
-                                                h-10 w-10 rounded-full flex items-center justify-center transition-all duration-300 shadow-md relative overflow-hidden
-                                                ${isChatStarted && inputType !== 'none' && inputText.trim().length > 0
-                                                    ? 'bg-[#1A1A1A] text-white hover:scale-110 active:scale-95'
-                                                    : 'bg-[#1A1A1A] text-white hover:scale-105 select-none'
-                                                }
-                                            `}
-                                        >
-                                            <AnimatePresence mode="wait">
-                                                <motion.div key="arrow" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
-                                                    <ArrowUp className="w-4 h-4" />
-                                                </motion.div>
-                                            </AnimatePresence>
-                                        </button>
-                                    </div>
+                            <div className="bg-white rounded-full h-12 flex items-center pl-6 pr-1 relative overflow-hidden shadow-[0_2px_15px_-3px_rgba(44,4,5,0.05)]">
+                                <div className="flex-1 relative h-full flex items-center overflow-hidden">
+                                    <AnimatePresence mode="wait">
+                                        {!isChatStarted ? (
+                                            <motion.span
+                                                key={placeholderText}
+                                                initial={{ y: 20, opacity: 0 }}
+                                                animate={{ y: 0, opacity: 1 }}
+                                                exit={{ y: -20, opacity: 0 }}
+                                                className="absolute inset-0 flex items-center justify-center text-[#2c0405]/40 text-sm font-medium select-none tracking-tight"
+                                            >
+                                                {placeholderText}
+                                            </motion.span>
+                                        ) : (
+                                            <input
+                                                type={inputType === 'email' ? 'email' : 'text'}
+                                                value={inputText}
+                                                onChange={(e) => setInputText(e.target.value)}
+                                                onKeyDown={(e) => e.key === 'Enter' && handleInputSubmit()}
+                                                disabled={inputType === 'none'}
+                                                placeholder={inputType === 'email' ? "you@email.com" : "Type your answer..."}
+                                                className="w-full h-full bg-transparent border-none outline-none text-[#2c0405] placeholder-[#2c0405]/30 text-sm px-4 font-medium"
+                                                autoFocus
+                                            />
+                                        )}
+                                    </AnimatePresence>
                                 </div>
+
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        if (!isChatStarted) handleStartChat();
+                                        else if (inputType !== 'none') handleInputSubmit();
+                                    }}
+                                    className={`
+                                        h-10 w-10 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm relative overflow-hidden flex-shrink-0
+                                        ${isChatStarted ? "bg-[#2c0405] text-[#F5F5F0]" : "bg-stone-900 text-white"}
+                                    `}
+                                >
+                                    {isChatStarted ? <Send className="w-4 h-4" /> : <ArrowUp className="w-4 h-4" />}
+                                </button>
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
 
                     {/* Section Footer */}
-                    <div className="w-full border-t border-dashed border-[#D1CDC2] mt-8 py-6 px-6 md:px-12 relative z-10 flex justify-between items-center text-[10px] uppercase tracking-widest text-[#5A3E3E]/60">
-                        <span>© End of Section エンド</span>
-                        <span>(WDX® — 06)</span>
+                    <div className="w-full relative z-10 mt-24">
+                        <div className="relative w-full h-[1px]">
+                            <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} />
+                        </div>
+                        <div className="py-6 px-6 md:px-12 flex justify-between items-center text-[10px] uppercase tracking-widest text-[#5A3E3E]/60">
+                            <span>© End of Section エンド</span>
+                            <span>(WDX® — 06)</span>
+                        </div>
                     </div>
                 </div >
             </div >
+            <style jsx>{`
+                @keyframes scroll-left {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                .animate-scroll-left {
+                    animation: scroll-left 30s linear infinite;
+                }
+            `}</style>
         </section >
     )
 }

@@ -5,25 +5,25 @@ import { useRef, useEffect, useState } from "react"
 import { ArrowRight, Menu } from "lucide-react"
 import Image from "next/image"
 import { CustomMouse } from "@/components/custom-mouse"
-import { BusinessArtSection } from "@/components/sections/business-art-section"
-import { ScrollingTextSection } from "@/components/sections/scrolling-text-section"
-import { ServicesSection } from "@/components/sections/services-section"
-import { WorkModelSection } from "@/components/sections/work-model-section"
-import { PartnerInfrastructureSection } from "@/components/sections/partner-infrastructure-section"
+const BusinessArtSection = dynamic(() => import("@/components/sections/business-art-section").then(mod => mod.BusinessArtSection))
+const ScrollingTextSection = dynamic(() => import("@/components/sections/scrolling-text-section").then(mod => mod.ScrollingTextSection))
+const ServicesSection = dynamic(() => import("@/components/sections/services-section").then(mod => mod.ServicesSection))
+const WorkModelSection = dynamic(() => import("@/components/sections/work-model-section").then(mod => mod.WorkModelSection))
+const PartnerInfrastructureSection = dynamic(() => import("@/components/sections/partner-infrastructure-section").then(mod => mod.PartnerInfrastructureSection))
 
-
-import { LogoGridSection } from "@/components/sections/logo-grid-section"
+const LogoGridSection = dynamic(() => import("@/components/sections/logo-grid-section").then(mod => mod.LogoGridSection))
 const PortfolioSection = dynamic(() => import("@/components/sections/portfolio-section").then(mod => mod.PortfolioSection), { ssr: false })
 const SphereSection = dynamic(() => import("@/components/sections/sphere-section").then(mod => mod.SphereSection), { ssr: false })
 const PricingSection = dynamic(() => import("@/components/sections/pricing-section").then(mod => mod.PricingSection), { ssr: false })
-import { AnalyticsSection } from "@/components/sections/analytics-section"
-import { WorkSection } from "@/components/sections/work-section"
-import { AboutSection } from "@/components/sections/about-section"
 
-import { ImageSliderSection } from "@/components/sections/image-slider-section"
-import { VisionSection } from "@/components/sections/vision-section"
-import { FooterSection } from "@/components/sections/footer-section"
-import { TestimonialsSection } from "@/components/sections/testimonials-section"
+const AnalyticsSection = dynamic(() => import("@/components/sections/analytics-section").then(mod => mod.AnalyticsSection))
+const WorkSection = dynamic(() => import("@/components/sections/work-section").then(mod => mod.WorkSection))
+const AboutSection = dynamic(() => import("@/components/sections/about-section").then(mod => mod.AboutSection))
+const ImageSliderSection = dynamic(() => import("@/components/sections/image-slider-section").then(mod => mod.ImageSliderSection))
+const VisionSection = dynamic(() => import("@/components/sections/vision-section").then(mod => mod.VisionSection))
+const FooterSection = dynamic(() => import("@/components/sections/footer-section").then(mod => mod.FooterSection))
+const TestimonialsSection = dynamic(() => import("@/components/sections/testimonials-section").then(mod => mod.TestimonialsSection))
+
 import { Navbar } from "@/components/layout/navbar"
 
 // Import Shader components dynamically
@@ -145,7 +145,8 @@ export default function Home() {
         {/* Frame Container */}
         <div
           ref={frameRef}
-          className="relative w-full h-[80vh] max-w-[1800px] rounded-[2.5rem] overflow-hidden bg-white shadow-sm isolate"
+          className="relative w-full h-[80vh] max-w-[1800px] rounded-[2.5rem] overflow-hidden bg-white shadow-sm isolate transform-gpu"
+          style={{ WebkitMaskImage: "radial-gradient(white, black)" }}
         >
           {/* Independent Border Layer */}
           <div className="absolute inset-0 z-50 rounded-[2.5rem] border-[3px] border-[#1a1a1a] pointer-events-none" />
@@ -287,10 +288,10 @@ export default function Home() {
 
       <WorkModelSection />
 
-      <ServicesSection />
+      <ServicesSection id="services" />
 
       {/* Selected Work / Portfolio Section */}
-      <PortfolioSection />
+      <PortfolioSection id="work" />
 
       {/* Testimonials Section */}
       <TestimonialsSection />
@@ -303,7 +304,7 @@ export default function Home() {
 
 
       {/* Work/Projects Section */}
-      <WorkSection id="work" />
+      <WorkSection id="projects" />
 
 
 

@@ -66,7 +66,7 @@ export function VisionSection() {
                             <div className="relative bg-white rounded-full flex items-center p-1 pr-1">
                                 <input
                                     type="email"
-                                    placeholder="Hablemos de tu visión..."
+                                    placeholder="Enter your email..."
                                     className="flex-grow bg-transparent border-none outline-none px-4 text-[#1a1a1a] placeholder:text-gray-400 font-light text-sm italic"
                                 />
                                 <button className="bg-black hover:bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center transition-transform duration-300 hover:scale-105 shrink-0">

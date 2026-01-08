@@ -3,9 +3,10 @@
 import { useRef, useEffect, useState } from "react"
 import { ArrowUpRight } from "lucide-react"
 import { AnimatedBorders } from "@/components/ui/animated-borders"
+import { motion, AnimatePresence } from "framer-motion"
 import { RevealText } from "@/components/ui/reveal-text"
 
-export function ServicesSection() {
+export function ServicesSection({ id }: { id?: string }) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -35,7 +36,8 @@ export function ServicesSection() {
       cardBg: "bg-[#2C1A1A]",
       imageClass: "opacity-100 scale-[1.15]",
       bgImage: "/images/service-tech-bg.jpg",
-      hoverLabel: "TECH"
+      hoverLabel: "TECH",
+      tags: ["Webflow", "Framer", "React", "Flutter", "Next.js", "Three.js", "TypeScript", "Node.js"]
     },
     {
       title: "Product Strategy & UI",
@@ -45,7 +47,8 @@ export function ServicesSection() {
       cardBg: "bg-[#5C553A]",
       imageClass: "opacity-100 scale-[1.15]",
       bgImage: "/images/service-bg-new.jpg",
-      hoverLabel: "BUSINESS"
+      hoverLabel: "BUSINESS",
+      tags: ["Webflow", "Framer", "UI/UX Design", "Product Strategy", "User Flow", "Wireframing", "SaaS", "Conversion"]
     },
     {
       title: "Motion & Narrative",
@@ -55,19 +58,25 @@ export function ServicesSection() {
       cardBg: "bg-[#1A1016]",
       imageClass: "opacity-100 scale-[1.15]",
       bgImage: "/images/service-bg-animations.jpg",
-      hoverLabel: "ART"
+      hoverLabel: "ART",
+      tags: ["Webflow", "Framer", "3D Animation", "CGI", "Storytelling", "Video Editing", "Visual Effects", "Motion Graphics"]
     },
   ]
 
   return (
-    <section ref={sectionRef} className="relative w-full">
+    <section id={id} ref={sectionRef} className="relative w-full">
       <div className={`relative z-10 transition-all duration-1000 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"}`}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 relative">
           <AnimatedBorders className="hidden md:block" />
           {/* Section Header */}
-          <div className="w-full border-t border-dashed border-[#D1CDC2] pt-6 flex justify-between items-center text-[10px] uppercase tracking-widest text-[#5A3E3E]/60 mb-20 md:mb-32 px-6 md:px-12 relative z-10">
-            <span>© Services サービス</span>
-            <span>(WDX® — 01)</span>
+          <div className="w-full relative z-10 mb-20 md:mb-32">
+            <div className="relative w-full h-[1px]">
+              <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} />
+            </div>
+            <div className="pt-6 flex justify-between items-center text-[10px] uppercase tracking-widest text-[#5A3E3E]/60 px-6 md:px-12">
+              <span>© Services サービス</span>
+              <span>(WDX® — 01)</span>
+            </div>
           </div>
 
           {/* Typography Header */}
@@ -117,6 +126,25 @@ export function ServicesSection() {
                     <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-black">
                       <ArrowUpRight className="w-5 h-5" />
                     </div>
+                  </div>
+
+                  {/* Badge Marquee - Appears on hover */}
+                  <div className="absolute bottom-12 left-0 w-full overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 z-20 pointer-events-none">
+                    <motion.div
+                      className="flex whitespace-nowrap gap-4 px-4"
+                      animate={{ x: [0, "-50%"] }}
+                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                      style={{ width: 'max-content' }}
+                    >
+                      {[...(service.tags || []), ...(service.tags || [])].map((tag, i) => (
+                        <div
+                          key={i}
+                          className="px-5 py-2 rounded-full bg-white/95 backdrop-blur-md border border-dashed border-black/20 text-[10px] font-semibold text-black uppercase tracking-[0.2em] flex items-center shadow-sm"
+                        >
+                          {tag}
+                        </div>
+                      ))}
+                    </motion.div>
                   </div>
                 </div>
 

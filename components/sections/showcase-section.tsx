@@ -156,16 +156,16 @@ export function ShowcaseSection() {
                         }`}
                 >
                     {/* Separator line */}
-                    <div className="relative w-full h-[1px] mb-12">
-                        <AnimatedBorders showLeft={false} showRight={false} showTop={true} />
+                    <div className="relative w-full h-[1px]">
+                        <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} />
                     </div>
 
                     {/* Logos grid replaced by Ticker */}
                     <TechStackTicker />
 
                     {/* Bottom separator line */}
-                    <div className="relative w-full h-[1px] mt-12">
-                        <AnimatedBorders showLeft={false} showRight={false} showTop={true} />
+                    <div className="relative w-full h-[1px]">
+                        <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} />
                     </div>
                 </div>
             </div>

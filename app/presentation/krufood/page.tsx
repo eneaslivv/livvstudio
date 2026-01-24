@@ -659,12 +659,9 @@ export default function KrufoodPresentation() {
                         transition={{ delay: 0.4 }}
                         className="flex flex-col md:flex-row gap-4 justify-center items-center"
                     >
-                        <button className="px-8 py-4 bg-[#2c0405] text-white rounded-full font-medium hover:bg-[#822b2e] transition-all transform hover:scale-105">
-                            Confirm Initial Blueprint
-                        </button>
-                        <button className="px-8 py-4 border border-[#2c0405]/10 rounded-full font-medium hover:bg-[#2c0405]/5 transition-all">
-                            Schedule Strategic Call
-                        </button>
+                        <a href="mailto:hola@livv.systems" className="text-2xl md:text-3xl font-medium text-[#2c0405] hover:text-[#822b2e] transition-colors border-b-2 border-[#2c0405]/10 hover:border-[#822b2e] pb-1">
+                            hola@livv.systems
+                        </a>
                     </motion.div>
                 </section>
 

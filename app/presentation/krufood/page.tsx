@@ -19,7 +19,7 @@ const Section = ({ children, className = "" }: { children: React.ReactNode, clas
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className={`mb-32 ${className}`}
+            className={`mb-16 md:mb-32 ${className}`}
         >
             {children}
         </motion.section>
@@ -117,7 +117,7 @@ export default function KrufoodPresentation() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-                            className="relative text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tighter text-[#2c0405] text-balance leading-[0.9]"
+                            className="relative text-4xl md:text-7xl lg:text-8xl font-semibold tracking-tighter text-[#2c0405] text-balance leading-[0.9]"
                         >
                             EVOLVING THE <br />
                             <span className="text-[#2c0405]/40">KRU LEGACY.</span>
@@ -194,7 +194,7 @@ export default function KrufoodPresentation() {
                 <Section className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4">
 
                     {/* Main Context Card */}
-                    <div className="col-span-1 md:col-span-6 lg:col-span-8 row-span-2 bg-white/60 backdrop-blur-md border border-[#2c0405]/10 rounded-xl p-8 relative overflow-hidden group">
+                    <div className="col-span-1 md:col-span-6 lg:col-span-8 row-span-2 bg-white/60 backdrop-blur-md border border-[#2c0405]/10 rounded-xl p-6 md:p-8 relative overflow-hidden group">
                         <div className="absolute top-6 left-6 z-20">
                             <h3 className="text-[#2c0405] font-semibold tracking-tight flex items-center gap-2 bg-[#fffffa]/80 backdrop-blur px-2 py-1 rounded border border-[#2c0405]/5">
                                 <span className="iconify text-[#822b2e]" data-icon="lucide:target"></span>
@@ -336,7 +336,7 @@ export default function KrufoodPresentation() {
 
                 {/* 4. Scope of Work (Detailed Bar Style) */}
                 <Section>
-                    <div className="w-full bg-[#2c0405] rounded-2xl overflow-hidden p-8 md:p-12 relative">
+                    <div className="w-full bg-[#2c0405] rounded-2xl overflow-hidden p-6 md:p-12 relative">
                         <h2 className="text-white font-mono text-sm tracking-widest uppercase mb-12 flex items-center gap-2">
                             <div className="w-3 h-3 bg-[#ff4d4d] rounded-sm"></div>
                             04 // SCOPE_OF_WORK
@@ -417,8 +417,11 @@ export default function KrufoodPresentation() {
                                     </div>
 
                                     <FadeIn delay={i * 0.2}>
-                                        <div className="flex flex-col md:flex-row gap-6 md:items-start border border-[#2c0405]/5 p-6 rounded-xl hover:border-[#2c0405]/20 hover:bg-white/50 transition-colors cursor-default">
-                                            <span className="text-4xl font-mono text-[#2c0405]/10 font-bold">
+                                        <div className="flex flex-col md:flex-row gap-6 md:items-start border border-[#2c0405]/5 p-6 rounded-xl hover:border-[#2c0405]/20 hover:bg-white/50 transition-colors cursor-default relative overflow-hidden">
+                                            {/* Mobile Timeline Connector */}
+                                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#2c0405]/5 md:hidden"></div>
+
+                                            <span className="text-4xl font-mono text-[#2c0405]/10 font-bold pl-2 md:pl-0">
                                                 {item.phase}
                                             </span>
                                             <div>

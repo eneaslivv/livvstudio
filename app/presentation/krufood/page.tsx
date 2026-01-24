@@ -249,8 +249,14 @@ export default function KrufoodPresentation() {
                     </div>
 
                     {/* Infinite Scroll Container */}
-                    <div className="relative w-full overflow-hidden mask-gradient-sides">
-                        <div className="flex w-max animate-prototype-scroll hover:pause-animation">
+                    <div className="relative w-full overflow-hidden" style={{ maskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)" }}>
+                        <motion.div
+                            className="flex w-max"
+                            animate={{ x: "-50%" }}
+                            transition={{ duration: 30, ease: "linear", repeat: Infinity }}
+                            style={{ width: "max-content" }}
+                            whileHover={{ animationPlayState: "paused" }}
+                        >
                             {/* Duplicate 4 times for seamless loop */}
                             {[...Array(4)].flatMap(() => [
                                 { title: "Smoke Garlic", desc: "Studio Context / Warmth", src: "/presentation/krufood/prototypes/bottle-1.jpg" },
@@ -280,22 +286,7 @@ export default function KrufoodPresentation() {
                                     </div>
                                 </div>
                             ))}
-                        </div>
-                        <style jsx global>{`
-                            @keyframes prototype-scroll {
-                                0% { transform: translateX(0); }
-                                100% { transform: translateX(-25%); } /* Move 1/4th (one set) */
-                            }
-                            .animate-prototype-scroll {
-                                animation: prototype-scroll 30s linear infinite;
-                            }
-                            .animate-prototype-scroll:hover {
-                                animation-play-state: paused;
-                            }
-                            .mask-gradient-sides {
-                                mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-                            }
-                        `}</style>
+                        </motion.div>
                     </div>
                 </section>
 

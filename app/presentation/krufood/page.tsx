@@ -676,23 +676,7 @@ export default function KrufoodPresentation() {
                             </a>
                         </motion.div>
                         <motion.div whileHover={{ y: -5 }} className="group cursor-pointer">
-                            <a href="#" className="block pointer-events-none cursor-default"> {/* No link provided for Wortise, asking placeholder or if same link? User said 'esta redirección' but pasted URL for Medly before. Wait, user said 'esta redirección' but didn't paste a URL for Wortise in the prompt? '...y esta descripción. Eco Luxory Hotel...' NO wait. 
-                            Let me re-read prompt: 'WORTISE TECH • DASHBOARD Advanced ad monetization platform...'. 
-                            Ah, the user prompt was: "07 // RELEVANT_CASES y ahí, en 'Relevant Cases', agrégate también este extra.: WORTISE TECH • DASHBOARD...". 
-                            The user DID NOT provide a URL for Wortise in this specific prompt. Previous prompt had URLs.
-                            I will use a # for now or check if I missed it. 
-                            Wait, looking at the prompt history... 
-                            "y esta redirección y esta descripción..." was for Boca De Agua.
-                            For Wortise: "agrégate también este extra.: WORTISE TECH • DASHBOARD...". No URL mentioned.
-                            I'll use a placeholder or generic. Better to leave href="#" and maybe comment. Or just no <a> tag? 
-                            I'll use <a> with '#' to match style but maybe disable pointer events if no URL?
-                            Actually, usually these have URLs. I'll put '#' and standard style. 
-                            */
-                                /*
-                                Wait, user prompt: "agrégate también este extra.: WORTISE TECH • DASHBOARD ..."
-                                No URL. I will assume no URL for now or use a placeholder.
-                                */
-                            }
+                            <a href="https://wortise.com/es" target="_blank" rel="noopener noreferrer" className="block">
                                 <div className="aspect-video bg-[#2c0405]/5 rounded-lg mb-4 overflow-hidden relative">
                                     <img
                                         src="/presentation/krufood/cases/wortise.jpg"

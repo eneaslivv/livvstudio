@@ -522,6 +522,29 @@ export default function KrufoodPresentation() {
                                 <div className="px-3 py-1 bg-[#822b2e]/10 text-[#822b2e] rounded-full text-xs font-mono border border-[#822b2e]/20">ALL_INCLUSIVE</div>
                             </div>
 
+                            {/* What's Included List */}
+                            <div className="mb-8 p-4 bg-[#2c0405]/5 rounded-lg">
+                                <h4 className="text-xs font-mono text-[#2c0405]/50 uppercase mb-3">Professional Services Included</h4>
+                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <li className="flex items-start gap-2 text-sm text-[#2c0405]/80">
+                                        <span className="iconify text-[#822b2e] mt-0.5 shrink-0" data-icon="lucide:check-circle-2" data-width="14"></span>
+                                        <span>Brand Refinement & Identity</span>
+                                    </li>
+                                    <li className="flex items-start gap-2 text-sm text-[#2c0405]/80">
+                                        <span className="iconify text-[#822b2e] mt-0.5 shrink-0" data-icon="lucide:check-circle-2" data-width="14"></span>
+                                        <span>Full Product Photography (All Products)</span>
+                                    </li>
+                                    <li className="flex items-start gap-2 text-sm text-[#2c0405]/80">
+                                        <span className="iconify text-[#822b2e] mt-0.5 shrink-0" data-icon="lucide:check-circle-2" data-width="14"></span>
+                                        <span>Hero Video Generation (Main Screen)</span>
+                                    </li>
+                                    <li className="flex items-start gap-2 text-sm text-[#2c0405]/80">
+                                        <span className="iconify text-[#822b2e] mt-0.5 shrink-0" data-icon="lucide:check-circle-2" data-width="14"></span>
+                                        <span>Full Page Design & Logic Rebuild</span>
+                                    </li>
+                                </ul>
+                            </div>
+
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-[#2c0405]/5">
                                 <div>
                                     <h4 className="text-xs font-mono text-[#2c0405]/50 uppercase mb-2">Estimated Timeline</h4>

@@ -37,6 +37,24 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: nu
     </motion.div>
 );
 
+const TimelineLine = () => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
+    const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+    return (
+        <div ref={ref} className="absolute left-[8px] top-24 bottom-24 w-0.5 bg-[#2c0405]/5 hidden md:block">
+            <motion.div
+                className="w-full bg-[#822b2e]"
+                style={{ height }}
+            />
+        </div>
+    );
+};
+
 export default function KrufoodPresentation() {
     const { scrollYProgress } = useScroll();
     const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
@@ -347,14 +365,7 @@ export default function KrufoodPresentation() {
                 {/* 5. Process & Timeline (Enhanced with Notion & Animation) */}
                 <Section className="relative">
                     {/* Enhanced Animated Timeline Line */}
-                    <div className="absolute left-[8px] top-24 bottom-24 w-0.5 bg-[#2c0405]/5 hidden md:block">
-                        <motion.div
-                            className="w-full bg-[#822b2e]"
-                            initial={{ height: 0 }}
-                            whileInView={{ height: "100%" }}
-                            transition={{ duration: 2.5, ease: "linear" }}
-                        />
-                    </div>
+                    <TimelineLine />
 
                     <div className="max-w-4xl mx-auto md:mx-0 md:pl-8">
                         <div className="mb-12">

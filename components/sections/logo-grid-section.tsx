@@ -39,7 +39,7 @@ export function LogoGridSection() {
     return (
         <section ref={sectionRef} className="relative w-full">
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 py-24 md:py-32">
-                <AnimatedBorders className="hidden md:block" />
+                <AnimatedBorders className="hidden md:block z-20" />
 
                 {/* Horizontal Top Line */}
                 <div className={`relative w-full h-[1px] transition-all duration-1000 ease-out ${isVisible ? "opacity-100" : "opacity-0"}`}>

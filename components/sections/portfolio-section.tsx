@@ -23,12 +23,21 @@ const items = [
     },
     {
         id: 2,
-        title: 'Golden Hour',
-        subtitle: 'Digital Experience',
-        img: '/images/portfolio-2.jpg',
-        link: '/projects/landscape',
+        title: 'Pr Tool',
+        subtitle: 'Content Tech',
+        img: '/images/pr-tool.png',
+        link: '/work/pr-tool',
         stats: '+240% Engagement',
-        tech: ['GSAP', 'WebGL', 'React']
+        tech: ['Next.js', 'React', 'Node.js']
+    },
+    {
+        id: 4,
+        title: 'Content Monetization',
+        subtitle: 'Fintech Platform',
+        img: '/images/portfolio-4.jpg',
+        link: '/projects/monetization',
+        stats: '$2.4M Volume/mo',
+        tech: ['Stripe', 'Next.js', 'Firebase']
     },
     {
         id: 3,
@@ -39,15 +48,6 @@ const items = [
         link: '/projects/metropolis',
         stats: '99.9% Render Accuracy',
         tech: ['TypeScript', 'Node.js', 'Tailwind']
-    },
-    {
-        id: 4,
-        title: 'Content Monetization',
-        subtitle: 'Fintech Platform',
-        img: '/images/portfolio-4.jpg',
-        link: '/projects/monetization',
-        stats: '$2.4M Volume/mo',
-        tech: ['Stripe', 'Next.js', 'Firebase']
     },
     {
         id: 5,
@@ -75,7 +75,7 @@ function PortfolioGrid() {
     const displayedItems = items.slice(0, 6)
 
     const handleCardClick = (link: string) => {
-        router.push(link)
+        // router.push(link)
     }
 
     return (

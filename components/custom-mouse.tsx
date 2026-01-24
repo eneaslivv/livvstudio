@@ -1,65 +1,63 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export function CustomMouse() {
   const dotRef = useRef<HTMLDivElement>(null)
   const circleRef = useRef<HTMLDivElement>(null)
+  const [isTouchDevice, setIsTouchDevice] = useState(true); // Default to true, assuming touch until proven otherwise.
 
   useEffect(() => {
-    let mouseX = 0
-    let mouseY = 0
-    let dotX = 0
-    let dotY = 0
-    let circleX = 0
-    let circleY = 0
-    let animationId: number
+    // This check runs only on the client side.
+    const hasNoMouse = window.matchMedia("(pointer: coarse)").matches;
+    setIsTouchDevice(hasNoMouse);
+
+    if (hasNoMouse) {
+      // If it's a touch device, do nothing.
+      return;
+    }
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let animationId: number;
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX
-      mouseY = e.clientY
-    }
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    };
 
     const animate = () => {
-      // Dot follows mouse instantly
-      dotX = mouseX
-      dotY = mouseY
-
-      // Circle follows with smooth lerp
-      circleX += (mouseX - circleX) * 0.12
-      circleY += (mouseY - circleY) * 0.12
-
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${dotX - 6}px, ${dotY - 6}px)`
+        dotRef.current.style.transform = `translate(${mouseX - 6}px, ${mouseY - 6}px)`;
       }
       if (circleRef.current) {
-        circleRef.current.style.transform = `translate(${circleX - 16}px, ${circleY - 16}px)`
+        let circleX = parseFloat(circleRef.current.style.left || "0");
+        let circleY = parseFloat(circleRef.current.style.top || "0");
+        circleRef.current.style.left = `${circleX + (mouseX - circleX) * 0.12}px`;
+        circleRef.current.style.top = `${circleY + (mouseY - circleY) * 0.12}px`;
+        circleRef.current.style.transform = 'translate(-50%, -50%)';
       }
+      animationId = requestAnimationFrame(animate);
+    };
 
-      animationId = requestAnimationFrame(animate)
-    }
-
-    window.addEventListener("mousemove", handleMouseMove)
-    animationId = requestAnimationFrame(animate)
+    window.addEventListener("mousemove", handleMouseMove);
+    animationId = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-      cancelAnimationFrame(animationId)
-    }
-  }, [])
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationId);
+    };
+  }, []); // Empty dependency array ensures this runs only once.
+
+  // Strictly render nothing on touch devices.
+  if (isTouchDevice) {
+    return null;
+  }
 
   return (
     <>
-      {/* Main cursor dot */}
-      <div
-        ref={dotRef}
-        className="hidden md:block fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference w-3 h-3 rounded-full bg-white"
-      />
-      {/* Trailing circle */}
-      <div
-        ref={circleRef}
-        className="hidden md:block fixed top-0 left-0 pointer-events-none z-[9998] mix-blend-difference w-8 h-8 rounded-full border border-white/60"
-      />
+      <div ref={dotRef} className="fixed pointer-events-none z-[9999] w-3 h-3 rounded-full bg-white mix-blend-difference" />
+      <div ref={circleRef} className="fixed pointer-events-none z-[9998] w-8 h-8 rounded-full border border-white/60 mix-blend-difference" style={{ left: '0', top: '0' }}/>
     </>
-  )
+  );
 }

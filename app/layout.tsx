@@ -3,9 +3,12 @@ import type { Metadata } from "next"
 import { inter, mondwest, playground } from "./fonts"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics"
 import { SmoothScroll } from "@/components/ui/smooth-scroll"
 import "./globals.css"
 import { CustomCursor } from "@/components/custom-cursor"
+import { ThemeProvider } from "@/components/theme-provider"
+import { AuthProvider } from "@/context/AuthContext"
 
 export const metadata: Metadata = {
   title: "Livv Studio | Creative Design & Technical Excellence",
@@ -57,18 +60,28 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${mondwest.variable} ${playground.variable}`}>
+    <html lang="en" className={`${inter.variable} ${mondwest.variable} ${playground.variable}`} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://rsms.me" />
         <link rel="preload" href="/images/gemini-generated-image-ndf416ndf416ndf4.png" as="image" />
       </head>
-      <body className={`${inter.className} font-light antialiased`}>
-        <SmoothScroll>
-          {children}
-        </SmoothScroll>
-        <CustomCursor />
-        <Analytics />
-        <SpeedInsights />
+      <body className={`${inter.className} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AuthProvider>
+            <SmoothScroll>
+              {children}
+            </SmoothScroll>
+            <CustomCursor />
+            <Analytics />
+            <GoogleAnalytics />
+            <SpeedInsights />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -23,6 +23,9 @@ const ImageSliderSection = dynamic(() => import("@/components/sections/image-sli
 const VisionSection = dynamic(() => import("@/components/sections/vision-section").then(mod => mod.VisionSection))
 const FooterSection = dynamic(() => import("@/components/sections/footer-section").then(mod => mod.FooterSection))
 const TestimonialsSection = dynamic(() => import("@/components/sections/testimonials-section").then(mod => mod.TestimonialsSection))
+import { ClientLogoSlider } from "@/components/sections/client-logo-slider";
+import { ReviewsSection } from "@/components/sections/reviews-section";
+
 
 import { Navbar } from "@/components/layout/navbar"
 
@@ -131,7 +134,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section id="home" className="h-auto w-full p-4 sm:p-6 pt-8 pb-4 md:pb-8 flex items-start justify-center">
+      <section id="home" className="h-auto w-full p-4 sm:p-6 pt-2 pb-4 md:pb-8 flex items-start justify-center">
         {/* Frame Container */}
         <div
           ref={frameRef}
@@ -265,13 +268,15 @@ export default function Home() {
                 See the Work
                 <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
               </a>
-              <a href="#contact" className="px-6 py-2.5 rounded-full bg-transparent text-white text-sm font-medium tracking-wide border border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300">
+              <a href="/contact" className="px-6 py-2.5 rounded-full bg-transparent text-white text-sm font-medium tracking-wide border border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300">
                 Get in Touch
               </a>
             </div>
           </div>
         </div>
       </section >
+
+      <ClientLogoSlider />
 
       {/* Analytics Video Section */}
       < AnalyticsSection />
@@ -288,9 +293,10 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <TestimonialsSection />
-
-      {/* Logo Grid Section */}
+ 
+       {/* Logo Grid Section */}
       <LogoGridSection />
+      <ReviewsSection />
 
       {/* Pricing Section */}
       <PricingSection id="blog" />

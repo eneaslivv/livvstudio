@@ -1,8 +1,10 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { usePathname } from "next/navigation"
 
 export function CustomCursor() {
+  const pathname = usePathname()
   const outerRef = useRef<HTMLDivElement>(null)
   const innerRef = useRef<HTMLDivElement>(null)
   const positionRef = useRef({ x: 0, y: 0 })
@@ -47,6 +49,8 @@ export function CustomCursor() {
       cancelAnimationFrame(animationFrameId)
     }
   }, [])
+
+  if (pathname?.startsWith('/admin') || pathname?.startsWith('/portal')) return null
 
   return (
     <>

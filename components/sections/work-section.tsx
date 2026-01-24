@@ -18,11 +18,13 @@ const projects = [
   },
   {
     number: "02",
-    title: "Paper",
-    category: "Venue & nightlife software",
+    title: "Pr Tool",
+    category: "Content Tech",
     year: "2024",
-    color: "from-[#769268] to-[#4A5D3B]",
-    image: "/images/portfolio-2.jpg"
+    color: "from-[#769268] to-[#4A5D3B]", // Keeping the original color of the replaced item, as per snippet's partial inclusion
+    image: "/images/pr-tool.png", // Updated image
+    description: "App for content creators, affiliate links y Tienda nube full custom integrations", // New description
+    link: "/work/pr-tool" // New link
   },
   {
     number: "03",
@@ -73,17 +75,13 @@ export function WorkSection({ id }: { id?: string }) {
       className="relative w-full"
       onMouseMove={handleMouseMove}
     >
+      {/* Full-width Background color transition */}
+      <div
+        className={`absolute inset-0 transition-colors duration-[1500ms] ease-in-out z-0 pointer-events-none ${isVisible ? "bg-[#ede5d8]" : "bg-transparent"}`}
+      />
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 relative z-10">
 
-        {/* Background color transition container */}
-        {/* Constrained within the lateral lines (mx-6 md:mx-12) and vertical bounds */}
-        <div
-          className={`absolute inset-0 mx-6 md:mx-12 transition-colors duration-[1500ms] ease-in-out z-0 pointer-events-none ${isVisible ? "bg-[#ede5d8]" : "bg-transparent"}`}
-          style={{
-            top: '0',
-            bottom: '0'
-          }}
-        />
+
 
         <AnimatedBorders className="hidden md:block z-20" />
 
@@ -119,8 +117,8 @@ export function WorkSection({ id }: { id?: string }) {
               animate={{
                 opacity: 1,
                 scale: 1,
-                x: cursorPos.x + 30,
-                y: cursorPos.y - 90
+                x: cursorPos.x + 20,
+                y: cursorPos.y - 20 // Lowered significantly from -90
               }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ type: "spring", stiffness: 150, damping: 20, mass: 0.5 }}
@@ -152,9 +150,9 @@ export function WorkSection({ id }: { id?: string }) {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              {/* Hover content overlay background - adjusted for new theme */}
+              {/* Hover content overlay background - refined for brand consistency */}
               <div
-                className={`absolute inset-0 bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                className="absolute inset-0 bg-[#C4A35A] opacity-0 group-hover:opacity-5 transition-opacity duration-500"
               />
 
               {/* Add a solid background color on hover to mask the section bg if needed, or blend */}

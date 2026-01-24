@@ -7,6 +7,9 @@ import { AnimatedBorders } from "@/components/ui/animated-borders"
 export function VisionSection() {
     const sectionRef = useRef<HTMLDivElement>(null)
     const [isVisible, setIsVisible] = useState(false)
+    const [email, setEmail] = useState("")
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [isSuccess, setIsSuccess] = useState(false)
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -24,6 +27,32 @@ export function VisionSection() {
 
         return () => observer.disconnect()
     }, [])
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        if (!email.trim() || !email.includes('@') || isSubmitting) return
+
+        setIsSubmitting(true)
+
+        try {
+            const { supabase } = await import('@/lib/supabase/client')
+            const { error } = await supabase.from('leads').insert([{
+                name: email.split('@')[0],
+                email: email
+            }])
+
+            if (error) throw error
+
+            setIsSuccess(true)
+            setEmail("")
+            setTimeout(() => setIsSuccess(false), 3000)
+        } catch (error: any) {
+            console.error('Error saving lead:', error)
+            alert(`Failed to submit: ${error.message || JSON.stringify(error)}`)
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
 
     return (
         <section
@@ -55,21 +84,37 @@ export function VisionSection() {
                     </h2>
 
                     {/* Gradient Input Container */}
-                    <div
+                    <form
+                        onSubmit={handleSubmit}
                         className={`relative w-full max-w-sm mx-auto transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
                     >
                         {/* Soft colored shadow behind */}
                         <div className="absolute inset-4 bg-gradient-to-r from-pink-300 via-yellow-200 to-blue-200 opacity-30 blur-xl rounded-full" />
+
+                        {/* Success Message */}
+                        {isSuccess && (
+                            <div className="absolute -top-12 left-0 right-0 text-sm text-emerald-600 font-medium">
+                                ✓ Thanks! We'll be in touch soon.
+                            </div>
+                        )}
 
                         {/* Gradient Border Wrapping */}
                         <div className="relative p-[1px] rounded-full bg-gradient-to-r from-[#FF9CA4] via-[#FFE58A] to-[#8EB5FF]">
                             <div className="relative bg-white rounded-full flex items-center p-1 pr-1">
                                 <input
                                     type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     placeholder="Enter your email..."
                                     className="flex-grow bg-transparent border-none outline-none px-4 text-[#1a1a1a] placeholder:text-gray-400 font-light text-sm italic"
+                                    disabled={isSubmitting}
+                                    required
                                 />
-                                <button className="bg-black hover:bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center transition-transform duration-300 hover:scale-105 shrink-0">
+                                <button
+                                    type="submit"
+                                    disabled={isSubmitting || !email.trim()}
+                                    className="bg-black hover:bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center transition-transform duration-300 hover:scale-105 shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
                                     <div className="w-4 h-4 text-white">
                                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                                             <path d="M12 4L12 20M12 4L4 12M12 4L20 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" transform="rotate(45 12 12)" />
@@ -79,7 +124,7 @@ export function VisionSection() {
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </form>
 
                 </div>
             </div>

@@ -7,6 +7,7 @@ import { AnimatedBorders } from "@/components/ui/animated-borders"
 
 export function FooterSection({ id }: { id?: string }) {
     const containerRef = useRef<HTMLDivElement>(null)
+    const contraButtonRef = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end end"]
@@ -26,8 +27,12 @@ export function FooterSection({ id }: { id?: string }) {
         script.async = true
         script.charset = 'utf-8'
         document.body.appendChild(script)
+        document.body.appendChild(script)
         return () => {
             document.body.removeChild(script)
+            if (contraButtonRef.current) {
+                contraButtonRef.current.innerHTML = ''
+            }
         }
     }, [])
 
@@ -53,8 +58,9 @@ export function FooterSection({ id }: { id?: string }) {
                             Let's work together
                         </h2>
                         <div
+                            ref={contraButtonRef}
                             className="contra-hire-me-button"
-                            data-analyticsUserId="451cfc1e-e897-46ed-a701-9dd0533e7ec6"
+                            data-analyticsuserid="451cfc1e-e897-46ed-a701-9dd0533e7ec6"
                             data-theme="light"
                             data-username="eneas_aldabe"
                         />
@@ -69,10 +75,10 @@ export function FooterSection({ id }: { id?: string }) {
 
                             <div>
                                 <a
-                                    href="mailto:hello@livv.design"
+                                    href="mailto:hola@livv.systems"
                                     className="group inline-flex items-center gap-2 text-2xl md:text-4xl font-light text-[#1a1a1a] hover:text-[#C4A35A] transition-colors duration-300"
                                 >
-                                    hello@livv.design
+                                    hola@livv.systems
                                     <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
                                 </a>
                             </div>

@@ -24,8 +24,8 @@ export function AnimatedBorders({
 
     // REFINED GRADIENT: Softer falloff and deeper atmosphere
     // We'll use one base gradient and rotate it to maintain continuity
-    const vibrantGradient = "linear-gradient(to bottom, transparent 0%, transparent 5%, rgba(255, 0, 255, 0.1) 15%, rgba(255, 0, 255, 0.7) 30%, rgba(255, 136, 0, 0.8) 45%, rgba(255, 215, 0, 0.8) 55%, rgba(0, 136, 255, 0.7) 70%, rgba(0, 136, 255, 0.1) 85%, transparent 95%, transparent 100%)"
-    const vibrantShadow = "drop-shadow(0 0 8px rgba(255, 200, 0, 0.2)) drop-shadow(0 0 15px rgba(255, 0, 255, 0.15)) drop-shadow(0 0 25px rgba(0, 136, 255, 0.15))"
+    const vibrantGradient = "linear-gradient(to bottom, transparent 0%, transparent 5%, rgba(255, 0, 255, 0.05) 15%, rgba(255, 0, 255, 0.3) 30%, rgba(255, 136, 0, 0.4) 45%, rgba(255, 215, 0, 0.4) 55%, rgba(0, 136, 255, 0.3) 70%, rgba(0, 136, 255, 0.05) 85%, transparent 95%, transparent 100%)"
+    const vibrantShadow = "drop-shadow(0 0 8px rgba(255, 200, 0, 0.1)) drop-shadow(0 0 15px rgba(255, 0, 255, 0.08)) drop-shadow(0 0 25px rgba(0, 136, 255, 0.08))"
 
     const particleStyle = {
         background: vibrantGradient,
@@ -52,16 +52,16 @@ export function AnimatedBorders({
 
             {/* STATIC DASHED LINES (The Architecture) */}
             {showLeft && (
-                <div className="absolute left-6 md:left-12 top-0 bottom-0 w-[1px] border-l border-dashed border-[#D1CDC2] opacity-60" />
+                <div className="absolute left-6 md:left-12 top-0 bottom-0 w-[1px] border-l border-dashed border-[#D1CDC2] opacity-30" />
             )}
             {showRight && (
-                <div className="absolute right-6 md:right-12 top-0 bottom-0 w-[1px] border-r border-dashed border-[#D1CDC2] opacity-60" />
+                <div className="absolute right-6 md:right-12 top-0 bottom-0 w-[1px] border-r border-dashed border-[#D1CDC2] opacity-30" />
             )}
             {showTop && (
-                <div className={`absolute top-0 ${fullWidth ? "left-0 right-0" : "left-6 md:left-12 right-6 md:right-12"} h-[1px] border-t border-dashed border-[#D1CDC2] opacity-60`} />
+                <div className={`absolute top-0 ${fullWidth ? "left-0 right-0" : "left-6 md:left-12 right-6 md:right-12"} h-[1px] border-t border-dashed border-[#D1CDC2] opacity-30`} />
             )}
             {showBottom && (
-                <div className={`absolute bottom-0 ${fullWidth ? "left-0 right-0" : "left-6 md:left-12 right-6 md:right-12"} h-[1px] border-b border-dashed border-[#D1CDC2] opacity-60`} />
+                <div className={`absolute bottom-0 ${fullWidth ? "left-0 right-0" : "left-6 md:left-12 right-6 md:right-12"} h-[1px] border-b border-dashed border-[#D1CDC2] opacity-30`} />
             )}
 
             {/* CONTINUOUS TRAVELLING PARTICLES */}
@@ -81,8 +81,8 @@ export function AnimatedBorders({
                         duration: showTop ? 12 : 8,
                         ease: "linear",
                         repeat: Infinity,
-                        repeatDelay: 10 + randomOffset,
-                        delay: 2 + randomOffset * 0.2,
+                        repeatDelay: 25 + randomOffset,
+                        delay: 5 + randomOffset * 0.5,
                         times: [0, 0.15, 0.85, 1]
                     }}
                 />
@@ -101,8 +101,8 @@ export function AnimatedBorders({
                         duration: 9,
                         ease: "linear",
                         repeat: Infinity,
-                        repeatDelay: 15 + randomOffset,
-                        delay: 5 + randomOffset * 0.5,
+                        repeatDelay: 35 + randomOffset,
+                        delay: 12 + randomOffset * 0.8,
                         times: [0, 0.2, 0.8, 1]
                     }}
                 />

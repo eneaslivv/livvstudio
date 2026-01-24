@@ -9,6 +9,7 @@ import Image from "next/image"
 
 import { ProjectSimulator, SimulationData } from "@/components/ui/project-simulator"
 import { RevealText } from "@/components/ui/reveal-text"
+import { SlideToSwap } from "@/components/ui/slide-to-swap"
 
 type Message = {
     id: string
@@ -68,7 +69,7 @@ export function PricingSection({ id }: { id?: string }) {
     // Simulator State
     const [simulationStep, setSimulationStep] = useState(0)
     const [complexity, setComplexity] = useState(0)
-    const [placeholderText, setPlaceholderText] = useState("Start Pricing Protocol...")
+    const [placeholderText, setPlaceholderText] = useState("Click to start protocol...")
     const simDataRef = useRef({ platform: '', intelligence: '', velocity: '', experience: '' })
 
     // Data State
@@ -97,23 +98,23 @@ export function PricingSection({ id }: { id?: string }) {
         return () => observer.disconnect()
     }, [])
 
-    // Rotating placeholder effect
-    useEffect(() => {
-        if (isChatStarted) return;
-        const placeholders = [
-            "Start Live Simulation...",
-            "Quote custom design...",
-            "Calculate project ROI...",
-            "Real-time architecture cost...",
-            "Click to start protocol..."
-        ];
-        let index = 0;
-        const interval = setInterval(() => {
-            index = (index + 1) % placeholders.length;
-            setPlaceholderText(placeholders[index]);
-        }, 3000);
-        return () => clearInterval(interval);
-    }, [isChatStarted])
+    // Rotating placeholder effect REMOVED as per user request for static text
+    // useEffect(() => {
+    //     if (isChatStarted) return;
+    //     const placeholders = [
+    //         "Start Live Simulation...",
+    //         "Quote custom design...",
+    //         "Calculate project ROI...",
+    //         "Real-time architecture cost...",
+    //         "Click to start protocol..."
+    //     ];
+    //     let index = 0;
+    //     const interval = setInterval(() => {
+    //         index = (index + 1) % placeholders.length;
+    //         setPlaceholderText(placeholders[index]);
+    //     }, 3000);
+    //     return () => clearInterval(interval);
+    // }, [isChatStarted])
 
     // --- SCROLL FIX OBSERVER ---
     useEffect(() => {
@@ -271,6 +272,22 @@ export function PricingSection({ id }: { id?: string }) {
             }
             const newState = { ...pricingState, email: value }
             setPricingState(newState)
+
+            // Save to Supabase
+            try {
+                const { supabase } = await import('@/lib/supabase/client')
+                await supabase.from('leads').insert([{
+                    name: value.split('@')[0], // Use email username as name
+                    email: value,
+                    status: 'new',
+                    source: 'Pricing Calculator',
+                    message: `Service: ${newState.service} | Scope: ${newState.scope} | Budget: ${newState.budget} | ${newState.details}`,
+                    company: value.split('@')[1] || null // Domain as company
+                }])
+            } catch (error) {
+                console.error('Error saving lead:', error)
+            }
+
             await addBotMessage(`Thanks. Sending quote to ${value}...`)
             flowResult(newState)
             return
@@ -330,7 +347,7 @@ export function PricingSection({ id }: { id?: string }) {
         await addBotMessage(ticketContent)
         await addBotMessage("This document is preliminary. To freeze the price and secure a slot, we recommend a brief call.", "How would you like to proceed?")
         setOptions([
-            { label: "Schedule Call", action: () => window.location.href = '#contact' },
+            { label: "Schedule Call", action: () => window.open('https://cal.com/eneas-aldabe-youfep/15min', '_blank') },
             { label: "Restart", action: initChat }
         ])
     }
@@ -399,13 +416,13 @@ export function PricingSection({ id }: { id?: string }) {
                     </div>
 
                     {/* Chat Interface Container - Refactored to grow upwards */}
-                    <div className="w-full max-w-md mx-auto relative z-20">
+                    <div className="w-full max-w-2xl mx-auto relative z-20">
                         {/* Messages Area - Floating above the input */}
                         <AnimatePresence>
                             {isChatStarted && (
                                 <motion.div
                                     initial={{ opacity: 0, y: 20, height: 0 }}
-                                    animate={{ opacity: 1, y: 0, height: 400 }}
+                                    animate={{ opacity: 1, y: 0, height: 550 }}
                                     exit={{ opacity: 0, y: 20, height: 0 }}
                                     className="mb-4 bg-white/40 backdrop-blur-md rounded-[24px] border border-[#E8E4DC]/30 overflow-hidden flex flex-col shadow-sm"
                                 >
@@ -468,58 +485,59 @@ export function PricingSection({ id }: { id?: string }) {
                             )}
                         </AnimatePresence>
 
-                        {/* Input Pill - The constant element */}
-                        <div
-                            className="relative w-full cursor-pointer transition-all duration-500"
-                            onClick={!isChatStarted ? handleStartChat : undefined}
-                            style={{
-                                padding: '1px',
-                                background: 'linear-gradient(to right, rgba(251, 188, 5, 0.4), rgba(234, 67, 53, 0.4), rgba(167, 48, 255, 0.4), rgba(66, 133, 244, 0.4))',
-                                borderRadius: '9999px'
-                            }}
-                        >
-                            <div className="bg-white rounded-full h-12 flex items-center pl-6 pr-1 relative overflow-hidden shadow-[0_2px_15px_-3px_rgba(44,4,5,0.05)]">
-                                <div className="flex-1 relative h-full flex items-center overflow-hidden">
-                                    <AnimatePresence mode="wait">
-                                        {!isChatStarted ? (
-                                            <motion.span
-                                                key={placeholderText}
-                                                initial={{ y: 20, opacity: 0 }}
-                                                animate={{ y: 0, opacity: 1 }}
-                                                exit={{ y: -20, opacity: 0 }}
-                                                className="absolute inset-0 flex items-center justify-center text-[#2c0405]/40 text-sm font-medium select-none tracking-tight"
-                                            >
-                                                {placeholderText}
-                                            </motion.span>
-                                        ) : (
-                                            <input
-                                                type={inputType === 'email' ? 'email' : 'text'}
-                                                value={inputText}
-                                                onChange={(e) => setInputText(e.target.value)}
-                                                onKeyDown={(e) => e.key === 'Enter' && handleInputSubmit()}
-                                                disabled={inputType === 'none'}
-                                                placeholder={inputType === 'email' ? "you@email.com" : "Type your answer..."}
-                                                className="w-full h-full bg-transparent border-none outline-none text-[#2c0405] placeholder-[#2c0405]/30 text-sm px-4 font-medium"
-                                                autoFocus
-                                            />
-                                        )}
-                                    </AnimatePresence>
-                                </div>
 
-                                <button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        if (!isChatStarted) handleStartChat();
-                                        else if (inputType !== 'none') handleInputSubmit();
-                                    }}
-                                    className={`
-                                        h-10 w-10 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm relative overflow-hidden flex-shrink-0
-                                        ${isChatStarted ? "bg-[#2c0405] text-[#F5F5F0]" : "bg-stone-900 text-white"}
-                                    `}
-                                >
-                                    {isChatStarted ? <Send className="w-4 h-4" /> : <ArrowUp className="w-4 h-4" />}
-                                </button>
-                            </div>
+                        {/* Slide to Swap or Chat Input */}
+                        <div className="w-full relative z-20 flex justify-center">
+                            <AnimatePresence mode="wait">
+                                {!isChatStarted ? (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -10 }}
+                                        key="slide-button"
+                                        className="w-full flex justify-center"
+                                    >
+                                        <SlideToSwap onComplete={handleStartChat} />
+                                    </motion.div>
+                                ) : (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        key="chat-input"
+                                        className="relative w-full cursor-pointer transition-all duration-500"
+                                        style={{
+                                            padding: '1px',
+                                            background: 'linear-gradient(to right, rgba(251, 188, 5, 0.4), rgba(234, 67, 53, 0.4), rgba(167, 48, 255, 0.4), rgba(66, 133, 244, 0.4))',
+                                            borderRadius: '9999px'
+                                        }}
+                                    >
+                                        <div className="bg-white rounded-full h-12 flex items-center pl-6 pr-1 relative overflow-hidden shadow-[0_2px_15px_-3px_rgba(44,4,5,0.05)]">
+                                            <div className="flex-1 relative h-full flex items-center overflow-hidden">
+                                                <input
+                                                    type={inputType === 'email' ? 'email' : 'text'}
+                                                    value={inputText}
+                                                    onChange={(e) => setInputText(e.target.value)}
+                                                    onKeyDown={(e) => e.key === 'Enter' && handleInputSubmit()}
+                                                    disabled={inputType === 'none'}
+                                                    placeholder={inputType === 'email' ? "you@email.com" : "Type your answer..."}
+                                                    className="w-full h-full bg-transparent border-none outline-none text-[#2c0405] placeholder-[#2c0405]/30 text-sm px-4 font-medium"
+                                                    autoFocus
+                                                />
+                                            </div>
+
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    if (inputType !== 'none') handleInputSubmit();
+                                                }}
+                                                className="h-10 w-10 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm relative overflow-hidden flex-shrink-0 bg-[#2c0405] text-[#F5F5F0]"
+                                            >
+                                                <Send className="w-4 h-4" />
+                                            </button>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
                     </div>
 

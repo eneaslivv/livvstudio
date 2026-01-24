@@ -1,9 +1,8 @@
 "use client"
 
 import { useRef, useEffect, useState } from "react"
-import { ArrowUpRight, Mail, MapPin, Instagram, Twitter, Linkedin, Github } from "lucide-react"
-import { AnimatedBorders } from "@/components/ui/animated-borders"
 import { RevealText } from "@/components/ui/reveal-text"
+import { ContactForm } from "./contact-form"
 
 export function ContactSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -23,83 +22,90 @@ export function ContactSection() {
       observer.observe(sectionRef.current)
     }
 
-    return () => observer.disconnect()
+    // Load Contra embed script
+    const script = document.createElement('script')
+    script.src = 'https://contra.com/static/embed/sdk.js'
+    script.async = true
+    script.charset = 'utf-8'
+    document.body.appendChild(script)
+
+    return () => {
+        observer.disconnect()
+        document.body.removeChild(script)
+    }
   }, [])
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full"
-    >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 pb-24 md:pt-32 md:pb-12 relative z-10">
-        <AnimatedBorders className="hidden md:block" />
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-32">
-
-          {/* Left Column: Title */}
-          <div className="pl-[10%] lg:pl-[10%]">
-            <div
-              className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-            >
-              <span className="inline-block text-[11px] tracking-[0.3em] uppercase text-[#C4A35A] font-medium mb-4">
-                Get in Touch
-              </span>
-              <h2 className="section-heading mb-8">
-                <RevealText text="Let's work together" className="text-gradient-gold" isVisible={isVisible} />
-              </h2>
-            </div>
-          </div>
-
-          {/* Right Column: Contact Info */}
-          <div className="pr-[5%] lg:pr-[10%] pt-4 lg:pt-12">
-            <div
-              className={`space-y-12 transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-                }`}
-            >
-              <p className="text-xl md:text-2xl font-light text-[#1a1a1a] leading-relaxed max-w-md">
-                Have a project in mind? We'd love to hear about it.
-              </p>
-
-              <div>
-                <a
-                  href="mailto:hello@livv.design"
-                  className="group inline-flex items-center gap-2 text-2xl md:text-4xl font-light text-[#1a1a1a] hover:text-[#C4A35A] transition-colors duration-300"
-                >
-                  hello@livv.design
-                  <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
-                </a>
-              </div>
-
-              <div className="flex gap-8 pt-8">
-                <div className="space-y-4">
-                  <h4 className="text-xs uppercase tracking-widest text-[#1a1a1a]/40">Socials</h4>
-                  <div className="flex gap-4">
-                    {[Instagram, Twitter, Linkedin, Github].map((Icon, i) => (
-                      <a key={i} href="#" className="w-10 h-10 rounded-full border border-[#1a1a1a]/10 flex items-center justify-center text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white transition-all duration-300 group">
-                        <Icon className="w-4 h-4" />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        {/* Footer Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-dashed border-[#E8E4DC] pl-[10%] pr-[10%]">
-          <p className="text-[10px] uppercase tracking-widest text-[#1a1a1a]/40 mb-4 md:mb-0">
-            © 2024 Livv Design. All rights reserved.
+    <div ref={sectionRef} className="relative">
+      {/* --- Banner Section (Subtler Height) --- */}
+      <div className="relative w-full h-56 md:h-64 lg:h-72 overflow-hidden rounded-3xl mb-24">
+        <iframe
+          src="https://player.vimeo.com/video/1157793938?background=1&autoplay=1&loop=1&muted=1&dnt=1"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          className="absolute top-1/2 left-1/2 w-full h-full z-0 opacity-40"
+          style={{
+            width: '100vw',
+            height: '100vh',
+            transform: 'translate(-50%, -50%) rotate(90deg) scale(1.5)',
+          }}
+          title="Background Video"
+        ></iframe>
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-black via-black/80 to-transparent" />
+        <div className="relative z-20 h-full flex flex-col justify-center items-start px-8 md:px-12 lg:px-16">
+          <h1 className="text-4xl md:text-5xl font-light tracking-[-0.08em] text-white mb-4">
+            Let's talk about your project
+          </h1>
+          <p className="text-white/60 max-w-md mb-8">
+            Start a conversation to create something amazing together. Fill out the form or send us an email.
           </p>
-          <div className="flex gap-8">
-            <a href="#" className="text-[10px] uppercase tracking-widest text-[#1a1a1a]/40 hover:text-[#1a1a1a] transition-colors">Privacy Policy</a>
-            <a href="#" className="text-[10px] uppercase tracking-widest text-[#1a1a1a]/40 hover:text-[#1a1a1a] transition-colors">Terms of Service</a>
+        </div>
+      </div>
+
+      {/* --- Form Section --- */}
+      <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-96 px-6 md:px-12">
+        <div className="pl-[10%] lg:pl-[10%]">
+          <div
+            className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          >
+            <span className="inline-block text-[11px] tracking-[0.3em] uppercase text-[#C4A35A] font-medium mb-4">
+              Contact Form
+            </span>
+            <h2 className="section-heading mb-8">
+              <RevealText text="Send your details" className="text-gradient-gold" isVisible={isVisible} />
+            </h2>
+            <div className="space-y-4">
+                <p className="text-sm text-white/60">
+                    Olivos, Buenos Aires, Argentina
+                </p>
+                <div
+                    className="contra-hire-me-button"
+                    data-analyticsuserid="451cfc1e-e897-46ed-a701-9dd0533e7ec6"
+                    data-theme="dark"
+                    data-username="eneas_aldabe"
+                 />
+            </div>
           </div>
         </div>
-
+        <div className="pr-[5%] lg:pr-[10%]">
+          <div
+            className={`transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+          >
+            <ContactForm />
+          </div>
+        </div>
       </div>
-    </section>
+
+      {/* --- Footer Bottom --- */}
+      <div className="relative z-20 flex flex-col md:flex-row justify-between items-center pt-8 pb-32 border-t border-dashed border-white/20 px-6 md:px-12">
+        <p className="text-[10px] uppercase tracking-widest text-white/40 mb-4 md:mb-0">
+          © 2026 Livv Design. All rights reserved.
+        </p>
+        <div className="flex gap-8">
+          <a href="#" className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
   )
 }

@@ -655,7 +655,50 @@ export default function KrufoodPresentation() {
                     </div>
                 </Section>
 
-                {/* 8. Final Value Proposition / CTA */}
+                {/* 08. Product Video Portfolio */}
+                <Section className="mb-32">
+                    <div className="flex justify-between items-end mb-12">
+                        <h3 className="text-2xl font-semibold tracking-tight text-[#2c0405]">07.5 // PRODUCT_VIDEO_PORTFOLIO</h3>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Video 1 */}
+                        <motion.div whileHover={{ y: -5 }} className="group">
+                            <div className="relative w-full rounded-xl overflow-hidden bg-[#2c0405]/5 shadow-lg border border-[#2c0405]/5">
+                                <div style={{ padding: '177.78% 0 0 0', position: 'relative' }}>
+                                    <iframe
+                                        src="https://player.vimeo.com/video/1157973975?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                                        frameBorder="0"
+                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                        referrerPolicy="strict-origin-when-cross-origin"
+                                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                                        title="WhatsApp Video 2026-01-21 at 6.58.11 PM"
+                                    ></iframe>
+                                </div>
+                            </div>
+                            <h4 className="font-medium text-[#2c0405] mt-4 text-center">Vertical Product Dynamic</h4>
+                        </motion.div>
+
+                        {/* Video 2 */}
+                        <motion.div whileHover={{ y: -5 }} className="group">
+                            <div className="relative w-full rounded-xl overflow-hidden bg-[#2c0405]/5 shadow-lg border border-[#2c0405]/5">
+                                <div style={{ padding: '177.78% 0 0 0', position: 'relative' }}>
+                                    <iframe
+                                        src="https://player.vimeo.com/video/1157973929?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                                        frameBorder="0"
+                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                        referrerPolicy="strict-origin-when-cross-origin"
+                                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                                        title="WhatsApp Video 2026-01-21 at 6.58.23 PM"
+                                    ></iframe>
+                                </div>
+                            </div>
+                            <h4 className="font-medium text-[#2c0405] mt-4 text-center">Contextual Usage</h4>
+                        </motion.div>
+                    </div>
+                </Section>
+
+                {/* 09. Final Value Proposition / CTA */}
                 <section className="mb-24 text-center py-24 border-t border-[#2c0405]/10">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}

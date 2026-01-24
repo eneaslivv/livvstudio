@@ -635,11 +635,22 @@ export default function KrufoodPresentation() {
                             </a>
                         </motion.div>
                         <motion.div whileHover={{ y: -5 }} className="group cursor-pointer">
-                            <div className="aspect-video bg-[#2c0405]/5 rounded-lg mb-4 overflow-hidden relative">
-                                <div className="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-[#2c0405]/20 uppercase">Premium Artisan Case</div>
-                            </div>
-                            <h4 className="font-medium text-[#2c0405]">Design System for Artisan Sauces</h4>
-                            <p className="text-xs text-[#2c0405]/60 mt-1">Impact: 30% Reduction in Load Time & Checkout Friction.</p>
+                            <a href="https://www.bocadeagua.com/es" target="_blank" rel="noopener noreferrer" className="block">
+                                <div className="aspect-video bg-[#2c0405]/5 rounded-lg mb-4 overflow-hidden relative">
+                                    <img
+                                        src="/presentation/krufood/cases/bocadeagua.jpg"
+                                        alt="Boca De Agua - Eco Luxury Hotel"
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    />
+                                    <div className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-mono uppercase tracking-wider text-[#2c0405]">
+                                        BRANDING • HOSPITALITY
+                                    </div>
+                                </div>
+                                <h4 className="font-medium text-[#2c0405] group-hover:text-[#822b2e] transition-colors">Eco Luxury Hotel, Boca De Agua</h4>
+                                <p className="text-xs text-[#2c0405]/60 mt-2 leading-relaxed max-w-sm">
+                                    A sustainable hospitality experience. The design translates the organic philosophy of the brand into a visual digital narrative.
+                                </p>
+                            </a>
                         </motion.div>
                     </div>
                 </Section>

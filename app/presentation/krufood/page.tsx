@@ -696,6 +696,33 @@ export default function KrufoodPresentation() {
                                 </p>
                             </a>
                         </motion.div>
+
+                        {/* Casita Crafters Video Case */}
+                        <motion.div whileHover={{ y: -5 }} className="group cursor-pointer">
+                            <a href="https://www.casitacrafters.com/" target="_blank" rel="noopener noreferrer" className="block">
+                                <div className="aspect-video bg-[#2c0405]/5 rounded-lg mb-4 overflow-hidden relative border border-[#2c0405]/10">
+                                    {/* Link Overlay to ensure clickability over iframe */}
+                                    <div className="absolute inset-0 z-20 bg-transparent"></div>
+                                    <div style={{ padding: '56.25% 0 0 0', position: 'relative', width: '100%', height: '100%' }}>
+                                        <iframe
+                                            src="https://player.vimeo.com/video/1157977881?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1&amp;autoplay=1&amp;loop=1&amp;muted=1"
+                                            frameBorder="0"
+                                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                            referrerPolicy="strict-origin-when-cross-origin"
+                                            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                                            title="Casita Crafters"
+                                        ></iframe>
+                                    </div>
+                                    <div className="absolute top-2 left-2 z-30 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-mono uppercase tracking-wider text-[#2c0405]">
+                                        REAL ESTATE • WEB
+                                    </div>
+                                </div>
+                                <h4 className="font-medium text-[#2c0405] group-hover:text-[#822b2e] transition-colors">Casita Crafters</h4>
+                                <p className="text-xs text-[#2c0405]/60 mt-2 leading-relaxed max-w-sm">
+                                    Flexible space for your ever-changing needs. A boutique builder of accessory dwelling units paired with a responsive, conversion-focused layout.
+                                </p>
+                            </a>
+                        </motion.div>
                     </div>
                 </Section>
 

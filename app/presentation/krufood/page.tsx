@@ -514,7 +514,7 @@ export default function KrufoodPresentation() {
                             <div className="flex justify-between items-start mb-8">
                                 <div>
                                     <h3 className="text-sm font-mono text-[#2c0405]/60 uppercase tracking-widest mb-1">Total Investment</h3>
-                                    <div className="text-4xl md:text-5xl font-semibold text-[#2c0405]">$5,500 <span className="text-lg text-[#2c0405]/40 font-normal">USD</span></div>
+                                    <div className="text-4xl md:text-5xl font-semibold text-[#2c0405]">$4,500 <span className="text-lg text-[#2c0405]/40 font-normal">USD</span></div>
                                 </div>
                                 <div className="px-3 py-1 bg-[#822b2e]/10 text-[#822b2e] rounded-full text-xs font-mono border border-[#822b2e]/20">ALL_INCLUSIVE</div>
                             </div>
@@ -524,17 +524,17 @@ export default function KrufoodPresentation() {
                                     <h4 className="text-xs font-mono text-[#2c0405]/50 uppercase mb-2">Estimated Timeline</h4>
                                     <p className="text-[#2c0405] font-medium flex items-center gap-2">
                                         <span className="iconify text-[#822b2e]" data-icon="lucide:calendar-clock"></span>
-                                        4 - 6 Weeks
+                                        1 - 1.5 Months
                                     </p>
-                                    <p className="text-[10px] text-[#2c0405]/40 mt-1">Dependent on feedback loops.</p>
+                                    <p className="text-[10px] text-[#2c0405]/40 mt-1">Dependent on feedback & revisions.</p>
                                 </div>
                                 <div>
-                                    <h4 className="text-xs font-mono text-[#2c0405]/50 uppercase mb-2">Payment Terms</h4>
+                                    <h4 className="text-xs font-mono text-[#2c0405]/50 uppercase mb-2">Payment Structure</h4>
                                     <p className="text-[#2c0405] font-medium flex items-center gap-2">
                                         <span className="iconify text-[#822b2e]" data-icon="lucide:credit-card"></span>
-                                        3 Installments
+                                        3 x $1,500 USD
                                     </p>
-                                    <p className="text-[10px] text-[#2c0405]/40 mt-1">Secured release via Contra.</p>
+                                    <p className="text-[10px] text-[#2c0405]/40 mt-1">Released per milestone via Contra.</p>
                                 </div>
                             </div>
                         </div>
@@ -546,7 +546,7 @@ export default function KrufoodPresentation() {
                                 <span className="iconify w-8 h-8 opacity-60 mb-4" data-icon="lucide:timer"></span>
                                 <h3 className="text-lg font-medium leading-tight mb-2">Accelerated Delivery</h3>
                                 <p className="text-white/60 text-xs leading-relaxed">
-                                    Our sprint-based workflow allows us to deliver the full Scope of Work in approx 1.5 months.
+                                    Our sprint-based workflow allows us to deliver the full Scope of Work in approx 1 - 1.5 months.
                                 </p>
                             </div>
                         </div>

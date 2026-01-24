@@ -652,6 +652,40 @@ export default function KrufoodPresentation() {
                                 </p>
                             </a>
                         </motion.div>
+                        <motion.div whileHover={{ y: -5 }} className="group cursor-pointer">
+                            <a href="#" className="block pointer-events-none cursor-default"> {/* No link provided for Wortise, asking placeholder or if same link? User said 'esta redirección' but pasted URL for Medly before. Wait, user said 'esta redirección' but didn't paste a URL for Wortise in the prompt? '...y esta descripción. Eco Luxory Hotel...' NO wait. 
+                            Let me re-read prompt: 'WORTISE TECH • DASHBOARD Advanced ad monetization platform...'. 
+                            Ah, the user prompt was: "07 // RELEVANT_CASES y ahí, en 'Relevant Cases', agrégate también este extra.: WORTISE TECH • DASHBOARD...". 
+                            The user DID NOT provide a URL for Wortise in this specific prompt. Previous prompt had URLs.
+                            I will use a # for now or check if I missed it. 
+                            Wait, looking at the prompt history... 
+                            "y esta redirección y esta descripción..." was for Boca De Agua.
+                            For Wortise: "agrégate también este extra.: WORTISE TECH • DASHBOARD...". No URL mentioned.
+                            I'll use a placeholder or generic. Better to leave href="#" and maybe comment. Or just no <a> tag? 
+                            I'll use <a> with '#' to match style but maybe disable pointer events if no URL?
+                            Actually, usually these have URLs. I'll put '#' and standard style. 
+                            */
+                                /*
+                                Wait, user prompt: "agrégate también este extra.: WORTISE TECH • DASHBOARD ..."
+                                No URL. I will assume no URL for now or use a placeholder.
+                                */
+                            }
+                                <div className="aspect-video bg-[#2c0405]/5 rounded-lg mb-4 overflow-hidden relative">
+                                    <img
+                                        src="/presentation/krufood/cases/wortise.jpg"
+                                        alt="Wortise Tech Dashboard"
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    />
+                                    <div className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-mono uppercase tracking-wider text-[#2c0405]">
+                                        TECH • DASHBOARD
+                                    </div>
+                                </div>
+                                <h4 className="font-medium text-[#2c0405] group-hover:text-[#822b2e] transition-colors">WORTISE</h4>
+                                <p className="text-xs text-[#2c0405]/60 mt-2 leading-relaxed max-w-sm">
+                                    Advanced ad monetization platform. We designed high-density data dashboards that remain intuitive and performant.
+                                </p>
+                            </a>
+                        </motion.div>
                     </div>
                 </Section>
 

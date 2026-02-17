@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic"
 import { CSSProperties, useEffect, useRef, useState } from "react"
 import Image from "next/image"
-import { CustomMouse } from "@/components/custom-mouse"
 import { Navbar } from "@/components/layout/navbar"
 import { AwardLogo } from "@/components/ui/award-logo"
 
@@ -90,7 +89,6 @@ export function HeroSection() {
 
   return (
     <>
-      <CustomMouse />
       <Navbar isLoaded={isLoaded} />
 
       <div

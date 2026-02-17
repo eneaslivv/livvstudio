@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Layers, ArrowRight, CheckCircle2, ChevronRight, ShoppingCart, ShieldCheck, Zap, Globe, Users } from "lucide-react"
 import { useParams } from "next/navigation"
+import Image from "next/image"
 import { Navbar } from "@/components/layout/navbar"
 import { FooterSection } from "@/components/sections/footer-section"
 
@@ -124,7 +125,16 @@ export default function ProductDetailPage() {
 
             <main className="relative z-10 flex-1">
                 {/* 1. HERO */}
-                <section className="pt-28 pb-28 px-6 md:px-12">
+                <section className="relative pt-28 pb-28 px-6 md:px-12 overflow-hidden">
+                    <div className="absolute inset-0 -z-10">
+                        <div
+                            className="absolute inset-0 bg-cover bg-center"
+                            style={{
+                                backgroundImage: "url('https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=1800&q=80')",
+                            }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/90 to-white/95" />
+                    </div>
                     <div className="max-w-6xl mx-auto text-center space-y-8">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}

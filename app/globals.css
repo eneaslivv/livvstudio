@@ -118,7 +118,7 @@
 @layer utilities {
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(to right, #2C0405 0%, #C18972 80%);
+    background-image: linear-gradient(110deg, #2C0405 0%, #5c1d18 40%, #2C0405 80%);
   }
 
   .section-heading {
@@ -141,6 +141,28 @@
   100% {
     transform: translateX(-100%);
   }
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes blurReveal {
+    0% {
+        opacity: 0;
+        filter: blur(12px);
+        transform: translateY(4px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translateY(0);
+    }
 }
 
 @layer utilities {

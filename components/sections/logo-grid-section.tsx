@@ -25,11 +25,36 @@ export function LogoGridSection() {
     }, [])
 
     const logos = [
-        { label: "ViewFi", style: "font-semibold tracking-[0.2em] uppercase" },
-        { label: "RE/MAX", style: "font-extrabold tracking-tight uppercase" },
-        { label: "Sacoa", style: "font-serif italic tracking-[0.1em]" },
-        { label: "WORTISE", style: "font-black text-[18px] tracking-[0.25em] uppercase" },
-        { label: "BLACKBOX AI", style: "font-semibold uppercase text-[14px]" },
+        {
+            src: "/logos-header/logo-6.png",
+            alt: "ViewFi",
+            href: "https://viewfi.live/",
+            description: "Real-time monitoring and analytics.",
+        },
+        {
+            src: "/logos-header/logo-7.png",
+            alt: "RE/MAX",
+            href: "https://www.remax.com.ar/",
+            description: "Venta y alquiler de propiedades.",
+        },
+        {
+            src: "/logos-header/sacoa.png",
+            alt: "Sacoa",
+            href: "https://sacoa.com/",
+            description: "Entertainment experiences across LATAM.",
+        },
+        {
+            src: "/logos-header/wortise.png",
+            alt: "Wortise",
+            href: "https://wortise.com/es",
+            description: "AI-powered monetization and ads insights.",
+        },
+        {
+            src: "/logos-header/blackbox.png",
+            alt: "Blackbox AI",
+            href: "https://www.blackbox.ai/",
+            description: "Autonomous agents for software teams.",
+        },
     ]
 
     return (
@@ -44,26 +69,41 @@ export function LogoGridSection() {
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
                     {logos.map((logo, index) => (
-                        <div
+                        <a
                             key={index}
-                            className="group relative h-32 md:h-40 flex items-center justify-center border border-[#E8E4DC] overflow-hidden cursor-pointer bg-white"
+                            href={logo.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group relative h-32 md:h-40 flex items-center justify-center border border-[#E8E4DC] overflow-hidden cursor-pointer bg-white transition-all duration-300 hover:bg-[#2C0405]"
                         >
                             <style jsx>{`
                                 @media (max-width: 767px) {
-                                    div:nth-child(2n) { border-right: none; }
+                                    a:nth-child(2n) { border-right: none; }
                                 }
                                 @media (min-width: 768px) {
-                                    div:nth-child(5n) { border-right: none; }
+                                    a:nth-child(5n) { border-right: none; }
                                 }
                             `}</style>
 
                             <div
-                                className={`relative z-10 text-2xl md:text-3xl text-[#1a1a1a] group-hover:text-[#2C0405] transition-colors duration-500 ease-in-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-                                style={{ transitionDelay: `${500 + index * 100}ms` }}
+                                className={`w-28 h-12 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                             >
-                                <span className={logo.style}>{logo.label}</span>
+                                <div
+                                    className="w-full h-full bg-transparent"
+                                    style={{
+                                        maskImage: `url(${logo.src})`,
+                                        maskSize: "contain",
+                                        maskRepeat: "no-repeat",
+                                        maskPosition: "center",
+                                        WebkitMaskImage: `url(${logo.src})`,
+                                        WebkitMaskSize: "contain",
+                                        WebkitMaskRepeat: "no-repeat",
+                                        WebkitMaskPosition: "center",
+                                        backgroundColor: "currentColor",
+                                    }}
+                                />
                             </div>
-                        </div>
+                        </a>
                     ))}
                 </div>
             </div>

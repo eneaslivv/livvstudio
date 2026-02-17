@@ -68,11 +68,11 @@ export function ContactSection() {
           <div
             className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <span className="inline-block text-[11px] tracking-[0.3em] uppercase text-[#C4A35A] font-medium mb-4">
+            <span className="inline-block text-[11px] tracking-[0.3em] uppercase text-white font-medium mb-4">
               Contact Form
             </span>
-            <h2 className="section-heading mb-8">
-              <RevealText text="Send your details" className="text-gradient-gold" isVisible={isVisible} />
+            <h2 className="section-heading mb-8 text-white">
+              <RevealText text="Send your details" className="text-white" isVisible={isVisible} />
             </h2>
             <div className="space-y-4">
                 <p className="text-sm text-white/60">

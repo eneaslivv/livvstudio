@@ -104,11 +104,14 @@ export function HeroSection() {
       </div>
 
       <section id="home" className="h-auto w-full p-4 sm:p-6 pt-2 pb-4 md:pb-8 flex items-start justify-center">
-        <div
-          ref={frameRef}
-          className="relative w-full h-[80vh] max-w-[1800px] rounded-[2.5rem] overflow-hidden bg-white shadow-sm isolate transform-gpu"
-          style={frameVars}
-        >
+       <div
+         ref={frameRef}
+         className="relative w-full h-[80vh] max-w-[1800px] rounded-[2.5rem] overflow-hidden bg-white shadow-sm isolate transform-gpu"
+         style={frameVars}
+       >
+          <div className="absolute inset-x-0 top-0 h-24 pointer-events-none">
+            <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-transparent" />
+          </div>
           <div className="absolute inset-0 z-50 rounded-[2.5rem] border-[3px] border-[#1a1a1a] pointer-events-none" />
 
           <div

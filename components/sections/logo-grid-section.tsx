@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef, useEffect, useState } from "react"
+import Image from "next/image"
 import { AnimatedBorders } from "@/components/ui/animated-borders"
 
 export function LogoGridSection() {
@@ -30,30 +31,49 @@ export function LogoGridSection() {
             alt: "ViewFi",
             href: "https://viewfi.live/",
             description: "Real-time monitoring and analytics.",
+            hoverBg: "/assets/logo-bg-1.jpg",
         },
         {
             src: "/logos-header/logo-7.png",
             alt: "RE/MAX",
             href: "https://www.remax.com.ar/",
             description: "Venta y alquiler de propiedades.",
+            hoverBg: "/assets/logo-bg-2.jpg",
         },
         {
             src: "/logos-header/sacoa.png",
             alt: "Sacoa",
             href: "https://sacoa.com/",
             description: "Entertainment experiences across LATAM.",
+            hoverBg: "/assets/logo-bg-3.jpg",
         },
         {
             src: "/logos-header/wortise.png",
             alt: "Wortise",
             href: "https://wortise.com/es",
             description: "AI-powered monetization and ads insights.",
+            hoverBg: "/assets/logo-bg-1.jpg",
         },
         {
             src: "/logos-header/blackbox.png",
             alt: "Blackbox AI",
             href: "https://www.blackbox.ai/",
             description: "Autonomous agents for software teams.",
+            hoverBg: "/assets/logo-bg-2.jpg",
+        },
+        {
+            src: "/logos-header/buda.png",
+            alt: "Buda.com",
+            href: "https://www.buda.com/argentina",
+            description: "Cripto exchange, simple and secure.",
+            hoverBg: "/assets/logo-bg-3.jpg",
+        },
+        {
+            src: "/logos-header/heygen.png",
+            alt: "HeyGen",
+            href: "https://www.heygen.com/",
+            description: "AI video generator with avatars.",
+            hoverBg: "/assets/logo-bg-1.jpg",
         },
     ]
 
@@ -67,14 +87,14 @@ export function LogoGridSection() {
                     <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} />
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5">
                     {logos.map((logo, index) => (
                         <a
                             key={index}
                             href={logo.href}
                             target="_blank"
                             rel="noreferrer"
-                            className="group relative h-32 md:h-40 flex items-center justify-center border border-[#E8E4DC] overflow-hidden cursor-pointer bg-white transition-all duration-300 hover:bg-[#2C0405]"
+                            className="group relative h-32 md:h-40 flex items-center justify-center border border-[#E8E4DC] overflow-hidden cursor-pointer bg-white"
                         >
                             <style jsx>{`
                                 @media (max-width: 767px) {
@@ -85,22 +105,25 @@ export function LogoGridSection() {
                                 }
                             `}</style>
 
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out z-0">
+                                <Image
+                                    src={logo.hoverBg!}
+                                    alt="Background"
+                                    fill
+                                    className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-black/40" />
+                            </div>
+
                             <div
-                                className={`w-28 h-12 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                                className={`relative z-10 w-28 h-12 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                                style={{ transitionDelay: `${500 + index * 100}ms` }}
                             >
-                                <div
-                                    className="w-full h-full bg-transparent"
-                                    style={{
-                                        maskImage: `url(${logo.src})`,
-                                        maskSize: "contain",
-                                        maskRepeat: "no-repeat",
-                                        maskPosition: "center",
-                                        WebkitMaskImage: `url(${logo.src})`,
-                                        WebkitMaskSize: "contain",
-                                        WebkitMaskRepeat: "no-repeat",
-                                        WebkitMaskPosition: "center",
-                                        backgroundColor: "currentColor",
-                                    }}
+                                <Image
+                                    src={logo.src}
+                                    alt={logo.alt}
+                                    fill
+                                    className="object-contain filter transition-all duration-500 group-hover:invert"
                                 />
                             </div>
                         </a>

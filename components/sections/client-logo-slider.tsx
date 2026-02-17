@@ -7,58 +7,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import { clientLogos } from "@/components/data/client-logos"
 
-const logos = [
-  {
-    src: "/logos-header/blackbox.png",
-    alt: "Blackbox AI",
-    href: "https://www.blackbox.ai/",
-    description: "The AI coding assistant that turns any question into code.",
-    useMask: true
-  },
-  {
-    src: "/logos-header/buda.png",
-    alt: "Buda.com",
-    href: "https://www.buda.com/argentina",
-    description: "La forma más simple y segura de comprar y vender criptomonedas.",
-    useMask: true
-  },
-  {
-    src: "/logos-header/heygen.png",
-    alt: "HeyGen",
-    href: "https://www.heygen.com/",
-    description: "AI video generator. Create stunning videos with AI avatars and voices.",
-    useMask: true
-  },
-  {
-    src: "/logos-header/logo-6.png",
-    alt: "ViewFi",
-    href: "https://viewfi.live/",
-    description: "Real-time monitoring and analytics.",
-    useMask: true
-  },
-  {
-    src: "/logos-header/logo-7.png",
-    alt: "Remax",
-    href: "https://www.remax.com.ar/",
-    description: "Venta y Alquiler de Propiedades.",
-    useMask: true
-  },
-  {
-    src: "/logos-header/sacoa.png",
-    alt: "Sacoa Entertainment",
-    href: "https://sacoa.com/",
-    description: "Get ready for the most fun experience.",
-    useMask: true
-  },
-  {
-    src: "/logos-header/wortise.png",
-    alt: "Wortise",
-    href: "https://wortise.com/es",
-    description: "Aumente sus ingresos publicitarios con AdMonet. Soluciones basadas en IA.",
-    useMask: true
-  },
-];
+const logos = clientLogos
 
 export function ClientLogoSlider() {
   // Increase duplication to 6x to ensure smooth infinite scroll on ultra-wide screens

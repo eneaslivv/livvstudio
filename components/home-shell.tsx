@@ -39,7 +39,7 @@ export function HomeShell() {
       <BusinessArtSection />
       <WorkModelSection />
       <PortfolioSection id="work" />
-      <ServicesSection />
+      <ServicesSection id="services" />
       <MarketplaceSection />
       <TestimonialsSection />
       <LogoGridSection />

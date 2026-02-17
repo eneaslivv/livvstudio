@@ -54,9 +54,9 @@ export function Navbar({ isLoaded = true, theme = "dark" }: NavbarProps) {
     ]
 
     const serviceItems = [
-        { label: "Creative Engineering", desc: "Framer / Shopify / Webflow" },
-        { label: "Product Strategy & UI", desc: "SaaS / AI Agents / UX" },
-        { label: "Motion & Narrative", desc: "WebGL / 3D / Brand" },
+        { label: "Creative Engineering", desc: "Framer / Shopify / Webflow", slug: "creative-engineering" },
+        { label: "Product Strategy & UI", desc: "SaaS / AI Agents / UX", slug: "product-strategy-ui" },
+        { label: "Motion & Narrative", desc: "WebGL / 3D / Brand", slug: "motion-narrative" },
     ]
 
     return (
@@ -105,11 +105,11 @@ export function Navbar({ isLoaded = true, theme = "dark" }: NavbarProps) {
                                         >
                                             <div className={`p-1.5 rounded-2xl backdrop-blur-xl border shadow-xl overflow-hidden ${isLightPage ? "bg-white/90 border-black/5" : "bg-[#1a1a1a]/90 border-white/10"}`}>
                                                 {serviceItems.map((service, idx) => (
-                                                    <Link
-                                                        key={idx}
-                                                        href={getLink({ id: "services" })} // Link to services section
-                                                        className={`block p-3 rounded-xl transition-all duration-300 group/item ${isLightPage ? "hover:bg-black/5" : "hover:bg-white/5"}`}
-                                                    >
+                                                        <Link
+                                                            key={idx}
+                                                            href={`/services/${service.slug}`}
+                                                            className={`block p-3 rounded-xl transition-all duration-300 group/item ${isLightPage ? "hover:bg-black/5" : "hover:bg-white/5"}`}
+                                                        >
                                                         <div className={`text-sm font-medium mb-0.5 ${isLightPage ? "text-black" : "text-white"}`}>{service.label}</div>
                                                         <div className={`text-[10px] ${isLightPage ? "text-black/50" : "text-white/50"}`}>{service.desc}</div>
                                                     </Link>
@@ -195,7 +195,7 @@ export function Navbar({ isLoaded = true, theme = "dark" }: NavbarProps) {
                                         {serviceItems.map((service, idx) => (
                                             <Link
                                                 key={idx}
-                                                href={getLink({ id: "services" })}
+                                                href={`/services/${service.slug}`}
                                                 onClick={handleMobileNavClick}
                                                 className={`block py-2 text-sm ${isLightPage ? "text-black/60" : "text-white/60"}`}
                                             >

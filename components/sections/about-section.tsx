@@ -68,7 +68,10 @@ export function AboutSection({ id }: { id?: string }) {
     <section
       id={id}
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-[#2C0405]"
+      className="relative w-full overflow-hidden"
+      style={{
+        background: "linear-gradient(180deg, #f5f2ed 0%, #f5f2ed 35%, #2c0405 65%, #2c0405 100%)",
+      }}
     >
       {/* Dynamic Background Layer */}
       <motion.div
@@ -76,7 +79,7 @@ export function AboutSection({ id }: { id?: string }) {
         style={{ opacity: bgOpacity }}
       />
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32 relative z-10">
           <AnimatedBorders color="#2C0405" />
 
         <div className="relative">

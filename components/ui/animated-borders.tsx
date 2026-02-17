@@ -10,6 +10,7 @@ interface AnimatedBordersProps {
     showTop?: boolean
     showBottom?: boolean
     fullWidth?: boolean
+    color?: string
 }
 
 export function AnimatedBorders({
@@ -18,7 +19,8 @@ export function AnimatedBorders({
     showRight = true,
     showTop = false,
     showBottom = false,
-    fullWidth = false
+    fullWidth = false,
+    color = "#D1CDC2"
 }: AnimatedBordersProps) {
     const [randomOffset] = useState(() => Math.random() * 10)
 
@@ -52,16 +54,16 @@ export function AnimatedBorders({
 
             {/* STATIC DASHED LINES (The Architecture) */}
             {showLeft && (
-                <div className="absolute left-6 md:left-12 top-0 bottom-0 w-[1px] border-l border-dashed border-[#D1CDC2] opacity-30" />
+                <div className="absolute left-6 md:left-12 top-0 bottom-0 w-[1px] border-l border-dashed opacity-30" style={{ borderColor: color }} />
             )}
             {showRight && (
-                <div className="absolute right-6 md:right-12 top-0 bottom-0 w-[1px] border-r border-dashed border-[#D1CDC2] opacity-30" />
+                <div className="absolute right-6 md:right-12 top-0 bottom-0 w-[1px] border-r border-dashed opacity-30" style={{ borderColor: color }} />
             )}
             {showTop && (
-                <div className={`absolute top-0 ${fullWidth ? "left-0 right-0" : "left-6 md:left-12 right-6 md:right-12"} h-[1px] border-t border-dashed border-[#D1CDC2] opacity-30`} />
+                <div className={`absolute top-0 ${fullWidth ? "left-0 right-0" : "left-6 md:left-12 right-6 md:right-12"} h-[1px] border-t border-dashed opacity-30`} style={{ borderColor: color }} />
             )}
             {showBottom && (
-                <div className={`absolute bottom-0 ${fullWidth ? "left-0 right-0" : "left-6 md:left-12 right-6 md:right-12"} h-[1px] border-b border-dashed border-[#D1CDC2] opacity-30`} />
+                <div className={`absolute bottom-0 ${fullWidth ? "left-0 right-0" : "left-6 md:left-12 right-6 md:right-12"} h-[1px] border-b border-dashed opacity-30`} style={{ borderColor: color }} />
             )}
 
             {/* CONTINUOUS TRAVELLING PARTICLES */}

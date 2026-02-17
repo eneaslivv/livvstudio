@@ -81,7 +81,7 @@ export function AboutSection({ id }: { id?: string }) {
       />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32 relative z-10">
-          <AnimatedBorders color="#2C0405" />
+          <AnimatedBorders color="#EDE5D8" />
 
         <div className="relative">
           {/* Decorative Parallax Square */}
@@ -100,9 +100,9 @@ export function AboutSection({ id }: { id?: string }) {
 
           {/* Header */}
           <div className="w-full relative z-10 mb-20 md:mb-24">
-              <div className="relative w-full h-[1px]">
-                <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} color="#2C0405" />
-              </div>
+                <div className="relative w-full h-[1px]">
+                  <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} color="#EDE5D8" />
+                </div>
             <div className="pt-6 flex justify-between items-center text-[10px] uppercase tracking-widest text-[#EDE5D8]/80 px-6 md:px-12">
               <motion.span
                 initial={{ opacity: 0, x: -10 }}

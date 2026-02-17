@@ -175,8 +175,24 @@ export function FlowerCanvas({ className }: { className?: string }) {
         // Wait for layout
         setTimeout(initParticles, 100);
 
+        // Visibility Check
+        let isVisible = true
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                isVisible = entry.isIntersecting
+            },
+            { threshold: 0 }
+        )
+        observer.observe(canvas)
+
         function animate(time: number) {
             if (!ctx) return
+
+            if (!isVisible) {
+                animationFrameId = requestAnimationFrame(animate)
+                return
+            }
+
             ctx.clearRect(0, 0, width, height)
 
             particles.forEach(p => {
@@ -188,7 +204,7 @@ export function FlowerCanvas({ className }: { className?: string }) {
         }
 
         const handleMouseMove = (e: MouseEvent) => {
-            if (!canvas) return
+            if (!canvas || !isVisible) return
             const rect = canvas.getBoundingClientRect()
             mouse.x = e.clientX - rect.left
             mouse.y = e.clientY - rect.top
@@ -205,6 +221,7 @@ export function FlowerCanvas({ className }: { className?: string }) {
             canvas.removeEventListener('mousemove', handleMouseMove)
             window.removeEventListener('resize', handleResize)
             cancelAnimationFrame(animationFrameId)
+            observer.disconnect()
         }
     }, [])
 

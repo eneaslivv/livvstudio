@@ -1,11 +1,10 @@
-"use client"
+﻿"use client"
 
 import { useRef } from "react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { AnimatedBorders } from "@/components/ui/animated-borders"
 import { Playfair_Display } from "next/font/google"
 import { useRouter } from "next/navigation"
-import Image from "next/image"
 import { RevealText } from "@/components/ui/reveal-text"
 
 const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "600"] })
@@ -13,60 +12,57 @@ const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "
 const items = [
     {
         id: 1,
-        title: 'Architectural Heritage',
-        subtitle: 'Design Study',
-        img: '/images/portfolio-1.png',
-        video: 'https://player.vimeo.com/video/1152114665?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1',
-        link: '/projects/architecture',
-        stats: '4.2k High-res Assets',
-        tech: ['Next.js', 'Three.js', 'Postman']
+        title: "Internal Management Systems",
+        subtitle: "Custom operational tools",
+        img: "/images/internal-dashboard.png",
+        link: "/projects/internal-management",
+        stats: "2024",
+        tech: ["Development", "Operational Tools"]
     },
     {
         id: 2,
-        title: 'Pr Tool',
-        subtitle: 'Content Tech',
-        img: '/images/pr-tool.png',
-        link: '/work/pr-tool',
-        stats: '+240% Engagement',
-        tech: ['Next.js', 'React', 'Node.js']
-    },
-    {
-        id: 4,
-        title: 'Content Monetization',
-        subtitle: 'Fintech Platform',
-        img: '/images/portfolio-4.jpg',
-        link: '/projects/monetization',
-        stats: '$2.4M Volume/mo',
-        tech: ['Stripe', 'Next.js', 'Firebase']
+        title: "Paper",
+        subtitle: "Venue & nightlife software",
+        img: "/images/portfolio-2.jpg",
+        link: "/projects/paper",
+        stats: "2024",
+        tech: ["Product Strategy", "UI/UX"]
     },
     {
         id: 3,
-        title: 'Metropolis',
-        subtitle: 'Urban Visualization',
-        img: '/images/portfolio-3.jpg',
-        video: 'https://player.vimeo.com/video/1152115391?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1',
-        link: '/projects/metropolis',
-        stats: '99.9% Render Accuracy',
-        tech: ['TypeScript', 'Node.js', 'Tailwind']
+        title: "SEO Blocks Generator",
+        subtitle: "Programmatic SEO for Webflow",
+        img: "/images/portfolio-3.jpg",
+        link: "/projects/seo-blocks",
+        stats: "2024",
+        tech: ["Webflow Development", "SEO"]
+    },
+    {
+        id: 4,
+        title: "Azqira",
+        subtitle: "Digital Experience",
+        img: "/images/project-mobile.png",
+        link: "/projects/azqira",
+        stats: "2024",
+        tech: ["UI/UX", "Development"]
     },
     {
         id: 5,
-        title: 'Native Teams',
-        subtitle: 'Web Platform',
-        img: '/images/portfolio-5.jpg',
-        video: 'https://player.vimeo.com/video/840622094?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1',
-        link: '/projects/native-teams',
-        stats: '+180% Growth',
-        tech: ['React', 'Node.js', 'AWS']
+        title: "Pr Tool",
+        subtitle: "Content Monetization",
+        img: "/images/pr-tool.png",
+        link: "/projects/pr-tool",
+        stats: "2024",
+        tech: ["App development", "Integrations"]
     },
     {
         id: 6,
-        title: 'Concotesta',
-        subtitle: 'Brand Experience',
-        img: '/images/portfolio-6.png',
-        link: '/projects/concotesta',
-        stats: '3D Product Showcase',
-        tech: ['Three.js', 'Blender', 'GSAP']
+        title: "Sacoa Cashless",
+        subtitle: "Design & Animations",
+        img: "/images/sacoa-cashless.png",
+        link: "/projects/sacoa",
+        stats: "2024",
+        tech: ["Design", "Animations"]
     }
 ]
 
@@ -75,7 +71,7 @@ function PortfolioGrid() {
     const displayedItems = items.slice(0, 6)
 
     const handleCardClick = (link: string) => {
-        // router.push(link)
+        router.push(link)
     }
 
     return (
@@ -87,27 +83,12 @@ function PortfolioGrid() {
                         onClick={() => handleCardClick(item.link)}
                         className="group/card relative w-full aspect-[3/2] rounded-[10px] overflow-hidden cursor-pointer border border-[#1a1a1a]/10 hover:border-[#F2D696]/50 transition-all duration-500"
                     >
-                        {/* Image or Video */}
-                        {item.video ? (
-                            <div className="absolute inset-0 overflow-hidden">
-                                <iframe
-                                    src={item.video}
-                                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78%] h-[177.78%] min-w-full min-h-full pointer-events-none"
-                                    frameBorder="0"
-                                    allow="autoplay; fullscreen; picture-in-picture"
-                                    allowFullScreen
-                                    title={item.title}
-                                />
-                            </div>
-                        ) : (
-                            <Image
-                                src={item.img}
-                                alt={item.title}
-                                fill
-                                className="object-cover transition-transform duration-1000 group-hover/card:scale-110"
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                            />
-                        )}
+                        {/* Image */}
+                        <img
+                            src={item.img}
+                            alt={item.title}
+                            className="w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-110"
+                        />
 
                         {/* Gradient Blur Overlay (Softened) */}
                         <div
@@ -153,8 +134,6 @@ function PortfolioGrid() {
     )
 }
 
-
-
 export function PortfolioSection({ id }: { id?: string }) {
     return (
         <section id={id} className={`relative w-full text-slate-900 overflow-hidden`}>
@@ -162,9 +141,7 @@ export function PortfolioSection({ id }: { id?: string }) {
                 <AnimatedBorders className="hidden md:block" />
 
                 {/* Section Header */}
-                <div className="relative w-full h-[1px]">
-                    <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} />
-                </div>
+                <div className="mx-6 md:mx-12 border-t border-dashed border-[#D1CDC2] relative z-10" />
 
                 <div className="w-full pt-24 md:pt-32 flex flex-col md:flex-row justify-between items-center gap-8 mb-12 md:mb-16 px-10 md:px-24 relative z-10">
                     <div>

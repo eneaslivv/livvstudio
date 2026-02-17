@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react"
 import { AnimatedBorders } from "@/components/ui/animated-borders"
 import { motion, AnimatePresence } from "framer-motion"
 import { RevealText } from "@/components/ui/reveal-text"
+import Link from "next/link"
 
 export function ServicesSection({ id }: { id?: string }) {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -31,6 +32,7 @@ export function ServicesSection({ id }: { id?: string }) {
   const services = [
     {
       title: "Creative Engineering",
+      slug: "creative-engineering",
       description: "High-end digital experiences built on Framer, Shopify, and Webflow. We bridge the gap between complex design and high-performance development.",
       color: "bg-transparent",
       textColor: "text-[#EDE5D8]",
@@ -42,6 +44,7 @@ export function ServicesSection({ id }: { id?: string }) {
     },
     {
       title: "Product Strategy & UI",
+      slug: "product-strategy-ui",
       description: "We design with business logic. From wireframes to high-fidelity UI, every pixel has a purpose: conversion, retention, and brand authority.",
       color: "bg-[#A8C8C0]",
       textColor: "text-[#D4D884]",
@@ -53,6 +56,7 @@ export function ServicesSection({ id }: { id?: string }) {
     },
     {
       title: "Motion & Narrative",
+      slug: "motion-narrative",
       description: "Static is boring. We produce high-end motion graphics, 3D visuals, and dynamic content that tell your product's story and capture attention instantly.",
       color: "bg-[#BFABCC]",
       textColor: "text-[#D199C2]",
@@ -103,8 +107,9 @@ export function ServicesSection({ id }: { id?: string }) {
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-16">
             {services.map((service, index) => (
-              <div
+              <Link
                 key={index}
+                href={`/services/${service.slug}`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 className="group relative flex flex-col h-[500px] md:h-[650px] overflow-hidden rounded-[10px] cursor-pointer transition-transform duration-500 hover:-translate-y-2"
@@ -176,7 +181,7 @@ export function ServicesSection({ id }: { id?: string }) {
                     </p>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

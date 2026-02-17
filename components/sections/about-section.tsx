@@ -68,11 +68,12 @@ export function AboutSection({ id }: { id?: string }) {
     <section
       id={id}
       ref={sectionRef}
-      className="relative w-full overflow-hidden"
-      style={{
-        background: "linear-gradient(180deg, #f5f2ed 0%, #f5f2ed 35%, #2c0405 65%, #2c0405 100%)",
-      }}
+      className="relative w-full overflow-hidden bg-[#2C0405]"
     >
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#f5f2ed] via-[#f5f2ed]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2c0405]/70 to-[#2c0405]" />
+      </div>
       {/* Dynamic Background Layer */}
       <motion.div
         className="absolute inset-0 z-0 bg-[#2C0405]"

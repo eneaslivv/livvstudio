@@ -178,9 +178,6 @@ export function HeroSection() {
           </div>
 
           <div className="relative z-10 flex flex-col items-center justify-start h-full text-center px-4 pt-32 md:pt-40">
-            <div className="mb-6 flex justify-center">
-              <AwardLogo color="#ffffff" size={92} />
-            </div>
             <h1 className="text-2xl md:text-4xl lg:text-5xl leading-tight md:leading-none font-light tracking-[-0.08em] max-w-4xl mx-auto text-gray-100 flex flex-col items-center">
               <span className="block overflow-hidden pb-1">
                 <span

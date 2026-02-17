@@ -15,13 +15,13 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
         window.scrollTo(0, 0)
 
         const lenis = new Lenis({
-            duration: 1.2,
+            duration: 1.0, // Reduced from 1.2 for snappier feel
             easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: "vertical",
             gestureOrientation: "vertical",
             smoothWheel: true,
             wheelMultiplier: 1,
-            touchMultiplier: 2,
+            touchMultiplier: 1.5, // Reduced from 2 for more control
         })
 
         function raf(time: number) {
@@ -30,6 +30,8 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
         }
 
         requestAnimationFrame(raf)
+
+        lenis.scrollTo(0, { duration: 0, immediate: true })
 
         return () => {
             lenis.destroy()

@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react"
 import { useScroll, useTransform, useSpring, motion } from "framer-motion"
 import { ArrowUpRight, Instagram, Linkedin, Github } from "lucide-react"
 import { AnimatedBorders } from "@/components/ui/animated-borders"
+import { AwardLogo } from "@/components/ui/award-logo"
 
 export function FooterSection({ id }: { id?: string }) {
     const containerRef = useRef<HTMLDivElement>(null)
@@ -27,7 +28,6 @@ export function FooterSection({ id }: { id?: string }) {
         script.async = true
         script.charset = 'utf-8'
         document.body.appendChild(script)
-        document.body.appendChild(script)
         return () => {
             document.body.removeChild(script)
             if (contraButtonRef.current) {
@@ -50,21 +50,28 @@ export function FooterSection({ id }: { id?: string }) {
                 {/* Main Contact Area */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-20 md:mb-32">
                     {/* Left Column: Title */}
-                    <div className="pl-0 lg:pl-[10%]">
-                        <span className="inline-block text-[11px] tracking-[0.3em] uppercase text-[#C4A35A] font-medium mb-4">
-                            Get in Touch
-                        </span>
-                        <h2 className="section-heading text-gradient-gold mb-6">
-                            Let's work together
-                        </h2>
-                        <div
-                            ref={contraButtonRef}
-                            className="contra-hire-me-button"
-                            data-analyticsuserid="451cfc1e-e897-46ed-a701-9dd0533e7ec6"
-                            data-theme="light"
-                            data-username="eneas_aldabe"
-                        />
-                    </div>
+                        <div className="pl-0 lg:pl-[10%]">
+                            <span className="inline-block text-[11px] tracking-[0.3em] uppercase text-[#C4A35A] font-medium mb-4">
+                                Get in Touch
+                            </span>
+                            <h2 className="section-heading text-gradient-gold mb-6">
+                                Let's work together
+                            </h2>
+                            <div
+                                ref={contraButtonRef}
+                                className="contra-hire-me-button"
+                                data-analyticsuserid="451cfc1e-e897-46ed-a701-9dd0533e7ec6"
+                                data-theme="light"
+                                data-username="eneas_aldabe"
+                            />
+                            <div className="mt-6 flex items-center gap-3">
+                                <AwardLogo color="#4f32ff" size={56} />
+                                <div className="text-[9px] uppercase tracking-[0.4em] text-[#1a1a1a]/70">
+                                    <div className="font-semibold text-[10px]">DesignRush</div>
+                                    <div className="text-[8px]">Top Digital Design Agency 2026</div>
+                                </div>
+                            </div>
+                        </div>
 
                     {/* Right Column: Contact Info */}
                     <div className="pr-0 lg:pr-[10%] pt-4 lg:pt-12">

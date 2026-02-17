@@ -76,13 +76,13 @@ export function AboutSection({ id }: { id?: string }) {
         style={{ opacity: bgOpacity }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32 relative z-10">
-          <AnimatedBorders color="#EDE5D8" />
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32 relative z-10">
+          <AnimatedBorders color="#2C0405" />
 
         <div className="relative">
           {/* Decorative Parallax Square */}
           <motion.div
-            className="absolute inset-x-0 inset-y-0 left-1/2 bg-gradient-to-r from-[#3D0A0C]/50 to-transparent hidden md:block"
+            className="absolute inset-x-0 inset-y-0 left-1/2 bg-[#2C0405]/80 hidden md:block"
             style={{ y: parallaxY }}
           />
 
@@ -96,9 +96,9 @@ export function AboutSection({ id }: { id?: string }) {
 
           {/* Header */}
           <div className="w-full relative z-10 mb-20 md:mb-24">
-            <div className="relative w-full h-[1px]">
-              <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} color="#EDE5D8" />
-            </div>
+              <div className="relative w-full h-[1px]">
+                <AnimatedBorders showLeft={false} showRight={false} showTop={true} fullWidth={true} color="#2C0405" />
+              </div>
             <div className="pt-6 flex justify-between items-center text-[10px] uppercase tracking-widest text-[#EDE5D8]/80 px-6 md:px-12">
               <motion.span
                 initial={{ opacity: 0, x: -10 }}

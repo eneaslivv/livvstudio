@@ -92,7 +92,7 @@ export function AboutSection({ id }: { id?: string }) {
 
           {/* Vertical Divider with Line-draw effect */}
           <motion.div
-            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-[#EDE5D8]/10 -translate-x-1/2"
+            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/30 -translate-x-1/2"
             initial={{ scaleY: 0 }}
             animate={{ scaleY: isVisible ? 1 : 0 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}

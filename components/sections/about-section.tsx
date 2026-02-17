@@ -68,7 +68,7 @@ export function AboutSection({ id }: { id?: string }) {
     <section
       id={id}
       ref={sectionRef}
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden bg-[#2C0405]"
     >
       {/* Dynamic Background Layer */}
       <motion.div
@@ -77,12 +77,12 @@ export function AboutSection({ id }: { id?: string }) {
       />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32 relative z-10">
-        <AnimatedBorders color="#EDE5D8" />
+          <AnimatedBorders color="#EDE5D8" />
 
         <div className="relative">
           {/* Decorative Parallax Square */}
           <motion.div
-            className="absolute inset-x-0 inset-y-0 left-1/2 bg-[#3D0A0C]/20 hidden md:block"
+            className="absolute inset-x-0 inset-y-0 left-1/2 bg-gradient-to-r from-[#3D0A0C]/50 to-transparent hidden md:block"
             style={{ y: parallaxY }}
           />
 
@@ -164,6 +164,7 @@ export function AboutSection({ id }: { id?: string }) {
             >
               {/* Background Image - positioned at bottom */}
               <div className="absolute inset-0" aria-hidden>
+                <div className="absolute inset-0 bg-[#2C0405]" />
                 <Image
                   src="/about-stats-bg.jpg"
                   alt="Mountain landscape"
@@ -172,10 +173,10 @@ export function AboutSection({ id }: { id?: string }) {
                   className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, 900px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2c0405]/30 to-[#1a0402]/70" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2c0405]/40 to-[#1a0402]/80" />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-16 relative z-10">
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-16 relative z-10">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
